@@ -1,0 +1,577 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B0271F162DD93D270085EF03 /* libNeoAppleArchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; };
+		B0271F172DD93D270085EF03 /* libNeoAppleArchive.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B08D03B02DD920BD003847D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D03AF2DD920BD003847D7 /* AppDelegate.swift */; };
+		B08D03B42DD920BD003847D7 /* CreateArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D03B32DD920BD003847D7 /* CreateArchiveViewController.swift */; };
+		B08D03B92DD920C3003847D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B08D03B82DD920C3003847D7 /* Assets.xcassets */; };
+		B08D03BC2DD920C3003847D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B08D03BA2DD920C3003847D7 /* LaunchScreen.storyboard */; };
+		B08D03D62DD92A8C003847D7 /* libNeoAppleArchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B08D03D52DD92A8C003847D7 /* libNeoAppleArchive.dylib */; };
+		B08D03D72DD92AA1003847D7 /* libNeoAppleArchive.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = B08D03D52DD92A8C003847D7 /* libNeoAppleArchive.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B08D03DB2DD92DD0003847D7 /* ExtractArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D03DA2DD92DD0003847D7 /* ExtractArchiveViewController.swift */; };
+		B08D03DE2DD92E57003847D7 /* ExtractArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D03DA2DD92DD0003847D7 /* ExtractArchiveViewController.swift */; };
+		B08D03DF2DD92E57003847D7 /* CreateArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D03B32DD920BD003847D7 /* CreateArchiveViewController.swift */; };
+		B08D03E02DD92E57003847D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D03AF2DD920BD003847D7 /* AppDelegate.swift */; };
+		B08D03E42DD92E57003847D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B08D03BA2DD920C3003847D7 /* LaunchScreen.storyboard */; };
+		B08D03E52DD92E57003847D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B08D03B82DD920C3003847D7 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B0271F182DD93D270085EF03 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B0271F172DD93D270085EF03 /* libNeoAppleArchive.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B08D03D82DD92AA1003847D7 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B08D03D72DD92AA1003847D7 /* libNeoAppleArchive.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B08D03AC2DD920BD003847D7 /* Lina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lina.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B08D03AF2DD920BD003847D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B08D03B32DD920BD003847D7 /* CreateArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateArchiveViewController.swift; sourceTree = "<group>"; };
+		B08D03B82DD920C3003847D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B08D03BB2DD920C3003847D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B08D03BD2DD920C3003847D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B08D03D52DD92A8C003847D7 /* libNeoAppleArchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libNeoAppleArchive.dylib; sourceTree = "<group>"; };
+		B08D03DA2DD92DD0003847D7 /* ExtractArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractArchiveViewController.swift; sourceTree = "<group>"; };
+		B08D03EB2DD92E58003847D7 /* Lina Simulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lina Simulator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B08D03EC2DD92E58003847D7 /* Lina copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Lina copy-Info.plist"; path = "/Users/zachary7829/Documents/Xcode Projects/Lina/Lina copy-Info.plist"; sourceTree = "<absolute>"; };
+		B08D03EE2DD92F1E003847D7 /* libNeoAppleArchive.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNeoAppleArchive.a; path = Lina/Libraries/Simulator/libNeoAppleArchive.a; sourceTree = "<group>"; };
+		B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNeoAppleArchive.dylib; path = Lina/Libraries/Simulator/libNeoAppleArchive.dylib; sourceTree = "<group>"; };
+		B08D03F52DD93A60003847D7 /* libNeoAppleArchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libNeoAppleArchive.dylib; sourceTree = "<group>"; };
+		B08D03F62DD93A60003847D7 /* libNeoAppleArchive.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libNeoAppleArchive.a; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B08D03A92DD920BD003847D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B08D03D62DD92A8C003847D7 /* libNeoAppleArchive.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B08D03E12DD92E57003847D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0271F162DD93D270085EF03 /* libNeoAppleArchive.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B08D03A32DD920BD003847D7 = {
+			isa = PBXGroup;
+			children = (
+				B08D03AE2DD920BD003847D7 /* Lina */,
+				B08D03AD2DD920BD003847D7 /* Products */,
+				B08D03EC2DD92E58003847D7 /* Lina copy-Info.plist */,
+				B08D03ED2DD92F1E003847D7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B08D03AD2DD920BD003847D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B08D03AC2DD920BD003847D7 /* Lina.app */,
+				B08D03EB2DD92E58003847D7 /* Lina Simulator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B08D03AE2DD920BD003847D7 /* Lina */ = {
+			isa = PBXGroup;
+			children = (
+				B08D03D92DD92BDC003847D7 /* Modules */,
+				B08D03D42DD92A8C003847D7 /* Libraries */,
+				B08D03AF2DD920BD003847D7 /* AppDelegate.swift */,
+				B08D03B32DD920BD003847D7 /* CreateArchiveViewController.swift */,
+				B08D03B82DD920C3003847D7 /* Assets.xcassets */,
+				B08D03BA2DD920C3003847D7 /* LaunchScreen.storyboard */,
+				B08D03BD2DD920C3003847D7 /* Info.plist */,
+				B08D03DA2DD92DD0003847D7 /* ExtractArchiveViewController.swift */,
+			);
+			path = Lina;
+			sourceTree = "<group>";
+		};
+		B08D03D42DD92A8C003847D7 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				B08D03F42DD93A60003847D7 /* Simulator */,
+				B08D03D52DD92A8C003847D7 /* libNeoAppleArchive.dylib */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		B08D03D92DD92BDC003847D7 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		B08D03ED2DD92F1E003847D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */,
+				B08D03EE2DD92F1E003847D7 /* libNeoAppleArchive.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B08D03F42DD93A60003847D7 /* Simulator */ = {
+			isa = PBXGroup;
+			children = (
+				B08D03F52DD93A60003847D7 /* libNeoAppleArchive.dylib */,
+				B08D03F62DD93A60003847D7 /* libNeoAppleArchive.a */,
+			);
+			path = Simulator;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B08D03AB2DD920BD003847D7 /* Lina */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B08D03C02DD920C3003847D7 /* Build configuration list for PBXNativeTarget "Lina" */;
+			buildPhases = (
+				B08D03A82DD920BD003847D7 /* Sources */,
+				B08D03A92DD920BD003847D7 /* Frameworks */,
+				B08D03AA2DD920BD003847D7 /* Resources */,
+				B08D03D82DD92AA1003847D7 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Lina;
+			productName = Lina;
+			productReference = B08D03AC2DD920BD003847D7 /* Lina.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B08D03DC2DD92E57003847D7 /* Lina Simulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B08D03E82DD92E58003847D7 /* Build configuration list for PBXNativeTarget "Lina Simulator" */;
+			buildPhases = (
+				B08D03DD2DD92E57003847D7 /* Sources */,
+				B08D03E12DD92E57003847D7 /* Frameworks */,
+				B08D03E32DD92E57003847D7 /* Resources */,
+				B0271F182DD93D270085EF03 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Lina Simulator";
+			productName = Lina;
+			productReference = B08D03EB2DD92E58003847D7 /* Lina Simulator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B08D03A42DD920BD003847D7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					B08D03AB2DD920BD003847D7 = {
+						CreatedOnToolsVersion = 13.3.1;
+						LastSwiftMigration = 1330;
+					};
+				};
+			};
+			buildConfigurationList = B08D03A72DD920BD003847D7 /* Build configuration list for PBXProject "Lina" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B08D03A32DD920BD003847D7;
+			productRefGroup = B08D03AD2DD920BD003847D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B08D03AB2DD920BD003847D7 /* Lina */,
+				B08D03DC2DD92E57003847D7 /* Lina Simulator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B08D03AA2DD920BD003847D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B08D03BC2DD920C3003847D7 /* LaunchScreen.storyboard in Resources */,
+				B08D03B92DD920C3003847D7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B08D03E32DD92E57003847D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B08D03E42DD92E57003847D7 /* LaunchScreen.storyboard in Resources */,
+				B08D03E52DD92E57003847D7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B08D03A82DD920BD003847D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B08D03DB2DD92DD0003847D7 /* ExtractArchiveViewController.swift in Sources */,
+				B08D03B42DD920BD003847D7 /* CreateArchiveViewController.swift in Sources */,
+				B08D03B02DD920BD003847D7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B08D03DD2DD92E57003847D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B08D03DE2DD92E57003847D7 /* ExtractArchiveViewController.swift in Sources */,
+				B08D03DF2DD92E57003847D7 /* CreateArchiveViewController.swift in Sources */,
+				B08D03E02DD92E57003847D7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B08D03BA2DD920C3003847D7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B08D03BB2DD920C3003847D7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B08D03BE2DD920C3003847D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B08D03BF2DD920C3003847D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B08D03C12DD920C3003847D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RR5WP5NG77;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Lina/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Lina;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Lina/Libraries",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Lina/libNeoAppleArchive/Lina-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B08D03C22DD920C3003847D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RR5WP5NG77;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Lina/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Lina;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Lina/Libraries",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Lina/libNeoAppleArchive/Lina-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B08D03E92DD92E58003847D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RR5WP5NG77;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Lina/Modules\"";
+				INFOPLIST_FILE = "Lina copy-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Lina;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Lina/Libraries/Simulator",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Lina/libNeoAppleArchive/Lina-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B08D03EA2DD92E58003847D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RR5WP5NG77;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Lina/Modules\"";
+				INFOPLIST_FILE = "Lina copy-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Lina;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Lina/Libraries/Simulator",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Lina/libNeoAppleArchive/Lina-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B08D03A72DD920BD003847D7 /* Build configuration list for PBXProject "Lina" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B08D03BE2DD920C3003847D7 /* Debug */,
+				B08D03BF2DD920C3003847D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B08D03C02DD920C3003847D7 /* Build configuration list for PBXNativeTarget "Lina" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B08D03C12DD920C3003847D7 /* Debug */,
+				B08D03C22DD920C3003847D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B08D03E82DD92E58003847D7 /* Build configuration list for PBXNativeTarget "Lina Simulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B08D03E92DD92E58003847D7 /* Debug */,
+				B08D03EA2DD92E58003847D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B08D03A42DD920BD003847D7 /* Project object */;
+}

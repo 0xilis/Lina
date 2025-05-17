@@ -1,0 +1,4 @@
+module NeoAppleArchive [system] {
+    header "libNeoAppleArchive/libNeoAppleArchive.h"
+    export *
+}
