@@ -13,6 +13,9 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     private var directoryPicker: UIDocumentPickerViewController!
     private var selectedDirectoryURL: URL?
     private let progressView = UIProgressView(progressViewStyle: .bar)
+    // MARK: - For AEA
+    private var selectedPrivateKeyURL: URL?
+    private var selectedAuthDataURL: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,11 +55,17 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         createButton.makePrimaryActionButton()
         createButton.addTarget(self, action: #selector(createArchive), for: .touchUpInside)
         
+        let createAEAButton = UIButton(type: .system)
+        createAEAButton.setTitle("Create Encrypted Archive", for: .normal)
+        createAEAButton.makePrimaryActionButton()
+        createAEAButton.addTarget(self, action: #selector(createAEAArchive), for: .touchUpInside)
+        
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.isHidden = true
         
         stackView.addArrangedSubview(selectButton)
         stackView.addArrangedSubview(createButton)
+        stackView.addArrangedSubview(createAEAButton)
         stackView.addArrangedSubview(progressView)
         
         container.addSubview(stackView)
@@ -115,6 +124,86 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         }
     }
     
+    @objc private func createAEAArchive() {
+        let keyPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeData as String], in: .open)
+        keyPicker.delegate = self
+        present(keyPicker, animated: true)
+    }
+    
+    private func handleKeySelection(_ url: URL) {
+        do {
+            let keyData = try Data(contentsOf: url)
+            guard keyData.count == 97 else {
+                showAlert(title: "Invalid Key", message: "Key must be 97 bytes ECDSA-P256 in X9.63 format")
+                return
+            }
+                
+            selectedPrivateKeyURL = url
+            promptForAuthData()
+        } catch {
+            showAlert(title: "Error", message: "Could not read key file")
+        }
+    }
+        
+    private func promptForAuthData() {
+        let authPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeData as String], in: .open)
+        authPicker.delegate = self
+        present(authPicker, animated: true)
+    }
+        
+    private func finalizeAEACreation() {
+        guard
+            let aarURL = selectedDirectoryURL,
+            let keyURL = selectedPrivateKeyURL,
+            let authURL = selectedAuthDataURL
+        else { return }
+            
+        do {
+            let keyData = try Data(contentsOf: keyURL)
+            let authData = try Data(contentsOf: authURL)
+            let aeaData = try AEAProfile0Handler.createAEAFromAAR(
+                aarURL: aarURL,
+                privateKey: keyData,
+                authData: authData
+            )
+            
+            let tempURL = FileManager.default.temporaryDirectory
+                .appendingPathComponent("temp_\(Date().timeIntervalSince1970).aea")
+            try aeaData.write(to: tempURL)
+                
+            let savePicker = UIDocumentPickerViewController(
+                documentTypes: [kUTTypeData as String],
+                in: .exportToService
+            )
+            savePicker.delegate = self
+            present(savePicker, animated: true)
+                
+        } catch let error as AEAProfile0Handler.AEAError {
+            handleAEAError(error)
+        } catch {
+            showAlert(title: "Error", message: error.localizedDescription)
+        }
+    }
+    
+    private func handleAEAError(_ error: AEAProfile0Handler.AEAError) {
+        let message: String
+        switch error {
+        case .invalidKeySize:
+            message = "Private key must be 97 bytes (Raw X9.63 ECDSA-P256)"
+        case .invalidKeyFormat:
+            message = "Invalid ECDSA-P256 key format (Needs Raw X9.63 ECDSA-P256)"
+        case .signingFailed:
+            message = "Failed to sign archive"
+        case .invalidArchive:
+            message = "Invalid AAR file"
+        case .unsupportedProfile:
+            message = "Unsupported AEA profile"
+        case .extractionFailed:
+            message = "Failed to extract archive"
+        }
+        showAlert(title: "Error", message: message)
+    }
+    
     private func showSuccess(outputPath: URL) {
         let alert = UIAlertController(
             title: "Success!",
@@ -161,5 +250,8 @@ extension UIButton {
         setTitleColor(.white, for: .normal)
         titleLabel?.font = .boldSystemFont(ofSize: 18)
         contentEdgeInsets = UIEdgeInsets(top: 12, left: 24, bottom: 12, right: 24)
+        titleLabel?.lineBreakMode = .byWordWrapping
+        titleLabel?.numberOfLines = 0
+        titleLabel?.textAlignment = .center
     }
 }

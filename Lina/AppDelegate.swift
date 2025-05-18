@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UIOnboarding
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,8 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = MainTabBarController()
+        let rootVC = MainTabBarController()
+        window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
+        UIOnboardingHelper.showOnboardingIfNeeded(in: rootVC)
         return true
     }
 }
@@ -53,5 +56,27 @@ class MainTabBarController: UITabBarController {
         viewControllers = [UINavigationController(rootViewController: createVC),
                            UINavigationController(rootViewController: extractVC),
                            UINavigationController(rootViewController: creditsVC)]
+    }
+    
+    func didTapButton(_ onboardingViewController: UIOnboardingViewController) {
+        onboardingViewController.dismiss(animated: true) {
+            UIOnboardingHelper.completeOnboarding()
+        }
+    }
+        
+    func didTapLink(_ onboardingViewController: UIOnboardingViewController, url: URL) {
+        UIApplication.shared.open(url)
+    }
+}
+
+extension MainTabBarController: UIOnboardingViewControllerDelegate {
+    func didFinishOnboarding(onboardingViewController: UIOnboardingViewController) {
+        onboardingViewController.dismiss(animated: true) {
+            UIOnboardingHelper.completeOnboarding()
+        }
+    }
+    
+    func didTapLink(onboardingViewController: UIOnboardingViewController, url: URL) {
+        UIApplication.shared.open(url)
     }
 }

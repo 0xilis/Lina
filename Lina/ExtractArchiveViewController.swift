@@ -87,14 +87,56 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         progressView.isHidden = false
         progressView.progress = 0
         
-        DispatchQueue.global(qos: .userInitiated).async {
-            neo_aa_extract_aar_to_path(archiveURL.path, outputDirectory.path)
-            
-            DispatchQueue.main.async {
-                self.progressView.isHidden = true
-                self.showSuccess(outputDirectory: outputDirectory)
+        /*
+         * TODO: Basing off file type by path extension is BAD!
+         * In the future, use the magic of the file to determine aea / aar
+         */
+        let pathExtension = archiveURL.pathExtension
+        if pathExtension == "aea" || pathExtension == "shortcut" {
+            do {
+                let extractedData = try AEAProfile0Handler.extractAEA(aeaURL: archiveURL)
+                let outputPath = FileManager.default.temporaryDirectory
+                .appendingPathComponent("Extracted_\(Date().timeIntervalSince1970)")
+                        
+                try extractedData.write(to: outputPath)
+                showSuccess(outputDirectory: outputPath)
+            } catch let error as AEAProfile0Handler.AEAError {
+                handleAEAError(error)
+            } catch {
+                self.showAlert(title: "Error", message: error.localizedDescription)
             }
+        } else if pathExtension == "aar" || pathExtension == "yaa" {
+            DispatchQueue.global(qos: .userInitiated).async {
+                neo_aa_extract_aar_to_path(archiveURL.path, outputDirectory.path)
+                
+                DispatchQueue.main.async {
+                    self.progressView.isHidden = true
+                    self.showSuccess(outputDirectory: outputDirectory)
+                }
+            }
+        } else {
+            self.progressView.isHidden = true
+            showAlert(title: "Error", message: "File is not AEA or AAR!")
         }
+    }
+    
+    private func handleAEAError(_ error: AEAProfile0Handler.AEAError) {
+        let message: String
+        switch error {
+        case .invalidKeySize:
+            message = "Private key must be 97 bytes (Raw X9.63 ECDSA-P256)"
+        case .invalidKeyFormat:
+            message = "Invalid ECDSA-P256 key format (Needs Raw X9.63 ECDSA-P256)"
+        case .signingFailed:
+            message = "Failed to sign archive"
+        case .invalidArchive:
+            message = "Invalid AAR file"
+        case .unsupportedProfile:
+            message = "Unsupported AEA profile"
+        case .extractionFailed:
+            message = "Failed to extract archive"
+        }
+        showAlert(title: "Error", message: message)
     }
     
     private func showSuccess(outputDirectory: URL) {

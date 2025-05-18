@@ -11,8 +11,7 @@ libNeoAppleArchive = LNAA, LNAA sounds like Lina, so I chose Lina.
 
 This app is planned to be on the App Store, and I may distribute TestFlight links soon!
 
-- Add credits section
-- Make app actually work
-- Add AEA decryption
-- Add AEA formation; the first TestFlight build doesn't need to support all AEA types but it should support at least AEAProfile 0. On the App Store we want to support all types however.
+- Support 100% AEA; currently in this build we only support AEAProfile 0. This is fine for TestFlight builds but once we get on the App Store we want to support all types however.
+- Support all compression types for AAR/AEA (this is a libNeoAppleArchive thing, not Lina)
 - Add Siri Shortcut actions
+- Share Sheet support

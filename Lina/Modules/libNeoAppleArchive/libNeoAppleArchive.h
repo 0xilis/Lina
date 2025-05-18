@@ -8,8 +8,6 @@
 #ifndef libNeoAppleArchive_h
 #define libNeoAppleArchive_h
 
-#define EXCLUDE_AEA_SUPPORT 1
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -157,6 +155,7 @@ typedef enum {
 
 #include "neo_aa_header.h"
 #include "neo_aea_archive.h"
+#include "neo_aea_sign.h"
 
 #ifdef __cplusplus
 }

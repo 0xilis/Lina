@@ -1,6 +1,6 @@
 //
 //  CreditsViewController.swift
-//  Lina
+//  Lina - Made with ♡ By Snoolie
 //
 //  Created by Snoolie Keffaber on 2025/05/17.
 //
@@ -10,12 +10,14 @@ import UIKit
 class CreditsViewController: UIViewController {
     let githubURLs: [String: String] = [
             "0xilis": "https://github.com/0xilis",
-            "justtryingthingsout": "https://github.com/justtryingthingsout"
+            "justtryingthingsout": "https://github.com/justtryingthingsout",
+            "AdelaideSky": "https://github.com/AdelaideSky"
         ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        addDebugOptions()
     }
     
     private func setupUI() {
@@ -40,7 +42,6 @@ class CreditsViewController: UIViewController {
         stackView.spacing = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        // 0xilis card
         let firstUserView = createUserCard(
             imageName: "snoolie_pfp_Lina",
             name: "0xilis",
@@ -48,7 +49,6 @@ class CreditsViewController: UIViewController {
         )
         addTapGesture(to: firstUserView, with: "0xilis")
         
-        // Contributor card
         let secondUserView = createUserCard(
             imageName: "plx_pfp_Lina",
             name: "justtryingthingsout",
@@ -56,8 +56,16 @@ class CreditsViewController: UIViewController {
         )
         addTapGesture(to: secondUserView, with: "justtryingthingsout")
         
+        let thirdUserView = createUserCard(
+            imageName: "ade_pfp_Lina",
+            name: "AdelaideSky",
+            role: "Miscellaneous"
+        )
+        addTapGesture(to: thirdUserView, with: "AdelaideSky")
+        
         stackView.addArrangedSubview(firstUserView)
         stackView.addArrangedSubview(secondUserView)
+        stackView.addArrangedSubview(thirdUserView)
         
         container.addSubview(stackView)
         view.addSubview(container)
@@ -72,6 +80,19 @@ class CreditsViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20),
             stackView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -20)
         ])
+    }
+    
+    private func addDebugOptions() {
+        #if DEBUG || TESTFLIGHT
+        let resetItem = UIBarButtonItem(
+            title: "Reset Onboarding",
+            style: .plain,
+            target: self,
+            action: #selector(resetOnboarding)
+        )
+            
+        navigationItem.rightBarButtonItems = [resetItem]
+        #endif
     }
     
     private func createUserCard(imageName: String, name: String, role: String) -> UIView {
@@ -135,4 +156,11 @@ class CreditsViewController: UIViewController {
         }
         UIApplication.shared.open(url)
     }
+    
+    #if DEBUG || TESTFLIGHT
+    @objc private func resetOnboarding() {
+        UIOnboardingHelper.resetOnboarding()
+        showAlert(title: "Onboarding Reset", message: "Will show on next launch")
+    }
+    #endif
 }
