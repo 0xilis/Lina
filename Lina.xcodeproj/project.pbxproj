@@ -70,7 +70,6 @@
 		B08D03DA2DD92DD0003847D7 /* ExtractArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractArchiveViewController.swift; sourceTree = "<group>"; };
 		B08D03EB2DD92E58003847D7 /* Lina Simulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lina Simulator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B08D03EC2DD92E58003847D7 /* Lina copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Lina copy-Info.plist"; path = "/Users/zachary7829/Documents/Xcode Projects/Lina/Lina copy-Info.plist"; sourceTree = "<absolute>"; };
-		B08D03EE2DD92F1E003847D7 /* libNeoAppleArchive.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNeoAppleArchive.a; path = Lina/Libraries/Simulator/libNeoAppleArchive.a; sourceTree = "<group>"; };
 		B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNeoAppleArchive.dylib; path = Lina/Libraries/Simulator/libNeoAppleArchive.dylib; sourceTree = "<group>"; };
 		B08D03F52DD93A60003847D7 /* libNeoAppleArchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libNeoAppleArchive.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */,
-				B08D03EE2DD92F1E003847D7 /* libNeoAppleArchive.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -435,6 +433,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RR5WP5NG77;
+				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Lina/Modules\"";
 				INFOPLIST_FILE = Lina/Info.plist;
@@ -472,6 +471,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RR5WP5NG77;
+				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Lina/Modules\"";
 				INFOPLIST_FILE = Lina/Info.plist;

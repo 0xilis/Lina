@@ -10,6 +10,14 @@ import NeoAppleArchive
 import MobileCoreServices
 
 class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
+    enum CreationType {
+        case aar
+        case aea
+        case key
+        case auth
+    }
+    
+    private var currentCreationType: CreationType = .aar
     private var directoryPicker: UIDocumentPickerViewController!
     private var selectedDirectoryURL: URL?
     private let progressView = UIProgressView(progressViewStyle: .bar)
@@ -45,25 +53,25 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         stackView.spacing = 24
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        let selectButton = UIButton(type: .system)
+        /*let selectButton = UIButton(type: .system)
         selectButton.setTitle("Select Directory", for: .normal)
         selectButton.makePrimaryActionButton()
-        selectButton.addTarget(self, action: #selector(selectDirectory), for: .touchUpInside)
+        selectButton.addTarget(self, action: #selector(selectDirectory), for: .touchUpInside)*/
         
         let createButton = UIButton(type: .system)
         createButton.setTitle("Create Archive", for: .normal)
         createButton.makePrimaryActionButton()
-        createButton.addTarget(self, action: #selector(createArchive), for: .touchUpInside)
+        createButton.addTarget(self, action: #selector(pressedCreateArchive), for: .touchUpInside)
         
         let createAEAButton = UIButton(type: .system)
         createAEAButton.setTitle("Create Encrypted Archive", for: .normal)
         createAEAButton.makePrimaryActionButton()
-        createAEAButton.addTarget(self, action: #selector(createAEAArchive), for: .touchUpInside)
+        createAEAButton.addTarget(self, action: #selector(pressedCreateAEAArchive), for: .touchUpInside)
         
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.isHidden = true
         
-        stackView.addArrangedSubview(selectButton)
+        //stackView.addArrangedSubview(selectButton)
         stackView.addArrangedSubview(createButton)
         stackView.addArrangedSubview(createAEAButton)
         stackView.addArrangedSubview(progressView)
@@ -95,7 +103,20 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         present(directoryPicker, animated: true)
     }
     
-    @objc private func createArchive() {
+    @objc private func pressedCreateArchive() {
+        currentCreationType = .aar
+        directoryPicker.delegate = self
+        present(directoryPicker, animated: true)
+    }
+    
+    @objc private func pressedCreateAEAArchive() {
+        currentCreationType = .aea
+        let keyPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeData as String], in: .open)
+        keyPicker.delegate = self
+        present(keyPicker, animated: true)
+    }
+    
+    private func createArchive() {
         guard let inputURL = selectedDirectoryURL else {
             showAlert(title: "Error", message: "Please select a directory first")
             return
@@ -124,12 +145,6 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         }
     }
     
-    @objc private func createAEAArchive() {
-        let keyPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeData as String], in: .open)
-        keyPicker.delegate = self
-        present(keyPicker, animated: true)
-    }
-    
     private func handleKeySelection(_ url: URL) {
         do {
             let keyData = try Data(contentsOf: url)
@@ -151,7 +166,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         present(authPicker, animated: true)
     }
         
-    private func finalizeAEACreation() {
+    private func createAEAArchive() {
         guard
             let aarURL = selectedDirectoryURL,
             let keyURL = selectedPrivateKeyURL,
@@ -227,8 +242,19 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     // MARK: - Document Picker Delegate
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let url = urls.first else { return }
-        selectedDirectoryURL = url
-        title = "Create from: \(url.lastPathComponent)"
+        if currentCreationType == .aar {
+            selectedDirectoryURL = url
+            createArchive()
+        } else if currentCreationType == .aea {
+            selectedDirectoryURL = url
+            promptForAuthData()
+        } else if currentCreationType == .key {
+            handleKeySelection(url)
+        } else {
+            // Must be .auth
+            selectedAuthDataURL = url
+            createAEAArchive()
+        }
     }
 }
 

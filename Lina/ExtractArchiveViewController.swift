@@ -45,7 +45,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         let extractButton = UIButton(type: .system)
         extractButton.setTitle("Extract Archive", for: .normal)
         extractButton.makePrimaryActionButton()
-        extractButton.addTarget(self, action: #selector(extractArchive), for: .touchUpInside)
+        extractButton.addTarget(self, action: #selector(pressedExtractArchive), for: .touchUpInside)
         
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.isHidden = true
@@ -75,7 +75,13 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         archivePicker.delegate = self
     }
     
-    @objc private func extractArchive() {
+    @objc private func pressedExtractArchive() {
+        let keyPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeData as String], in: .open)
+        keyPicker.delegate = self
+        present(keyPicker, animated: true)
+    }
+    
+    private func extractArchive() {
         guard let archiveURL = selectedArchiveURL else {
             showAlert(title: "Error", message: "Please select an archive first")
             return
@@ -168,6 +174,6 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let url = urls.first else { return }
         selectedArchiveURL = url
-        title = "Extract: \(url.lastPathComponent)"
+        extractArchive()
     }
 }
