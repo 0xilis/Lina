@@ -138,7 +138,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         case .invalidArchive:
             message = "Invalid AAR file"
         case .unsupportedProfile:
-            message = "Unsupported AEA profile"
+            message = "Unsupported AEA profile (Currently only AEAProfile 0 is supported)"
         case .extractionFailed:
             message = "Failed to extract archive"
         }
