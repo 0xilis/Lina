@@ -17,7 +17,6 @@ class CreditsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        addDebugOptions()
     }
     
     private func setupUI() {
@@ -68,8 +67,32 @@ class CreditsViewController: UIViewController {
         stackView.addArrangedSubview(thirdUserView)
         
         container.addSubview(stackView)
+        #if DEBUG || TESTFLIGHT
+        let resetButton = UIButton(type: .system)
+        resetButton.setTitle("Reset Onboarding", for: .normal)
+        resetButton.makePrimaryActionButton()
+        resetButton.addTarget(self, action: #selector(resetOnboarding), for: .touchUpInside)
+        resetButton.translatesAutoresizingMaskIntoConstraints = false
+        #endif
+        container.addSubview(resetButton)
         view.addSubview(container)
         
+        #if DEBUG || TESTFLIGHT
+        NSLayoutConstraint.activate([
+            container.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            container.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            container.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            stackView.topAnchor.constraint(equalTo: container.topAnchor, constant: 20),
+            stackView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20),
+            //stackView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -20)
+            
+            resetButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
+            resetButton.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            resetButton.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -20)
+        ])
+        #else
         NSLayoutConstraint.activate([
             container.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             container.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -80,18 +103,6 @@ class CreditsViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20),
             stackView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -20)
         ])
-    }
-    
-    private func addDebugOptions() {
-        #if DEBUG || TESTFLIGHT
-        let resetItem = UIBarButtonItem(
-            title: "Reset Onboarding",
-            style: .plain,
-            target: self,
-            action: #selector(resetOnboarding)
-        )
-            
-        navigationItem.rightBarButtonItems = [resetItem]
         #endif
     }
     
