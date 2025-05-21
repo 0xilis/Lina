@@ -71,7 +71,10 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     private func setupDocumentPickers() {
-        archivePicker = UIDocumentPickerViewController(documentTypes: [kUTTypeArchive as String], in: .open)
+        archivePicker = UIDocumentPickerViewController(documentTypes: [
+            "com.apple.archive",
+            "com.apple.encrypted-archive"
+        ], in: .open)
         archivePicker.delegate = self
     }
     
@@ -93,7 +96,12 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         progressView.isHidden = false
         progressView.progress = 0
         
-        _ = archiveURL.startAccessingSecurityScopedResource()
+        let securityAccessGranted = archiveURL.startAccessingSecurityScopedResource()
+        
+        guard securityAccessGranted else {
+            showAlert(title: "Access Error", message: "Could not access selected files")
+            return
+        }
         
         /*
          * TODO: Basing off file type by path extension is BAD!
