@@ -174,4 +174,12 @@ class CreditsViewController: UIViewController {
         showAlert(title: "Onboarding Reset", message: "Will show on next launch")
     }
     #endif
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
 }
