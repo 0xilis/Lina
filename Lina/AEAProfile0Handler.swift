@@ -16,13 +16,27 @@ class AEAProfile0Handler {
         
         let aarData = try Data(contentsOf: aarURL)
         
+        /*
+         * TODO: Awful hack...
+         * Currently, sign_aea_with_private_key_and_auth_data
+         * frees the first argument, so to use it with Swift
+         * we need to allocate it ourselfs and ensure Swift's
+         * auto memory management doesn't try to free() it.
+         * since this libNeoAppleArchive function is not yet
+         * public, this can be changed before signing gets
+         * released and we have to worry about maintaining API...
+         */
+        let aarSize = aarData.count
+        let aarBuffer = UnsafeMutableRawPointer.allocate(byteCount: aarSize, alignment: MemoryLayout<UInt8>.alignment)
+        aarData.copyBytes(to: aarBuffer.assumingMemoryBound(to: UInt8.self), count: aarSize)
+        
         var outSize: size_t = 0
         let result = privateKey.withUnsafeBytes { keyPtr in
             authData.withUnsafeBytes { authPtr in
                 aarData.withUnsafeBytes { aarPtr in
                     sign_aea_with_private_key_and_auth_data(
-                        UnsafeMutableRawPointer(mutating: aarPtr.baseAddress!),
-                        aarData.count,
+                        aarBuffer,
+                        aarSize,
                         UnsafeMutableRawPointer(mutating: keyPtr.baseAddress!),
                         privateKey.count,
                         UnsafeMutableRawPointer(mutating: authPtr.baseAddress!),

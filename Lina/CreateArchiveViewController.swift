@@ -15,6 +15,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         case aea
         case key
         case auth
+        case complete
     }
     
     private var currentCreationType: CreationType = .aar
@@ -24,6 +25,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     // MARK: - For AEA
     private var selectedPrivateKeyURL: URL?
     private var selectedAuthDataURL: URL?
+    private var currentTempURL: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -174,6 +176,15 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         else { return }
             
         do {
+            let securityAccessGranted = aarURL.startAccessingSecurityScopedResource()
+                    && keyURL.startAccessingSecurityScopedResource()
+                    && authURL.startAccessingSecurityScopedResource()
+            
+            guard securityAccessGranted else {
+                showAlert(title: "Access Error", message: "Could not access selected files")
+                return
+            }
+            
             let keyData = try Data(contentsOf: keyURL)
             let authData = try Data(contentsOf: authURL)
             let aeaData = try AEAProfile0Handler.createAEAFromAAR(
@@ -185,19 +196,34 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
             let tempURL = FileManager.default.temporaryDirectory
                 .appendingPathComponent("temp_\(Date().timeIntervalSince1970).aea")
             try aeaData.write(to: tempURL)
+            
+            self.currentTempURL = tempURL
                 
-            let savePicker = UIDocumentPickerViewController(
-                documentTypes: [kUTTypeData as String],
-                in: .exportToService
-            )
-            savePicker.delegate = self
-            present(savePicker, animated: true)
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                
+                let savePicker: UIDocumentPickerViewController
+                if #available(iOS 14.0, *) {
+                    savePicker = UIDocumentPickerViewController(forExporting: [tempURL])
+                } else {
+                    savePicker = UIDocumentPickerViewController(url: tempURL, in: .exportToService)
+                }
+                            
+                savePicker.delegate = self
+                self.present(savePicker, animated: true) {
+                    aarURL.stopAccessingSecurityScopedResource()
+                    keyURL.stopAccessingSecurityScopedResource()
+                    authURL.stopAccessingSecurityScopedResource()
+                }
+            }
                 
         } catch let error as AEAProfile0Handler.AEAError {
             handleAEAError(error)
         } catch {
             showAlert(title: "Error", message: error.localizedDescription)
         }
+        
+        print("done with createAEAArchive()")
     }
     
     private func handleAEAError(_ error: AEAProfile0Handler.AEAError) {
@@ -247,14 +273,40 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
             createArchive()
         } else if currentCreationType == .aea {
             selectedDirectoryURL = url
-            promptForAuthData()
+            currentCreationType = .key
+            showInstructionAlert(title: "AEA Creation", message: "Select the ECDSA-P256 raw X9.63 private key.") { [weak self] in
+                let keyPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeData as String], in: .open)
+                keyPicker.delegate = self
+                self?.present(keyPicker, animated: true)
+            }
         } else if currentCreationType == .key {
-            handleKeySelection(url)
-        } else {
-            // Must be .auth
+            selectedPrivateKeyURL = url
+            currentCreationType = .auth
+            showInstructionAlert(title: "AEA Creation", message: "Select auth data for the AEA.") {
+                let authPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeData as String], in: .open)
+                authPicker.delegate = self
+                self.present(authPicker, animated: true)
+            }
+        } else if currentCreationType == .auth {
             selectedAuthDataURL = url
+            currentCreationType = .complete
             createAEAArchive()
         }
+    }
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        if let tempURL = currentTempURL {
+            try? FileManager.default.removeItem(at: tempURL)
+            currentTempURL = nil
+        }
+    }
+    
+    private func showInstructionAlert(title: String, message: String, completion: @escaping () -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            completion()
+        })
+        present(alert, animated: true)
     }
 }
 

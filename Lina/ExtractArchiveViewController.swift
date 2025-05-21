@@ -93,6 +93,8 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         progressView.isHidden = false
         progressView.progress = 0
         
+        _ = archiveURL.startAccessingSecurityScopedResource()
+        
         /*
          * TODO: Basing off file type by path extension is BAD!
          * In the future, use the magic of the file to determine aea / aar
@@ -124,6 +126,8 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
             self.progressView.isHidden = true
             showAlert(title: "Error", message: "File is not AEA or AAR!")
         }
+        
+        archiveURL.stopAccessingSecurityScopedResource()
     }
     
     private func handleAEAError(_ error: AEAProfile0Handler.AEAError) {
