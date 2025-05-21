@@ -73,8 +73,8 @@ class CreditsViewController: UIViewController {
         resetButton.makePrimaryActionButton()
         resetButton.addTarget(self, action: #selector(resetOnboarding), for: .touchUpInside)
         resetButton.translatesAutoresizingMaskIntoConstraints = false
-        #endif
         container.addSubview(resetButton)
+        #endif
         view.addSubview(container)
         
         #if DEBUG || TESTFLIGHT
