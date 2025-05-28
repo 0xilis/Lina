@@ -7,6 +7,7 @@
 
 import UIKit
 import UIOnboarding
+import Intents
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,11 +20,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
         UIOnboardingHelper.showOnboardingIfNeeded(in: rootVC)
+        AppIntent.allowSiri()
+        AppIntent.archive()
         return true
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return .portrait
+    }
+    
+    func application(_ application: UIApplication, handlerFor intent: INIntent) -> Any? {
+                
+        switch intent {
+            // If the intent being responded to is GetPeople, call the GetPeople intent handler
+            case is CreateAppleArchiveIntent:
+                return CreateArchiveShortcutsActionHandler()
+            default:
+                return nil
+        }
     }
 }
 

@@ -8,6 +8,7 @@
 import UIKit
 import NeoAppleArchive
 import MobileCoreServices
+import Foundation
 
 class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     enum CreationType {
@@ -34,6 +35,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     private func setupViews() {
+        print("Creating CreateArchiveViewController...")
         if #available(iOS 13.0, *) {
             view.backgroundColor = .systemGroupedBackground
         } else {
@@ -54,11 +56,6 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         stackView.axis = .vertical
         stackView.spacing = 24
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        /*let selectButton = UIButton(type: .system)
-        selectButton.setTitle("Select Directory", for: .normal)
-        selectButton.makePrimaryActionButton()
-        selectButton.addTarget(self, action: #selector(selectDirectory), for: .touchUpInside)*/
         
         let createButton = UIButton(type: .system)
         createButton.setTitle("Create Archive", for: .normal)
