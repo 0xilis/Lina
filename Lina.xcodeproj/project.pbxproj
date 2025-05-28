@@ -23,8 +23,6 @@
 		B075939E2DE6A6B6000C7977 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B075939C2DE6A6B6000C7977 /* AppIntent.swift */; };
 		B075939F2DE6A7BB000C7977 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B0626DA82DE690830012B7F9 /* Intents.intentdefinition */; };
 		B07593A02DE6A7BB000C7977 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B0626DA82DE690830012B7F9 /* Intents.intentdefinition */; };
-		B07593A62DE6AE08000C7977 /* CreateArchiveShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */; };
-		B07593A72DE6AE09000C7977 /* CreateArchiveShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */; };
 		B08D03B02DD920BD003847D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D03AF2DD920BD003847D7 /* AppDelegate.swift */; };
 		B08D03B42DD920BD003847D7 /* CreateArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D03B32DD920BD003847D7 /* CreateArchiveViewController.swift */; };
 		B08D03B92DD920C3003847D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B08D03B82DD920C3003847D7 /* Assets.xcassets */; };
@@ -35,7 +33,32 @@
 		B08D03E02DD92E57003847D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D03AF2DD920BD003847D7 /* AppDelegate.swift */; };
 		B08D03E42DD92E57003847D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B08D03BA2DD920C3003847D7 /* LaunchScreen.storyboard */; };
 		B08D03E52DD92E57003847D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B08D03B82DD920C3003847D7 /* Assets.xcassets */; };
+		B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B075938C2DE6A5BD000C7977 /* Intents.framework */; };
+		B098702B2DE7815E007F64B5 /* LinaIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B09870232DE7815D007F64B5 /* LinaIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B09870312DE7822D007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */; };
+		B09870322DE78234007F64B5 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B0626DA82DE690830012B7F9 /* Intents.intentdefinition */; };
+		B09870342DE78248007F64B5 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09870332DE78248007F64B5 /* IntentHandler.swift */; };
+		B09870352DE7826E007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */; };
+		B09870362DE7826E007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */; };
+		B09870372DE782B6007F64B5 /* LinaIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B09870232DE7815D007F64B5 /* LinaIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B09870292DE7815E007F64B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B08D03A42DD920BD003847D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B09870222DE7815D007F64B5;
+			remoteInfo = LinaIntents;
+		};
+		B09870382DE782B6007F64B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B08D03A42DD920BD003847D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B09870222DE7815D007F64B5;
+			remoteInfo = LinaIntents;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		B0271F182DD93D270085EF03 /* Embed Libraries */ = {
@@ -66,6 +89,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				B098702B2DE7815E007F64B5 /* LinaIntents.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +100,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				B09870372DE782B6007F64B5 /* LinaIntents.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,8 +115,6 @@
 		B0626DA82DE690830012B7F9 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateArchiveShortcutsActionHandler.swift; sourceTree = "<group>"; };
 		B075938C2DE6A5BD000C7977 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
-		B075938F2DE6A5BD000C7977 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
-		B07593912DE6A5BD000C7977 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B075939C2DE6A6B6000C7977 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		B07593A52DE6A947000C7977 /* Lina Simulator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Lina Simulator.entitlements"; sourceTree = "<group>"; };
 		B08D03AC2DD920BD003847D7 /* Lina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lina.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +129,10 @@
 		B08D03EC2DD92E58003847D7 /* Lina copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Lina copy-Info.plist"; path = "/Users/zachary7829/Documents/Xcode Projects/Lina/Lina copy-Info.plist"; sourceTree = "<absolute>"; };
 		B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNeoAppleArchive.dylib; path = Lina/Libraries/Simulator/libNeoAppleArchive.dylib; sourceTree = "<group>"; };
 		B08D03F52DD93A60003847D7 /* libNeoAppleArchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libNeoAppleArchive.dylib; sourceTree = "<group>"; };
+		B09870232DE7815D007F64B5 /* LinaIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LinaIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B098702F2DE78199007F64B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B09870332DE78248007F64B5 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		B098703A2DE78578007F64B5 /* Lina.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lina.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +154,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B09870202DE7815D007F64B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -135,8 +170,8 @@
 			children = (
 				B0626DA82DE690830012B7F9 /* Intents.intentdefinition */,
 				B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */,
-				B075938F2DE6A5BD000C7977 /* IntentHandler.swift */,
-				B07593912DE6A5BD000C7977 /* Info.plist */,
+				B098702F2DE78199007F64B5 /* Info.plist */,
+				B09870332DE78248007F64B5 /* IntentHandler.swift */,
 			);
 			path = LinaIntents;
 			sourceTree = "<group>";
@@ -158,6 +193,7 @@
 			children = (
 				B08D03AC2DD920BD003847D7 /* Lina.app */,
 				B08D03EB2DD92E58003847D7 /* Lina Simulator.app */,
+				B09870232DE7815D007F64B5 /* LinaIntents.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,6 +201,7 @@
 		B08D03AE2DD920BD003847D7 /* Lina */ = {
 			isa = PBXGroup;
 			children = (
+				B098703A2DE78578007F64B5 /* Lina.entitlements */,
 				B08D03D92DD92BDC003847D7 /* Modules */,
 				B08D03D42DD92A8C003847D7 /* Libraries */,
 				B08D03AF2DD920BD003847D7 /* AppDelegate.swift */,
@@ -231,6 +268,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B098702A2DE7815E007F64B5 /* PBXTargetDependency */,
 			);
 			name = Lina;
 			packageProductDependencies = (
@@ -253,6 +291,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B09870392DE782B6007F64B5 /* PBXTargetDependency */,
 			);
 			name = "Lina Simulator";
 			packageProductDependencies = (
@@ -261,6 +300,23 @@
 			productName = Lina;
 			productReference = B08D03EB2DD92E58003847D7 /* Lina Simulator.app */;
 			productType = "com.apple.product-type.application";
+		};
+		B09870222DE7815D007F64B5 /* LinaIntents */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B098702C2DE7815E007F64B5 /* Build configuration list for PBXNativeTarget "LinaIntents" */;
+			buildPhases = (
+				B098701F2DE7815D007F64B5 /* Sources */,
+				B09870202DE7815D007F64B5 /* Frameworks */,
+				B09870212DE7815D007F64B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LinaIntents;
+			productName = LinaIntents;
+			productReference = B09870232DE7815D007F64B5 /* LinaIntents.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -275,6 +331,9 @@
 					B08D03AB2DD920BD003847D7 = {
 						CreatedOnToolsVersion = 13.3.1;
 						LastSwiftMigration = 1330;
+					};
+					B09870222DE7815D007F64B5 = {
+						CreatedOnToolsVersion = 13.3.1;
 					};
 				};
 			};
@@ -296,6 +355,7 @@
 			targets = (
 				B08D03AB2DD920BD003847D7 /* Lina */,
 				B08D03DC2DD92E57003847D7 /* Lina Simulator */,
+				B09870222DE7815D007F64B5 /* LinaIntents */,
 			);
 		};
 /* End PBXProject section */
@@ -319,6 +379,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B09870212DE7815D007F64B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -331,7 +398,7 @@
 				B0271F212DDA56CD0085EF03 /* UIOnboardingHelper.swift in Sources */,
 				B0271F292DDA98EC0085EF03 /* AEAProfile0Handler.swift in Sources */,
 				B075939D2DE6A6B6000C7977 /* AppIntent.swift in Sources */,
-				B07593A72DE6AE09000C7977 /* CreateArchiveShortcutsActionHandler.swift in Sources */,
+				B09870362DE7826E007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */,
 				B08D03B02DD920BD003847D7 /* AppDelegate.swift in Sources */,
 				B075939F2DE6A7BB000C7977 /* Intents.intentdefinition in Sources */,
 				B0271F1E2DD974B80085EF03 /* CreditsViewController.swift in Sources */,
@@ -347,14 +414,37 @@
 				B0271F222DDA56CD0085EF03 /* UIOnboardingHelper.swift in Sources */,
 				B0271F2A2DDA98EC0085EF03 /* AEAProfile0Handler.swift in Sources */,
 				B075939E2DE6A6B6000C7977 /* AppIntent.swift in Sources */,
-				B07593A62DE6AE08000C7977 /* CreateArchiveShortcutsActionHandler.swift in Sources */,
+				B09870352DE7826E007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */,
 				B08D03E02DD92E57003847D7 /* AppDelegate.swift in Sources */,
 				B07593A02DE6A7BB000C7977 /* Intents.intentdefinition in Sources */,
 				B0271F1F2DD974B80085EF03 /* CreditsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B098701F2DE7815D007F64B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B09870322DE78234007F64B5 /* Intents.intentdefinition in Sources */,
+				B09870342DE78248007F64B5 /* IntentHandler.swift in Sources */,
+				B09870312DE7822D007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B098702A2DE7815E007F64B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B09870222DE7815D007F64B5 /* LinaIntents */;
+			targetProxy = B09870292DE7815E007F64B5 /* PBXContainerItemProxy */;
+		};
+		B09870392DE782B6007F64B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B09870222DE7815D007F64B5 /* LinaIntents */;
+			targetProxy = B09870382DE782B6007F64B5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B08D03BA2DD920C3003847D7 /* LaunchScreen.storyboard */ = {
@@ -491,6 +581,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Lina/Lina.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -539,6 +630,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Lina/Lina.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -657,6 +749,61 @@
 			};
 			name = Release;
 		};
+		B098702D2DE7815E007F64B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RR5WP5NG77;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LinaIntents/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LinaIntents;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina.LinaIntents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B098702E2DE7815E007F64B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RR5WP5NG77;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LinaIntents/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LinaIntents;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina.LinaIntents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Lina Intests Distribution Profile (28/05/2025)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -683,6 +830,15 @@
 			buildConfigurations = (
 				B08D03E92DD92E58003847D7 /* Debug */,
 				B08D03EA2DD92E58003847D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B098702C2DE7815E007F64B5 /* Build configuration list for PBXNativeTarget "LinaIntents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B098702D2DE7815E007F64B5 /* Debug */,
+				B098702E2DE7815E007F64B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
