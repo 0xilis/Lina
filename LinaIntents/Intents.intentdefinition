@@ -22,7 +22,7 @@
 			<key>INIntentConfigurable</key>
 			<true/>
 			<key>INIntentDescription</key>
-			<string>Create a plain Apple Archive (.aar file).</string>
+			<string>Create a plain AAR.</string>
 			<key>INIntentDescriptionID</key>
 			<string>SM3wyY</string>
 			<key>INIntentIneligibleForSuggestions</key>
@@ -48,7 +48,7 @@
 				</dict>
 			</dict>
 			<key>INIntentName</key>
-			<string>CreateAppleArchive</string>
+			<string>CreateAAR</string>
 			<key>INIntentParameters</key>
 			<array>
 				<dict>
@@ -135,7 +135,7 @@
 				<array>
 					<dict>
 						<key>INIntentResponseParameterDisplayName</key>
-						<string>Apple Archive</string>
+						<string>AAR</string>
 						<key>INIntentResponseParameterDisplayNameID</key>
 						<string>nRZmEd</string>
 						<key>INIntentResponseParameterDisplayPriority</key>
@@ -164,7 +164,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Create Apple Archive</string>
+			<string>Create AAR</string>
 			<key>INIntentTitleID</key>
 			<string>F5r3lp</string>
 			<key>INIntentType</key>

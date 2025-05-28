@@ -10,7 +10,7 @@
 			<array/>
 			<key>IntentsSupported</key>
 			<array>
-				<string>CreateAppleArchiveIntent</string>
+				<string>CreateAARIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>

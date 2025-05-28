@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
         switch intent {
             // If the intent being responded to is GetPeople, call the GetPeople intent handler
-            case is CreateAppleArchiveIntent:
+            case is CreateAARIntent:
                 return CreateArchiveShortcutsActionHandler()
             default:
                 return nil

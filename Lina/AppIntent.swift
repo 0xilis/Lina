@@ -22,8 +22,8 @@ class AppIntent {
     }
     
     class func archive() {
-        let intent = CreateAppleArchiveIntent()
-        intent.suggestedInvocationPhrase = "Create Apple Archive"
+        let intent = CreateAARIntent()
+        intent.suggestedInvocationPhrase = "Create AAR"
         intent.inputPath = []
         
         let interaction = INInteraction(intent: intent, response: nil)

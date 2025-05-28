@@ -13,7 +13,7 @@ class IntentHandler: INExtension {
     
     override func handler(for intent: INIntent) -> Any {
         switch intent {
-        case is CreateAppleArchiveIntent:
+        case is CreateAARIntent:
             return CreateArchiveShortcutsActionHandler()
         default:
             fatalError("No handler for this intent")

@@ -7,9 +7,9 @@
 
 import Intents
 
-class CreateArchiveShortcutsActionHandler : NSObject, CreateAppleArchiveIntentHandling {
+class CreateArchiveShortcutsActionHandler : NSObject, CreateAARIntentHandling {
     
-    func handle(intent: CreateAppleArchiveIntent, completion: @escaping (CreateAppleArchiveIntentResponse) -> Void) {
+    func handle(intent: CreateAARIntent, completion: @escaping (CreateAARIntentResponse) -> Void) {
         if let inputPath = intent.inputPath, let inputDirectory = inputPath.first {
             
             let fileManager = FileManager.default
@@ -31,12 +31,12 @@ class CreateArchiveShortcutsActionHandler : NSObject, CreateAppleArchiveIntentHa
                 
                 // TODO: Implement NeoAppleArchive
                 
-                completion(CreateAppleArchiveIntentResponse.success(result: intent.inputPath![0]))
+                completion(CreateAARIntentResponse.success(result: intent.inputPath![0]))
             } catch {
-                completion(CreateAppleArchiveIntentResponse.failure(error: "Failed to create the archive: \(error.localizedDescription)"))
+                completion(CreateAARIntentResponse.failure(error: "Failed to create the archive: \(error.localizedDescription)"))
             }
         } else {
-            completion(CreateAppleArchiveIntentResponse.failure(error: "The entered in file URL was invalid and could not have an Apple Archive created from it."))
+            completion(CreateAARIntentResponse.failure(error: "The entered in file URL was invalid and could not have an Apple Archive created from it."))
         }
     }
     
@@ -44,7 +44,7 @@ class CreateArchiveShortcutsActionHandler : NSObject, CreateAppleArchiveIntentHa
         <#code#>
     }*/
     
-    func resolveInputPath(for intent: CreateAppleArchiveIntent, with completion: @escaping ([INFileResolutionResult]) -> Void) {
+    func resolveInputPath(for intent: CreateAARIntent, with completion: @escaping ([INFileResolutionResult]) -> Void) {
 
         guard let inputPaths = intent.inputPath else {
             completion([INFileResolutionResult.needsValue()])
