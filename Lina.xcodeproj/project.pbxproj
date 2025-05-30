@@ -36,8 +36,7 @@
 		B08D2EEA2DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */; };
 		B08D2EED2DEA189300CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */; };
 		B08D2EEE2DEA189300CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */; };
-		B08D2EEF2DEA1FEA00CC7805 /* NeoAppleArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; };
-		B08D2EF02DEA1FEA00CC7805 /* NeoAppleArchive.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B08D2EF52DEA27CF00CC7805 /* NeoAppleArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; };
 		B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B075938C2DE6A5BD000C7977 /* Intents.framework */; };
 		B098702B2DE7815E007F64B5 /* LinaIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B09870232DE7815D007F64B5 /* LinaIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B09870312DE7822D007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */; };
@@ -110,17 +109,6 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B08D2EF12DEA1FEA00CC7805 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				B08D2EF02DEA1FEA00CC7805 /* NeoAppleArchive.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -176,7 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */,
-				B08D2EEF2DEA1FEA00CC7805 /* NeoAppleArchive.framework in Frameworks */,
+				B08D2EF52DEA27CF00CC7805 /* NeoAppleArchive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,7 +315,6 @@
 				B098701F2DE7815D007F64B5 /* Sources */,
 				B09870202DE7815D007F64B5 /* Frameworks */,
 				B09870212DE7815D007F64B5 /* Resources */,
-				B08D2EF12DEA1FEA00CC7805 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

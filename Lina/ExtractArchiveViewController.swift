@@ -25,6 +25,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         super.viewDidAppear(animated)
         
         if fileURLFromShare != nil {
+            selectedArchiveURL = fileURLFromShare
             fileURLFromShare = nil
             extractArchive()
         }
