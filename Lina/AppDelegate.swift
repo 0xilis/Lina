@@ -42,19 +42,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        // Handle file URLs from share sheet
-        if url.pathExtension.lowercased() == "aar" ||
-           url.pathExtension.lowercased() == "aea" ||
-           url.pathExtension.lowercased() == "yaa" ||
-           url.pathExtension.lowercased() == "shortcut" {
+        if ["aar", "aea", "yaa", "shortcut"].contains(url.pathExtension.lowercased()) {
+            guard let rootVC = window?.rootViewController as? MainTabBarController else { return false }
             
-            guard let rootVC = window?.rootViewController else { return false }
-            
-            // Create and present extraction view controller
             let extractVC = ExtractArchiveViewController()
             extractVC.fileURLFromShare = url
-            let navController = UINavigationController(rootViewController: extractVC)
-            rootVC.present(navController, animated: true)
+            
+            if let navController = rootVC.viewControllers?[1] as? UINavigationController {
+                navController.pushViewController(extractVC, animated: false)
+                rootVC.selectedIndex = 1
+            }
             
             return true
         }

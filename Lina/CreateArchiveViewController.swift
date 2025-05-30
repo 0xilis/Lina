@@ -9,6 +9,9 @@ import UIKit
 import NeoAppleArchive
 import MobileCoreServices
 import Foundation
+#if canImport(UniformTypeIdentifiers)
+import UniformTypeIdentifiers
+#endif
 
 class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     enum CreationType {
@@ -92,7 +95,11 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     private func setupDocumentPickers() {
-        directoryPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeFolder as String], in: .open)
+        if #available(iOS 14, *) {
+            directoryPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.folder])
+        } else {
+            directoryPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeFolder as String], in: .open)
+        }
         directoryPicker.delegate = self
     }
     
