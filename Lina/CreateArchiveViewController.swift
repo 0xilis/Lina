@@ -101,11 +101,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
             directoryPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeFolder as String], in: .open)
         }
         directoryPicker.delegate = self
-    }
-    
-    @objc private func selectDirectory() {
-        directoryPicker.delegate = self
-        present(directoryPicker, animated: true)
+        directoryPicker.allowsMultipleSelection = false
     }
     
     @objc private func pressedCreateArchive() {
@@ -133,6 +129,13 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         progressView.isHidden = false
         progressView.progress = 0
         
+        let securityAccessGranted = inputURL.startAccessingSecurityScopedResource()
+        
+        guard securityAccessGranted else {
+            showAlert(title: "Access Error", message: "Could not access selected files")
+            return
+        }
+        
         DispatchQueue.global(qos: .userInitiated).async {
             // Create plain archive
             let plainArchive = neo_aa_archive_plain_from_directory(inputURL.path)
@@ -142,6 +145,8 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
             
             // Cleanup
             neo_aa_archive_plain_destroy_nozero(plainArchive)
+            
+            inputURL.stopAccessingSecurityScopedResource()
             
             DispatchQueue.main.async {
                 self.progressView.isHidden = true
@@ -298,10 +303,11 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        if let tempURL = currentTempURL {
+        /*if let tempURL = currentTempURL {
             try? FileManager.default.removeItem(at: tempURL)
             currentTempURL = nil
-        }
+        }*/
+        showAlert(title: "Error", message: "Nothing selected.")
     }
     
     private func showInstructionAlert(title: String, message: String, completion: @escaping () -> Void) {
