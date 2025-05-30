@@ -36,7 +36,8 @@
 		B08D2EEA2DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */; };
 		B08D2EED2DEA189300CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */; };
 		B08D2EEE2DEA189300CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */; };
-		B08D2F012DEA4D9900CC7805 /* NeoAppleArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; };
+		B08D2F042DEA602900CC7805 /* libNeoAppleArchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; };
+		B08D2F052DEA602900CC7805 /* libNeoAppleArchive.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B075938C2DE6A5BD000C7977 /* Intents.framework */; };
 		B098702B2DE7815E007F64B5 /* LinaIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B09870232DE7815D007F64B5 /* LinaIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B09870312DE7822D007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */; };
@@ -109,6 +110,17 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B08D2F062DEA602900CC7805 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B08D2F052DEA602900CC7805 /* libNeoAppleArchive.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -164,7 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */,
-				B08D2F012DEA4D9900CC7805 /* NeoAppleArchive.framework in Frameworks */,
+				B08D2F042DEA602900CC7805 /* libNeoAppleArchive.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +327,7 @@
 				B098701F2DE7815D007F64B5 /* Sources */,
 				B09870202DE7815D007F64B5 /* Frameworks */,
 				B09870212DE7815D007F64B5 /* Resources */,
+				B08D2F062DEA602900CC7805 /* Embed Libraries */,
 			);
 			buildRules = (
 			);

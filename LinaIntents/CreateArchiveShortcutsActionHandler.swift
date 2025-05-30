@@ -51,7 +51,7 @@ class CreateArchiveShortcutsActionHandler : NSObject, CreateAARIntentHandling {
             }
                     
             let outputArchiveURL = tempDirectoryURL.appendingPathComponent("output.aar")
-            neo_aa_archive_plain_write_path(plainArchive, outputArchiveURL.path)
+            neo_aa_archive_plain_compress_write_path(plainArchive, NEO_AA_COMPRESSION_LZFSE, outputArchiveURL.path)
             neo_aa_archive_plain_destroy_nozero(plainArchive)
                     
             let outputFile = INFile(

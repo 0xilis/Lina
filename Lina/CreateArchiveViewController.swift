@@ -9,9 +9,6 @@ import UIKit
 import NeoAppleArchive
 import MobileCoreServices
 import Foundation
-#if canImport(UniformTypeIdentifiers)
-import UniformTypeIdentifiers
-#endif
 
 class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     enum CreationType {
@@ -95,11 +92,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     private func setupDocumentPickers() {
-        if #available(iOS 14, *) {
-            directoryPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.folder])
-        } else {
-            directoryPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeFolder as String], in: .open)
-        }
+        directoryPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeFolder as String], in: .open)
         directoryPicker.delegate = self
         directoryPicker.allowsMultipleSelection = false
     }
@@ -137,13 +130,22 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         }
         
         DispatchQueue.global(qos: .userInitiated).async {
-            // Create plain archive
             let plainArchive = neo_aa_archive_plain_from_directory(inputURL.path)
             
-            // Write to path
-            neo_aa_archive_plain_write_path(plainArchive, outputPath.path)
+            neo_aa_archive_plain_compress_write_path(plainArchive, NEO_AA_COMPRESSION_LZFSE, outputPath.path)
             
-            // Cleanup
+            // TODO: libNeoAppleArchive currently has a bug in neo_aa_archive_plain_compress_writefd where it will write AAR_MAGIC instead of PBZE_MAGIC... in the future recompile it, but for now just overwrite "AA01" magic with "pbze".
+            do {
+                let fileHandle = try FileHandle(forWritingTo: outputPath)
+                defer { fileHandle.closeFile() }
+                let magicBytes: [UInt8] = [0x70, 0x62, 0x7a, 0x65]
+                let data = Data(magicBytes)
+                fileHandle.seek(toFileOffset: 0)
+                fileHandle.write(data)
+            } catch {
+                print("Failed to overwrite the first four bytes: \(error)")
+            }
+            
             neo_aa_archive_plain_destroy_nozero(plainArchive)
             
             inputURL.stopAccessingSecurityScopedResource()

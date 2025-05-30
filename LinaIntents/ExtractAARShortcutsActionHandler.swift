@@ -14,7 +14,7 @@ class ExtractAARShortcutsActionHandler : NSObject, ExtractAARIntentHandling {
         completion(ExtractAARIntentResponse.failure(error: "TESTING (ACTION NOT YET COMPLETE)"))
         
         return
-        guard let inputFile = intent.inputPath, let archiveURL = inputFile.fileURL else {
+        /*guard let inputFile = intent.inputPath, let archiveURL = inputFile.fileURL else {
             completion(ExtractAARIntentResponse.failure(error: "No input file provided."))
             return
         }
@@ -44,7 +44,7 @@ class ExtractAARShortcutsActionHandler : NSObject, ExtractAARIntentHandling {
             
         } catch {
             completion(ExtractAARIntentResponse.failure(error: "Failed to extract archive: \(error.localizedDescription)"))
-        }
+        }*/
     }
     
     func resolveInputPath(for intent: ExtractAARIntent, with completion: @escaping (INFileResolutionResult) -> Void) {
