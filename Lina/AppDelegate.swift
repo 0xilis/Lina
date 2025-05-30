@@ -32,12 +32,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, handlerFor intent: INIntent) -> Any? {
                 
         switch intent {
-            // If the intent being responded to is GetPeople, call the GetPeople intent handler
             case is CreateAARIntent:
                 return CreateArchiveShortcutsActionHandler()
+            case is ExtractAARIntent:
+                return ExtractAARShortcutsActionHandler()
             default:
                 return nil
         }
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        // Handle file URLs from share sheet
+        if url.pathExtension.lowercased() == "aar" ||
+           url.pathExtension.lowercased() == "aea" ||
+           url.pathExtension.lowercased() == "yaa" ||
+           url.pathExtension.lowercased() == "shortcut" {
+            
+            guard let rootVC = window?.rootViewController else { return false }
+            
+            // Create and present extraction view controller
+            let extractVC = ExtractArchiveViewController()
+            extractVC.fileURLFromShare = url
+            let navController = UINavigationController(rootViewController: extractVC)
+            rootVC.present(navController, animated: true)
+            
+            return true
+        }
+        return false
     }
 }
 

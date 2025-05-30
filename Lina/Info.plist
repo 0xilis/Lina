@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSSiriUsageDescription</key>
-	<string>App needs Siri access for Siri Shortcuts actions.</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -29,7 +27,9 @@
 	</array>
 	<key>NSUserActivityTypes</key>
 	<array>
+		<string>CreateAARIntent</string>
 		<string>CreateAppleArchiveIntent</string>
+		<string>ExtractAARIntent</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

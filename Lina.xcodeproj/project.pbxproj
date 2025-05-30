@@ -33,6 +33,11 @@
 		B08D03E02DD92E57003847D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D03AF2DD920BD003847D7 /* AppDelegate.swift */; };
 		B08D03E42DD92E57003847D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B08D03BA2DD920C3003847D7 /* LaunchScreen.storyboard */; };
 		B08D03E52DD92E57003847D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B08D03B82DD920C3003847D7 /* Assets.xcassets */; };
+		B08D2EE62DEA0BC200CC7805 /* libNeoAppleArchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; };
+		B08D2EE72DEA0BC200CC7805 /* libNeoAppleArchive.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B08D2EEA2DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */; };
+		B08D2EED2DEA189300CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */; };
+		B08D2EEE2DEA189300CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */; };
 		B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B075938C2DE6A5BD000C7977 /* Intents.framework */; };
 		B098702B2DE7815E007F64B5 /* LinaIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B09870232DE7815D007F64B5 /* LinaIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B09870312DE7822D007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */; };
@@ -105,6 +110,17 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B08D2EE82DEA0BC200CC7805 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B08D2EE72DEA0BC200CC7805 /* libNeoAppleArchive.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +145,7 @@
 		B08D03EC2DD92E58003847D7 /* Lina copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Lina copy-Info.plist"; path = "/Users/zachary7829/Documents/Xcode Projects/Lina/Lina copy-Info.plist"; sourceTree = "<absolute>"; };
 		B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNeoAppleArchive.dylib; path = Lina/Libraries/Simulator/libNeoAppleArchive.dylib; sourceTree = "<group>"; };
 		B08D03F52DD93A60003847D7 /* libNeoAppleArchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libNeoAppleArchive.dylib; sourceTree = "<group>"; };
+		B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractAARShortcutsActionHandler.swift; sourceTree = "<group>"; };
 		B09870232DE7815D007F64B5 /* LinaIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LinaIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B098702F2DE78199007F64B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B09870332DE78248007F64B5 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
@@ -159,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */,
+				B08D2EE62DEA0BC200CC7805 /* libNeoAppleArchive.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +190,7 @@
 				B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */,
 				B098702F2DE78199007F64B5 /* Info.plist */,
 				B09870332DE78248007F64B5 /* IntentHandler.swift */,
+				B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */,
 			);
 			path = LinaIntents;
 			sourceTree = "<group>";
@@ -308,6 +327,7 @@
 				B098701F2DE7815D007F64B5 /* Sources */,
 				B09870202DE7815D007F64B5 /* Frameworks */,
 				B09870212DE7815D007F64B5 /* Resources */,
+				B08D2EE82DEA0BC200CC7805 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -402,6 +422,7 @@
 				B08D03B02DD920BD003847D7 /* AppDelegate.swift in Sources */,
 				B075939F2DE6A7BB000C7977 /* Intents.intentdefinition in Sources */,
 				B0271F1E2DD974B80085EF03 /* CreditsViewController.swift in Sources */,
+				B08D2EEE2DEA189300CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +439,7 @@
 				B08D03E02DD92E57003847D7 /* AppDelegate.swift in Sources */,
 				B07593A02DE6A7BB000C7977 /* Intents.intentdefinition in Sources */,
 				B0271F1F2DD974B80085EF03 /* CreditsViewController.swift in Sources */,
+				B08D2EED2DEA189300CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +450,7 @@
 				B09870322DE78234007F64B5 /* Intents.intentdefinition in Sources */,
 				B09870342DE78248007F64B5 /* IntentHandler.swift in Sources */,
 				B09870312DE7822D007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */,
+				B08D2EEA2DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +620,7 @@
 				INFOPLIST_FILE = Lina/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Lina;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSSiriUsageDescription = "App needs Siri access for Siri Shortcuts actions.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -646,6 +670,7 @@
 				INFOPLIST_FILE = Lina/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Lina;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSSiriUsageDescription = "App needs Siri access for Siri Shortcuts actions.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -757,6 +782,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RR5WP5NG77;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Lina/Modules\"";
 				INFOPLIST_FILE = LinaIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LinaIntents;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -765,6 +791,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Lina/Libraries/Simulator",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina.LinaIntents;
@@ -784,6 +814,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RR5WP5NG77;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Lina/Modules\"";
 				INFOPLIST_FILE = LinaIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LinaIntents;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -792,6 +823,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Lina/Libraries/Simulator",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina.LinaIntents;

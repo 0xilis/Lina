@@ -35,7 +35,6 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     private func setupViews() {
-        print("Creating CreateArchiveViewController...")
         if #available(iOS 13.0, *) {
             view.backgroundColor = .systemGroupedBackground
         } else {

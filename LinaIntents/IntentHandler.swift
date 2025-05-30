@@ -15,6 +15,8 @@ class IntentHandler: INExtension {
         switch intent {
         case is CreateAARIntent:
             return CreateArchiveShortcutsActionHandler()
+        case is ExtractAARIntent:
+            return ExtractAARShortcutsActionHandler()
         default:
             fatalError("No handler for this intent")
         }

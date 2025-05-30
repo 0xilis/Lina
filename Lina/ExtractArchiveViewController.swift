@@ -13,11 +13,21 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     private var archivePicker: UIDocumentPickerViewController!
     private var selectedArchiveURL: URL?
     private let progressView = UIProgressView(progressViewStyle: .bar)
+    var fileURLFromShare: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupDocumentPickers()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if fileURLFromShare != nil {
+            fileURLFromShare = nil
+            extractArchive()
+        }
     }
     
     private func setupViews() {
