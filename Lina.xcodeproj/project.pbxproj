@@ -33,11 +33,11 @@
 		B08D03E02DD92E57003847D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D03AF2DD920BD003847D7 /* AppDelegate.swift */; };
 		B08D03E42DD92E57003847D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B08D03BA2DD920C3003847D7 /* LaunchScreen.storyboard */; };
 		B08D03E52DD92E57003847D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B08D03B82DD920C3003847D7 /* Assets.xcassets */; };
-		B08D2EE62DEA0BC200CC7805 /* libNeoAppleArchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; };
-		B08D2EE72DEA0BC200CC7805 /* libNeoAppleArchive.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B08D2EEA2DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */; };
 		B08D2EED2DEA189300CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */; };
 		B08D2EEE2DEA189300CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */; };
+		B08D2EEF2DEA1FEA00CC7805 /* NeoAppleArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; };
+		B08D2EF02DEA1FEA00CC7805 /* NeoAppleArchive.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B075938C2DE6A5BD000C7977 /* Intents.framework */; };
 		B098702B2DE7815E007F64B5 /* LinaIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B09870232DE7815D007F64B5 /* LinaIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B09870312DE7822D007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */; };
@@ -110,15 +110,15 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B08D2EE82DEA0BC200CC7805 /* Embed Libraries */ = {
+		B08D2EF12DEA1FEA00CC7805 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B08D2EE72DEA0BC200CC7805 /* libNeoAppleArchive.dylib in Embed Libraries */,
+				B08D2EF02DEA1FEA00CC7805 /* NeoAppleArchive.framework in Embed Frameworks */,
 			);
-			name = "Embed Libraries";
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -176,7 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */,
-				B08D2EE62DEA0BC200CC7805 /* libNeoAppleArchive.dylib in Frameworks */,
+				B08D2EEF2DEA1FEA00CC7805 /* NeoAppleArchive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,7 +327,7 @@
 				B098701F2DE7815D007F64B5 /* Sources */,
 				B09870202DE7815D007F64B5 /* Frameworks */,
 				B09870212DE7815D007F64B5 /* Resources */,
-				B08D2EE82DEA0BC200CC7805 /* Embed Libraries */,
+				B08D2EF12DEA1FEA00CC7805 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -781,6 +781,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RR5WP5NG77;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Lina/Libraries",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Lina/Modules\"";
 				INFOPLIST_FILE = LinaIntents/Info.plist;
@@ -813,6 +818,11 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RR5WP5NG77;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Lina/Libraries",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Lina/Modules\"";
 				INFOPLIST_FILE = LinaIntents/Info.plist;

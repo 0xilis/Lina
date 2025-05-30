@@ -9,7 +9,11 @@ import Intents
 import NeoAppleArchive
 
 class ExtractAARShortcutsActionHandler : NSObject, ExtractAARIntentHandling {
+    
     func handle(intent: ExtractAARIntent, completion: @escaping (ExtractAARIntentResponse) -> Void) {
+        completion(ExtractAARIntentResponse.failure(error: "TESTING (ACTION NOT YET COMPLETE)"))
+        
+        return
         guard let inputFile = intent.inputPath, let archiveURL = inputFile.fileURL else {
             completion(ExtractAARIntentResponse.failure(error: "No input file provided."))
             return
@@ -19,16 +23,12 @@ class ExtractAARShortcutsActionHandler : NSObject, ExtractAARIntentHandling {
         let tempDirectoryURL = fileManager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         
         do {
-            try fileManager.createDirectory(at: tempDirectoryURL, withIntermediateDirectories: true)
-            
-            completion(ExtractAARIntentResponse.failure(error: "TESTING 45747457"))
-            
-            return
+            if !fileManager.fileExists(atPath: tempDirectoryURL.path) {
+                try fileManager.createDirectory(at: tempDirectoryURL, withIntermediateDirectories: true)
+            }
             
             neo_aa_extract_aar_to_path(archiveURL.path, tempDirectoryURL.path)
             // TODO: In the future, detect if neo_aa_extract_aar_to_path fails, if so error with "Failed to extract archive."
-            
-            completion(ExtractAARIntentResponse.failure(error: "TESTING 0039530"))
             
             let extractedFiles = try fileManager.contentsOfDirectory(at: tempDirectoryURL, includingPropertiesForKeys: nil)
             
