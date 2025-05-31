@@ -49,9 +49,15 @@ class CreateArchiveShortcutsActionHandler : NSObject, CreateAARIntentHandling {
                 completion(CreateAARIntentResponse.failure(error: "neo_aa_archive_plain_from_directory() function failed for \(tempDirectoryURL.path)."))
                 return
             }
+            
+            var compressionType = NEO_AA_COMPRESSION_NONE
+            if intent.compression == .lzfse {
+                compressionType = NEO_AA_COMPRESSION_LZFSE
+            }
+            print("compressionType: \(compressionType)")
                     
             let outputArchiveURL = tempDirectoryURL.appendingPathComponent("output.aar")
-            neo_aa_archive_plain_compress_write_path(plainArchive, NEO_AA_COMPRESSION_LZFSE, outputArchiveURL.path)
+            neo_aa_archive_plain_compress_write_path(plainArchive, compressionType, outputArchiveURL.path)
             neo_aa_archive_plain_destroy_nozero(plainArchive)
                     
             let outputFile = INFile(
@@ -87,4 +93,9 @@ class CreateArchiveShortcutsActionHandler : NSObject, CreateAARIntentHandling {
     /*func resolveInputPath(for intent: CreateAppleArchiveIntent) async -> INURLResolutionResult {
         <#code#>
     }*/
+    
+    // For some reason Xcode **REALLY** doesn't like AARCompressionType and says it doesn't exist but it builds fine
+    func resolveCompression(for intent: CreateAARIntent, with completion: @escaping (AARCompressionTypeResolutionResult) -> Void) {
+        completion(AARCompressionTypeResolutionResult.success(with: intent.compression))
+    }
 }

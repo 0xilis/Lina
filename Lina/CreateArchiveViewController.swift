@@ -134,18 +134,6 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
             
             neo_aa_archive_plain_compress_write_path(plainArchive, NEO_AA_COMPRESSION_LZFSE, outputPath.path)
             
-            // TODO: libNeoAppleArchive currently has a bug in neo_aa_archive_plain_compress_writefd where it will write AAR_MAGIC instead of PBZE_MAGIC... in the future recompile it, but for now just overwrite "AA01" magic with "pbze".
-            do {
-                let fileHandle = try FileHandle(forWritingTo: outputPath)
-                defer { fileHandle.closeFile() }
-                let magicBytes: [UInt8] = [0x70, 0x62, 0x7a, 0x65]
-                let data = Data(magicBytes)
-                fileHandle.seek(toFileOffset: 0)
-                fileHandle.write(data)
-            } catch {
-                print("Failed to overwrite the first four bytes: \(error)")
-            }
-            
             neo_aa_archive_plain_destroy_nozero(plainArchive)
             
             inputURL.stopAccessingSecurityScopedResource()
