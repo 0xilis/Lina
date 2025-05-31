@@ -55,6 +55,16 @@
 					<key>INEnumValueName</key>
 					<string>lzbitmap</string>
 				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>ZLIB</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>OgFQsf</string>
+					<key>INEnumValueIndex</key>
+					<integer>4</integer>
+					<key>INEnumValueName</key>
+					<string>zlib</string>
+				</dict>
 			</array>
 		</dict>
 	</array>

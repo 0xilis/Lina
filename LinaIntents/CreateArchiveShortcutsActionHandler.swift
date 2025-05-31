@@ -50,9 +50,15 @@ class CreateArchiveShortcutsActionHandler : NSObject, CreateAARIntentHandling {
                 return
             }
             
+            // NOTE: libAppleArchive has a bug where if uncompressionSize == compressionSize, it will not work, I cannot fix this that's on Apple... :P
+            
             var compressionType = NEO_AA_COMPRESSION_NONE
             if intent.compression == .lzfse {
                 compressionType = NEO_AA_COMPRESSION_LZFSE
+            } else if intent.compression == .lzbitmap {
+                compressionType = NEO_AA_COMPRESSION_LZBITMAP
+            } else if intent.compression == .zlib {
+                compressionType = NEO_AA_COMPRESSION_ZLIB
             }
             print("compressionType: \(compressionType)")
                     

@@ -111,6 +111,7 @@ void neo_aa_archive_plain_destroy(NeoAAArchivePlain plainArchive);
 void neo_aa_archive_plain_destroy_nozero(NeoAAArchivePlain plainArchive);
 void neo_aa_archive_item_write_to_buffer(NeoAAArchiveItem item, char *buffer);
 uint8_t *neo_aa_archive_plain_get_encoded_data(NeoAAArchivePlain archive, size_t *encodedDataSize);
+int neo_aa_archive_plain_write_buffer(NeoAAArchivePlain plainArchive, uint8_t *buffer);
 void neo_aa_archive_plain_writefd(NeoAAArchivePlain plainArchive, int fd);
 void neo_aa_archive_plain_write_path(NeoAAArchivePlain plainArchive, const char *filepath);
 void neo_aa_archive_item_destroy(NeoAAArchiveItem item);
@@ -134,6 +135,7 @@ __attribute__((used, always_inline)) static uint32_t internal_do_not_call_ez_mak
 #define NEO_AA_COMPRESSION_LZFSE 0x801
 #define NEO_AA_COMPRESSION_NONE 0
 #define NEO_AA_COMPRESSION_ZLIB 0x505
+#define NEO_AA_COMPRESSION_LZBITMAP 0x702
 #endif
 
 /* Shortened names */
@@ -143,6 +145,7 @@ __attribute__((used, always_inline)) static uint32_t internal_do_not_call_ez_mak
 #define NEO_COMPRESSION_LZFSE NEO_AA_COMPRESSION_LZFSE
 #define NEO_COMPRESSION_NONE NEO_AA_COMPRESSION_NONE
 #define NEO_COMPRESSION_ZLIB NEO_AA_COMPRESSION_ZLIB
+#define NEO_COMPRESSION_LZBITMAP NEO_AA_COMPRESSION_LZBITMAP
 typedef enum {
     NEO_FIELD_TYPE_FLAG = (uint32_t)0,
     NEO_FIELD_TYPE_UINT = (uint32_t)1,
