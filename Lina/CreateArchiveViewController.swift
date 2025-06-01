@@ -69,7 +69,6 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.isHidden = true
         
-        //stackView.addArrangedSubview(selectButton)
         stackView.addArrangedSubview(createButton)
         stackView.addArrangedSubview(createAEAButton)
         stackView.addArrangedSubview(progressView)
@@ -293,10 +292,6 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        /*if let tempURL = currentTempURL {
-            try? FileManager.default.removeItem(at: tempURL)
-            currentTempURL = nil
-        }*/
         showAlert(title: "Error", message: "Nothing selected.")
     }
     
