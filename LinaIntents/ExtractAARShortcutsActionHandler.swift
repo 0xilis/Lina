@@ -8,13 +8,41 @@
 import Intents
 import NeoAppleArchive
 
+
+func captureStderrOutput(perform block: () -> Int32) -> (Int32, String?) {
+    let originalStderr = dup(STDERR_FILENO)
+    
+    var pipeFD: [Int32] = [0, 0]
+    pipe(&pipeFD)
+    let pipeRead = pipeFD[0]
+    let pipeWrite = pipeFD[1]
+
+    dup2(pipeWrite, STDERR_FILENO)
+    close(pipeWrite)
+
+    let errorCode = block()
+
+    fflush(stderr)
+    dup2(originalStderr, STDERR_FILENO)
+    close(originalStderr)
+
+    let bufferSize = 1024
+    var buffer = [CChar](repeating: 0, count: bufferSize)
+    let bytesRead = read(pipeRead, &buffer, bufferSize - 1)
+    close(pipeRead)
+
+    let output = bytesRead > 0 ? String(cString: buffer) : nil
+    return (errorCode, output?.trimmingCharacters(in: .whitespacesAndNewlines))
+}
+
 class ExtractAARShortcutsActionHandler : NSObject, ExtractAARIntentHandling {
     
+    #if false
     func handle(intent: ExtractAARIntent, completion: @escaping (ExtractAARIntentResponse) -> Void) {
-        completion(ExtractAARIntentResponse.failure(error: "TESTING (ACTION NOT YET COMPLETE)"))
+        //completion(ExtractAARIntentResponse.failure(error: "TESTING (ACTION NOT YET COMPLETE)"))
         
-        return
-        /*guard let inputFile = intent.inputPath, let archiveURL = inputFile.fileURL else {
+        //return
+        guard let inputFile = intent.inputPath, let archiveURL = inputFile.fileURL else {
             completion(ExtractAARIntentResponse.failure(error: "No input file provided."))
             return
         }
@@ -22,13 +50,78 @@ class ExtractAARShortcutsActionHandler : NSObject, ExtractAARIntentHandling {
         let fileManager = FileManager.default
         let tempDirectoryURL = fileManager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         
+        let accessGranted = archiveURL.startAccessingSecurityScopedResource()
+        guard accessGranted else {
+            completion(ExtractAARIntentResponse.failure(error: "Failed to gain access to archiveURL."))
+            return
+        }
+        
+        /*guard let groupContainer = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.0xilis.Lina") else {
+            completion(ExtractAARIntentResponse.failure(error: "Failed to access group container."))
+            return
+        }
+            
+        let extractDirectory = groupContainer
+            .appendingPathComponent("AARExtracts")
+            .appendingPathComponent(UUID().uuidString)*/
+        
         do {
-            if !fileManager.fileExists(atPath: tempDirectoryURL.path) {
-                try fileManager.createDirectory(at: tempDirectoryURL, withIntermediateDirectories: true)
+            //if !fileManager.fileExists(atPath: tempDirectoryURL.path) {
+                //completion(ExtractAARIntentResponse.failure(error: "about to create a path at \(tempDirectoryURL)."))
+                //return
+            try fileManager.createDirectory(at: tempDirectoryURL, withIntermediateDirectories: true)
+            //}
+            /*if (tempDirectoryURL == nil) {
+                completion(ExtractAARIntentResponse.failure(error: "tempDirectoryURL is nil somehow."))
+                return
+            }
+            if (tempDirectoryURL.path == nil) {
+                completion(ExtractAARIntentResponse.failure(error: "tempDirectoryURL.path is nil somehow."))
+                return
+            }
+            let dir = opendir(tempDirectoryURL.path)
+            if (dir == nil) {
+                if (mkdir(tempDirectoryURL.path, 777) != 0) {
+                    completion(ExtractAARIntentResponse.failure(error: "mkdir() failed for \(tempDirectoryURL)"))
+                    return
+                }
+            } else {
+                closedir(dir)
+            }*/
+            
+            /*if !fileManager.fileExists(atPath: tempDirectoryURL.path) {
+                completion(ExtractAARIntentResponse.failure(error: "NOOOOOOOO."))
+                return
+            }*/
+            
+            //completion(ExtractAARIntentResponse.failure(error: "fuckkk."))
+            //return
+            
+            let isReadable = FileManager.default.isReadableFile(atPath: archiveURL.path)
+            if (isReadable == false) {
+                completion(ExtractAARIntentResponse.failure(error: "archiveURL.path is not readable (\(archiveURL.path)."))
+                return
             }
             
-            neo_aa_extract_aar_to_path(archiveURL.path, tempDirectoryURL.path)
-            // TODO: In the future, detect if neo_aa_extract_aar_to_path fails, if so error with "Failed to extract archive."
+            let tempInputURL = FileManager.default.temporaryDirectory
+                    .appendingPathComponent(UUID().uuidString)
+                    .appendingPathExtension("aar")
+                
+            try FileManager.default.copyItem(at: archiveURL, to: tempInputURL)
+            
+            archiveURL.withUnsafeFileSystemRepresentation { fsPath in
+                guard let fsPath = fsPath else {
+                    completion(ExtractAARIntentResponse.failure(error: "Failed to get file system representation."))
+                    return
+                }
+                
+                let errorCode = neo_aa_extract_aar_to_path_err(tempInputURL.path, tempDirectoryURL.path)
+                if (errorCode != 0) {
+                    completion(ExtractAARIntentResponse.failure(error: "neo_aa_extract_aar_to_path_err returned code: \(errorCode)."))
+                    return
+                }
+            }
+            
             
             let extractedFiles = try fileManager.contentsOfDirectory(at: tempDirectoryURL, includingPropertiesForKeys: nil)
             
@@ -40,11 +133,86 @@ class ExtractAARShortcutsActionHandler : NSObject, ExtractAARIntentHandling {
                 )
             }
             
+            archiveURL.stopAccessingSecurityScopedResource()
+            
             completion(ExtractAARIntentResponse.success(result: outputFiles))
             
         } catch {
             completion(ExtractAARIntentResponse.failure(error: "Failed to extract archive: \(error.localizedDescription)"))
-        }*/
+        }
+    }
+    #endif
+    func handle(intent: ExtractAARIntent, completion: @escaping (ExtractAARIntentResponse) -> Void) {
+        guard let inputFile = intent.inputPath, let archiveURL = inputFile.fileURL else {
+            completion(ExtractAARIntentResponse.failure(error: "No input file provided."))
+            return
+        }
+        
+        let fileManager = FileManager.default
+        let tempDirectoryURL = fileManager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        
+        let accessGranted = archiveURL.startAccessingSecurityScopedResource()
+        guard accessGranted else {
+            completion(ExtractAARIntentResponse.failure(error: "Failed to gain access to archiveURL."))
+            return
+        }
+        
+        do {
+            try fileManager.createDirectory(at: tempDirectoryURL, withIntermediateDirectories: true)
+            
+            let isReadable = FileManager.default.isReadableFile(atPath: archiveURL.path)
+            if (isReadable == false) {
+                completion(ExtractAARIntentResponse.failure(error: "archiveURL.path is not readable (\(archiveURL.path)."))
+                return
+            }
+            
+            /*let tempInputURL = tempDirectoryURL.appendingPathComponent(archiveURL.lastPathComponent)
+                
+            try FileManager.default.copyItem(at: archiveURL, to: tempInputURL)
+            
+            let isReadable2 = FileManager.default.isReadableFile(atPath: tempInputURL.path)
+            if (isReadable2 == false) {
+                completion(ExtractAARIntentResponse.failure(error: "tempInputURL.path is not readable (\(tempInputURL.path)."))
+                return
+            }*/
+            
+            archiveURL.withUnsafeFileSystemRepresentation { fsPath in
+                guard let fsPath = fsPath else {
+                    completion(ExtractAARIntentResponse.failure(error: "Failed to get file system representation."))
+                    return
+                }
+                
+                //let errorCode = neo_aa_extract_aar_to_path_err(archiveURL.path, tempDirectoryURL.path)
+                let (errorCode, stderrOutput) = captureStderrOutput {
+                    neo_aa_extract_aar_to_path_err(archiveURL.path, tempDirectoryURL.path)
+                }
+                if (errorCode != 0) {
+                    //completion(ExtractAARIntentResponse.failure(error: "neo_aa_extract_aar_to_path_err returned code: \(errorCode)."))
+                    let errorMessage = "neo_aa_extract_aar_to_path_err returned code: \(errorCode)." +
+                                (stderrOutput.map { " Stderr: \($0)" } ?? "")
+                    completion(ExtractAARIntentResponse.failure(error: errorMessage))
+                    return
+                }
+            }
+            
+            
+            let extractedFiles = try fileManager.contentsOfDirectory(at: tempDirectoryURL, includingPropertiesForKeys: nil)
+            
+            let outputFiles = extractedFiles.map { fileURL -> INFile in
+                return INFile(
+                    fileURL: fileURL,
+                    filename: fileURL.lastPathComponent,
+                    typeIdentifier: "public.data"
+                )
+            }
+            
+            archiveURL.stopAccessingSecurityScopedResource()
+            
+            completion(ExtractAARIntentResponse.success(result: outputFiles))
+            
+        } catch {
+            completion(ExtractAARIntentResponse.failure(error: "Failed to extract archive: \(error.localizedDescription)"))
+        }
     }
     
     func resolveInputPath(for intent: ExtractAARIntent, with completion: @escaping (INFileResolutionResult) -> Void) {

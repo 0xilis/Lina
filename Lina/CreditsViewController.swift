@@ -77,6 +77,20 @@ class CreditsViewController: UIViewController {
         #endif
         view.addSubview(container)
         
+        let thanksLabel = UILabel()
+        thanksLabel.text = "...and thanks to users like you!"
+        thanksLabel.font = .systemFont(ofSize: 14, weight: .regular)
+        thanksLabel.textAlignment = .center
+        thanksLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(thanksLabel)
+        
+        NSLayoutConstraint.activate([
+            thanksLabel.topAnchor.constraint(equalTo: container.bottomAnchor, constant: 20),
+            thanksLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            thanksLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            thanksLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+        ])
+        
         #if DEBUG || TESTFLIGHT
         NSLayoutConstraint.activate([
             container.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),

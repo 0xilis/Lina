@@ -9,8 +9,10 @@
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>CreateAARIntent</string>
+		<string>CreateAEAIntent</string>
 		<string>CreateAppleArchiveIntent</string>
 		<string>ExtractAARIntent</string>
+		<string>ExtractAEAIntent</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

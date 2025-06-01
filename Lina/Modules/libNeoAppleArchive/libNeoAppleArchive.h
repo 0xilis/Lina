@@ -124,6 +124,7 @@ void neo_aa_archive_plain_compress_write_path(NeoAAArchivePlain plain, int algor
 
 NeoAAArchivePlain neo_aa_archive_plain_from_directory(const char *dirPath);
 void neo_aa_extract_aar_to_path(const char *archivePath, const char *outputPath);
+int neo_aa_extract_aar_to_path_err(const char *archivePath, const char *outputPath);
 
 __attribute__((used, always_inline)) static uint32_t internal_do_not_call_ez_make_field_key(char *buffer) {
     return (uint32_t)buffer[0] << 24 | (uint32_t)buffer[1] << 16 | (uint32_t)buffer[2] << 8  | 0;

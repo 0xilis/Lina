@@ -301,7 +301,7 @@
 			<key>INIntentConfigurable</key>
 			<true/>
 			<key>INIntentDescription</key>
-			<string>Extract an AAR. (Currently only uncompressed)</string>
+			<string>Extract an AAR.</string>
 			<key>INIntentDescriptionID</key>
 			<string>VqdunK</string>
 			<key>INIntentIneligibleForSuggestions</key>
@@ -341,8 +341,19 @@
 					<integer>1</integer>
 					<key>INIntentParameterMetadata</key>
 					<dict>
+						<key>INIntentParameterMetadataCustomUTIs</key>
+						<array>
+							<dict>
+								<key>UTI</key>
+								<string>com.apple.archive</string>
+							</dict>
+							<dict>
+								<key>UTI</key>
+								<string>com.apple.encrypted-archive</string>
+							</dict>
+						</array>
 						<key>INIntentParameterMetadataType</key>
-						<string>PlainText</string>
+						<string>Custom</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>inputPath</string>
@@ -405,7 +416,7 @@
 					</dict>
 				</array>
 				<key>INIntentResponseLastParameterTag</key>
-				<integer>4</integer>
+				<integer>6</integer>
 				<key>INIntentResponseOutput</key>
 				<string>result</string>
 				<key>INIntentResponseParameters</key>
@@ -422,7 +433,7 @@
 						<key>INIntentResponseParameterSupportsMultipleValues</key>
 						<true/>
 						<key>INIntentResponseParameterTag</key>
-						<integer>4</integer>
+						<integer>6</integer>
 						<key>INIntentResponseParameterType</key>
 						<string>File</string>
 					</dict>
@@ -446,6 +457,398 @@
 			<string>Extract AAR</string>
 			<key>INIntentTitleID</key>
 			<string>iPLgiA</string>
+			<key>INIntentType</key>
+			<string>Custom</string>
+			<key>INIntentVerb</key>
+			<string>Open</string>
+		</dict>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>create</string>
+			<key>INIntentConfigurable</key>
+			<true/>
+			<key>INIntentDescription</key>
+			<string>Create an AEA.</string>
+			<key>INIntentDescriptionID</key>
+			<string>Qr7NVB</string>
+			<key>INIntentIneligibleForSuggestions</key>
+			<true/>
+			<key>INIntentInput</key>
+			<string>inputFile</string>
+			<key>INIntentKeyParameter</key>
+			<string>inputFile</string>
+			<key>INIntentLastParameterTag</key>
+			<integer>6</integer>
+			<key>INIntentManagedParameterCombinations</key>
+			<dict>
+				<key>inputFile,inputKey,inputAuthData</key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Create AEA From ${inputFile}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>c1fSBl</string>
+					<key>INIntentParameterCombinationUpdatesLinked</key>
+					<true/>
+				</dict>
+			</dict>
+			<key>INIntentName</key>
+			<string>CreateAEA</string>
+			<key>INIntentParameters</key>
+			<array>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Input File</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>OY8nuP</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>1</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataType</key>
+						<string>PlainText</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>inputFile</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>What file would you like to wrap in an AEA?</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>tvlxTr</string>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterSupportsResolution</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>2</integer>
+					<key>INIntentParameterType</key>
+					<string>File</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Input Key</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>boG9qG</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>2</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataType</key>
+						<string>PlainText</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>inputKey</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>What key would you like to sign your AEA with?</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>EGWXxm</string>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterSupportsResolution</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>4</integer>
+					<key>INIntentParameterType</key>
+					<string>File</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Input Auth Data</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>TqpzsO</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>3</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataType</key>
+						<string>PlainText</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>inputAuthData</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>What auth data would you like to use for this AEA?</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>q2DdNN</string>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterSupportsResolution</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>6</integer>
+					<key>INIntentParameterType</key>
+					<string>File</string>
+				</dict>
+			</array>
+			<key>INIntentResponse</key>
+			<dict>
+				<key>INIntentResponseCodes</key>
+				<array>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>${result}</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>8lDhkW</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>${result}</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>IiO7RU</string>
+						<key>INIntentResponseCodeName</key>
+						<string>success</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>${error}</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>xaxyaC</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>${error}</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>52Grhg</string>
+						<key>INIntentResponseCodeName</key>
+						<string>failure</string>
+					</dict>
+				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>3</integer>
+				<key>INIntentResponseOutput</key>
+				<string>result</string>
+				<key>INIntentResponseParameters</key>
+				<array>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>AEA</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>dEvgr0</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>result</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>File</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>Error</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>v2pTyi</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>error</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>3</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>String</string>
+					</dict>
+				</array>
+			</dict>
+			<key>INIntentTitle</key>
+			<string>Create AEA</string>
+			<key>INIntentTitleID</key>
+			<string>TwoeF1</string>
+			<key>INIntentType</key>
+			<string>Custom</string>
+			<key>INIntentVerb</key>
+			<string>Create</string>
+		</dict>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>information</string>
+			<key>INIntentConfigurable</key>
+			<true/>
+			<key>INIntentDescription</key>
+			<string>Extract an AEA.</string>
+			<key>INIntentDescriptionID</key>
+			<string>IGe3Zn</string>
+			<key>INIntentIneligibleForSuggestions</key>
+			<true/>
+			<key>INIntentInput</key>
+			<string>inputFile</string>
+			<key>INIntentKeyParameter</key>
+			<string>inputFile</string>
+			<key>INIntentLastParameterTag</key>
+			<integer>2</integer>
+			<key>INIntentManagedParameterCombinations</key>
+			<dict>
+				<key>inputFile</key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Extract AEA From ${inputFile}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>z5gmYV</string>
+					<key>INIntentParameterCombinationUpdatesLinked</key>
+					<true/>
+				</dict>
+			</dict>
+			<key>INIntentName</key>
+			<string>ExtractAEA</string>
+			<key>INIntentParameters</key>
+			<array>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Input File</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>so21GM</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>1</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataType</key>
+						<string>PlainText</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>inputFile</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>What AEA would you like to extract?</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>ilxMHg</string>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterSupportsResolution</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>2</integer>
+					<key>INIntentParameterType</key>
+					<string>File</string>
+				</dict>
+			</array>
+			<key>INIntentResponse</key>
+			<dict>
+				<key>INIntentResponseCodes</key>
+				<array>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>${result}</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>nxezeY</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>${result}</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>A6jAB6</string>
+						<key>INIntentResponseCodeName</key>
+						<string>success</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>${error}</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>x6D4CZ</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>${error}</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>aZRDzG</string>
+						<key>INIntentResponseCodeName</key>
+						<string>failure</string>
+					</dict>
+				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>3</integer>
+				<key>INIntentResponseOutput</key>
+				<string>result</string>
+				<key>INIntentResponseParameters</key>
+				<array>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>AAR</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>sK9Fdm</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>result</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>3</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>File</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>Error</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>mglJ5G</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>error</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>String</string>
+					</dict>
+				</array>
+			</dict>
+			<key>INIntentTitle</key>
+			<string>Extract AEA</string>
+			<key>INIntentTitleID</key>
+			<string>5GwpGp</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>

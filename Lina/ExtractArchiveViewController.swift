@@ -102,7 +102,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         }
         
         let outputDirectory = FileManager.default.temporaryDirectory
-            .appendingPathComponent("Extracted_\(Date().timeIntervalSince1970)")
+            .appendingPathComponent(UUID().uuidString)
         
         progressView.isHidden = false
         progressView.progress = 0
@@ -122,8 +122,9 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         if pathExtension == "aea" || pathExtension == "shortcut" {
             do {
                 let extractedData = try AEAProfile0Handler.extractAEA(aeaURL: archiveURL)
+                // Assume AEA output is AAR even though thats not always the case...
                 let outputPath = FileManager.default.temporaryDirectory
-                .appendingPathComponent("Extracted_\(Date().timeIntervalSince1970)")
+                .appendingPathComponent("Extracted.aar")
                         
                 try extractedData.write(to: outputPath)
                 showSuccess(outputDirectory: outputPath)
@@ -134,27 +135,28 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
             }
         } else if pathExtension == "aar" || pathExtension == "yaa" {
             DispatchQueue.global(qos: .userInitiated).async {
-                let generic = neo_aa_archive_generic_from_path(archiveURL.path)
-                if (generic == nil) {
+                
+                do {
+                    try FileManager.default.createDirectory(at: outputDirectory, withIntermediateDirectories: true)
+                } catch {
                     archiveURL.stopAccessingSecurityScopedResource()
+                    self.progressView.isHidden = true
+                    self.showAlert(title: "Error", message: "Failed to create directory at \(outputDirectory)")
                     return
                 }
-                var rawArchiveURL = archiveURL
                 
-                let compressionType = generic!.pointee.compression
-                let raw = generic!.pointee.raw
-                free(generic) // Since we are using the NeoAAArchivePlain on the NeoAAArchiveGeneric which is not in the same heap allocation we can free the NeoAAArchiveGeneric early
-                if (compressionType != NEO_AA_COMPRESSION_NONE) {
-                    // If the AAR is compressed, write to a temporary path uncompressed.
-                    rawArchiveURL = FileManager.default.temporaryDirectory.appendingPathComponent("raw_data.aar")
-                    neo_aa_archive_plain_write_path(raw, rawArchiveURL.path)
-                }
-                neo_aa_archive_plain_destroy(raw)
-                neo_aa_extract_aar_to_path(rawArchiveURL.path, outputDirectory.path)
+                let errorCode = neo_aa_extract_aar_to_path_err(archiveURL.path, outputDirectory.path)
                 
-                DispatchQueue.main.async {
-                    self.progressView.isHidden = true
-                    self.showSuccess(outputDirectory: outputDirectory)
+                if (errorCode == 0) {
+                    DispatchQueue.main.async {
+                        self.progressView.isHidden = true
+                        self.showSuccess(outputDirectory: outputDirectory)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.progressView.isHidden = true
+                        self.showAlert(title: "Error", message: "neo_aa_extract_aar_to_path_err returned error code \(errorCode)")
+                    }
                 }
             }
         } else {

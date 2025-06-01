@@ -17,8 +17,6 @@
 		B0271F272DDA8E220085EF03 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = B0271F262DDA8E220085EF03 /* UIOnboarding */; };
 		B0271F292DDA98EC0085EF03 /* AEAProfile0Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0271F282DDA98EC0085EF03 /* AEAProfile0Handler.swift */; };
 		B0271F2A2DDA98EC0085EF03 /* AEAProfile0Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0271F282DDA98EC0085EF03 /* AEAProfile0Handler.swift */; };
-		B03A175D2DEB861F006D2CF9 /* libNeoAppleArchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; };
-		B03A175E2DEB861F006D2CF9 /* libNeoAppleArchive.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B0626DA52DE6743D0012B7F9 /* NeoAppleArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; };
 		B0626DA62DE6743D0012B7F9 /* NeoAppleArchive.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B075939D2DE6A6B6000C7977 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B075939C2DE6A6B6000C7977 /* AppIntent.swift */; };
@@ -46,6 +44,9 @@
 		B09870352DE7826E007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */; };
 		B09870362DE7826E007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */; };
 		B09870372DE782B6007F64B5 /* LinaIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B09870232DE7815D007F64B5 /* LinaIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B0C8AA0C2DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8AA092DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift */; };
+		B0C8AA0E2DECB70900590D6E /* ExtractAEAShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8AA0D2DECB70900590D6E /* ExtractAEAShortcutsActionHandler.swift */; };
+		B0C8AA152DECE77300590D6E /* NeoAppleArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,17 +74,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B0271F172DD93D270085EF03 /* libNeoAppleArchive.dylib in Embed Libraries */,
-			);
-			name = "Embed Libraries";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B03A175F2DEB861F006D2CF9 /* Embed Libraries */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				B03A175E2DEB861F006D2CF9 /* libNeoAppleArchive.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +140,8 @@
 		B098702F2DE78199007F64B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B09870332DE78248007F64B5 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		B098703A2DE78578007F64B5 /* Lina.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lina.entitlements; sourceTree = "<group>"; };
+		B0C8AA092DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAEAShortcutsActionHandler.swift; sourceTree = "<group>"; };
+		B0C8AA0D2DECB70900590D6E /* ExtractAEAShortcutsActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractAEAShortcutsActionHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */,
-				B03A175D2DEB861F006D2CF9 /* libNeoAppleArchive.dylib in Frameworks */,
+				B0C8AA152DECE77300590D6E /* NeoAppleArchive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,10 +179,12 @@
 			isa = PBXGroup;
 			children = (
 				B0626DA82DE690830012B7F9 /* Intents.intentdefinition */,
+				B0C8AA092DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift */,
 				B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */,
 				B098702F2DE78199007F64B5 /* Info.plist */,
 				B09870332DE78248007F64B5 /* IntentHandler.swift */,
 				B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */,
+				B0C8AA0D2DECB70900590D6E /* ExtractAEAShortcutsActionHandler.swift */,
 			);
 			path = LinaIntents;
 			sourceTree = "<group>";
@@ -327,7 +321,6 @@
 				B098701F2DE7815D007F64B5 /* Sources */,
 				B09870202DE7815D007F64B5 /* Frameworks */,
 				B09870212DE7815D007F64B5 /* Resources */,
-				B03A175F2DEB861F006D2CF9 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -448,8 +441,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B09870322DE78234007F64B5 /* Intents.intentdefinition in Sources */,
+				B0C8AA0C2DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift in Sources */,
 				B09870342DE78248007F64B5 /* IntentHandler.swift in Sources */,
 				B09870312DE7822D007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */,
+				B0C8AA0E2DECB70900590D6E /* ExtractAEAShortcutsActionHandler.swift in Sources */,
 				B08D2EEA2DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
