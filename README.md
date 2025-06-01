@@ -19,7 +19,7 @@ libNeoAppleArchive = LNAA, LNAA sounds like Lina, so I chose Lina.
 
 # Planned
 
-This app is planned to be on the App Store, and I may distribute TestFlight links soon!
+This app is planned to be on the App Store. Please DM/Contact me for a TestFlight link!
 
 - Support 100% AEA; currently in this build we only support AEAProfile 0. This is fine for TestFlight builds but once we get on the App Store we want to support all types however, or at least AEAProfile 1.
 - Support all compression types for AAR/AEA (this is a libNeoAppleArchive thing, not Lina)
