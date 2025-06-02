@@ -60,22 +60,15 @@ class ExtractAARShortcutsActionHandler : NSObject, ExtractAARIntentHandling {
                 completion(ExtractAARIntentResponse.failure(error: "archiveURL.path is not readable (\(archiveURL.path)."))
                 return
             }
-            
-            archiveURL.withUnsafeFileSystemRepresentation { fsPath in
-                guard let fsPath = fsPath else {
-                    completion(ExtractAARIntentResponse.failure(error: "Failed to get file system representation."))
-                    return
-                }
                 
-                let (errorCode, stderrOutput) = captureStderrOutput {
-                    neo_aa_extract_aar_to_path_err(archiveURL.path, tempDirectoryURL.path)
-                }
-                if (errorCode != 0) {
-                    let errorMessage = "neo_aa_extract_aar_to_path_err returned code: \(errorCode)." +
+            let (errorCode, stderrOutput) = captureStderrOutput {
+                neo_aa_extract_aar_to_path_err(archiveURL.path, tempDirectoryURL.path)
+            }
+            if (errorCode != 0) {
+                let errorMessage = "neo_aa_extract_aar_to_path_err returned code: \(errorCode)." +
                                 (stderrOutput.map { " Stderr: \($0)" } ?? "")
-                    completion(ExtractAARIntentResponse.failure(error: errorMessage))
-                    return
-                }
+                completion(ExtractAARIntentResponse.failure(error: errorMessage))
+                return
             }
             
             

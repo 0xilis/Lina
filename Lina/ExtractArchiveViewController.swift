@@ -32,26 +32,37 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     private func setupViews() {
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = .systemGroupedBackground
-        } else {
-            // Fallback on earlier versions
-        }
         title = "Extract Archive"
         
         let container = UIView()
         if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemGroupedBackground
             container.backgroundColor = .secondarySystemGroupedBackground
-        } else {
-            // Fallback on earlier versions
         }
         container.layer.cornerRadius = 16
         container.translatesAutoresizingMaskIntoConstraints = false
         
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 24
+        stackView.spacing = 16
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let iconView = UIImageView()
+        iconView.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 14.0, *) {
+            iconView.image = UIImage(systemName: "archivebox.fill")
+        } else {
+            iconView.image = UIImage(systemName: "archivebox") ?? UIImage()
+        }
+        iconView.tintColor = .systemBlue
+        iconView.contentMode = .scaleAspectFit
+        
+        let infoLabel = UILabel()
+        infoLabel.text = "Extract .aea, .aar, and .yaa files."
+        infoLabel.textAlignment = .center
+        infoLabel.numberOfLines = 0
+        infoLabel.textColor = .secondaryLabel
+        infoLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         
         let extractButton = UIButton(type: .system)
         extractButton.setTitle("Extract Archive", for: .normal)
@@ -61,8 +72,11 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.isHidden = true
         
+        stackView.addArrangedSubview(iconView)
+        stackView.addArrangedSubview(infoLabel)
         stackView.addArrangedSubview(extractButton)
-        stackView.addArrangedSubview(progressView)
+        //TODO: Implement progress handler support into NeoAppleArchive
+        //stackView.addArrangedSubview(progressView)
         
         container.addSubview(stackView)
         view.addSubview(container)
@@ -77,7 +91,12 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
             stackView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -24),
             stackView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -24),
             
-            progressView.heightAnchor.constraint(equalToConstant: 4)
+            iconView.heightAnchor.constraint(equalToConstant: 60),
+            iconView.widthAnchor.constraint(equalToConstant: 60),
+            
+            progressView.heightAnchor.constraint(equalToConstant: 4),
+            
+            extractButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 44)
         ])
     }
     
@@ -145,7 +164,9 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
                     return
                 }
                 
-                let errorCode = neo_aa_extract_aar_to_path_err(archiveURL.path, outputDirectory.path)
+                let (errorCode, stderrOutput) = captureStderrOutput {
+                    neo_aa_extract_aar_to_path_err(archiveURL.path, outputDirectory.path)
+                }
                 
                 if (errorCode == 0) {
                     DispatchQueue.main.async {
@@ -155,7 +176,9 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
                 } else {
                     DispatchQueue.main.async {
                         self.progressView.isHidden = true
-                        self.showAlert(title: "Error", message: "neo_aa_extract_aar_to_path_err returned error code \(errorCode)")
+                        let errorMessage = "neo_aa_extract_aar_to_path_err returned code: \(errorCode)." +
+                                    (stderrOutput.map { " Stderr: \($0)" } ?? "")
+                        self.showAlert(title: "Error", message: errorMessage)
                     }
                 }
             }

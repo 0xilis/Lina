@@ -20,8 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
         UIOnboardingHelper.showOnboardingIfNeeded(in: rootVC)
-        //AppIntent.allowSiri()
-        //AppIntent.archive()
         return true
     }
     

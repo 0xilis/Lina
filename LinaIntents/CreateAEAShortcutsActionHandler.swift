@@ -26,9 +26,6 @@ class CreateAEAShortcutsActionHandler : NSObject, CreateAEAIntentHandling {
             return
         }
         
-        let fileManager = FileManager.default
-        let tempDirectoryURL = fileManager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
-        
         do {
             let accessGranted = archiveURL.startAccessingSecurityScopedResource()
             guard accessGranted else {
