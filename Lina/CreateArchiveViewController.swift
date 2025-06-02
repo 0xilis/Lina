@@ -54,7 +54,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         if #available(iOS 14.0, *) {
             iconView.image = UIImage(systemName: "folder.fill.badge.plus")
         } else {
-            iconView.image = UIImage(systemName: "folder.badge.plus")
+            iconView.image = UIImage(systemName: "folder.badge.plus") ?? UIImage()
         }
         iconView.tintColor = .systemBlue
         iconView.contentMode = .scaleAspectFit
@@ -164,7 +164,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     
     private func createArchive() {
         guard let inputURL = selectedDirectoryURL else {
-            showAlert(title: "Error", message: "Please select a directory first")
+            showAlert(title: "Error", message: "Please select a directory first.")
             return
         }
         
@@ -177,7 +177,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         let securityAccessGranted = inputURL.startAccessingSecurityScopedResource()
         
         guard securityAccessGranted else {
-            showAlert(title: "Access Error", message: "Could not access selected files")
+            showAlert(title: "Access Error", message: "Could not access selected files.")
             return
         }
         
@@ -201,14 +201,14 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         do {
             let keyData = try Data(contentsOf: url)
             guard keyData.count == 97 else {
-                showAlert(title: "Invalid Key", message: "Key must be 97 bytes ECDSA-P256 in X9.63 format")
+                showAlert(title: "Invalid Key", message: "Key must be 97 bytes ECDSA-P256 in X9.63 format.")
                 return
             }
                 
             selectedPrivateKeyURL = url
             promptForAuthData()
         } catch {
-            showAlert(title: "Error", message: "Could not read key file")
+            showAlert(title: "Error", message: "Could not read key file.")
         }
     }
         
@@ -231,7 +231,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
                     && authURL.startAccessingSecurityScopedResource()
             
             guard securityAccessGranted else {
-                showAlert(title: "Access Error", message: "Could not access selected files")
+                showAlert(title: "Access Error", message: "Could not access selected files.")
                 return
             }
             
@@ -280,17 +280,17 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         let message: String
         switch error {
         case .invalidKeySize:
-            message = "Private key must be 97 bytes (Raw X9.63 ECDSA-P256)"
+            message = "Private key must be 97 bytes (Raw X9.63 ECDSA-P256)."
         case .invalidKeyFormat:
-            message = "Invalid ECDSA-P256 key format (Needs Raw X9.63 ECDSA-P256)"
+            message = "Invalid ECDSA-P256 key format (Needs Raw X9.63 ECDSA-P256)."
         case .signingFailed:
-            message = "Failed to sign archive"
+            message = "Failed to sign archive."
         case .invalidArchive:
-            message = "Invalid AAR file"
+            message = "Invalid AAR file."
         case .unsupportedProfile:
-            message = "Unsupported AEA profile"
+            message = "Unsupported AEA profile."
         case .extractionFailed:
-            message = "Failed to extract archive"
+            message = "Failed to extract archive."
         }
         showAlert(title: "Error", message: message)
     }

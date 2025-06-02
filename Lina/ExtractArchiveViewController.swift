@@ -114,7 +114,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     
     private func extractArchive() {
         guard let archiveURL = selectedArchiveURL else {
-            showAlert(title: "Error", message: "Please select an archive first")
+            showAlert(title: "Error", message: "Please select an archive first.")
             return
         }
         
@@ -127,7 +127,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         let securityAccessGranted = archiveURL.startAccessingSecurityScopedResource()
         
         guard securityAccessGranted else {
-            showAlert(title: "Access Error", message: "Could not access selected files")
+            showAlert(title: "Access Error", message: "Could not access selected files.")
             return
         }
         
@@ -192,17 +192,17 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         let message: String
         switch error {
         case .invalidKeySize:
-            message = "Private key must be 97 bytes (Raw X9.63 ECDSA-P256)"
+            message = "Private key must be 97 bytes (Raw X9.63 ECDSA-P256)."
         case .invalidKeyFormat:
-            message = "Invalid ECDSA-P256 key format (Needs Raw X9.63 ECDSA-P256)"
+            message = "Invalid ECDSA-P256 key format (Needs Raw X9.63 ECDSA-P256)."
         case .signingFailed:
-            message = "Failed to sign archive"
+            message = "Failed to sign archive."
         case .invalidArchive:
-            message = "Invalid AAR file"
+            message = "Invalid AAR file."
         case .unsupportedProfile:
-            message = "Unsupported AEA profile (Currently only AEAProfile 0 is supported)"
+            message = "Unsupported AEA profile (Currently only AEAProfile 0 is supported)."
         case .extractionFailed:
-            message = "Failed to extract archive"
+            message = "Failed to extract archive."
         }
         showAlert(title: "Error", message: message)
     }

@@ -173,7 +173,7 @@ class CreditsViewController: UIViewController {
     #if DEBUG || TESTFLIGHT
     @objc private func resetOnboarding() {
         UIOnboardingHelper.resetOnboarding()
-        showAlert(title: "Onboarding Reset", message: "Will show on next launch")
+        showAlert(title: "Onboarding Reset", message: "Will show on next launch.")
     }
     #endif
     
