@@ -20,19 +20,11 @@ class CreditsViewController: UIViewController {
     }
     
     private func setupUI() {
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = .systemGroupedBackground
-        } else {
-            // Fallback on earlier versions
-        }
+        view.backgroundColor = .systemGroupedBackground
         title = "Credits"
         
         let container = UIView()
-        if #available(iOS 13.0, *) {
-            container.backgroundColor = .secondarySystemGroupedBackground
-        } else {
-            // Fallback on earlier versions
-        }
+        container.backgroundColor = .secondarySystemGroupedBackground
         container.layer.cornerRadius = 16
         container.translatesAutoresizingMaskIntoConstraints = false
         
@@ -133,11 +125,7 @@ class CreditsViewController: UIViewController {
         
         let roleLabel = UILabel()
         roleLabel.font = .systemFont(ofSize: 14)
-        if #available(iOS 13.0, *) {
-            roleLabel.textColor = .secondaryLabel
-        } else {
-            // TODO: Fallback on earlier versions
-        }
+        roleLabel.textColor = .secondaryLabel
         roleLabel.text = role
         
         let textStack = UIStackView(arrangedSubviews: [nameLabel, roleLabel])

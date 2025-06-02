@@ -35,10 +35,8 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         title = "Extract Archive"
         
         let container = UIView()
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = .systemGroupedBackground
-            container.backgroundColor = .secondarySystemGroupedBackground
-        }
+        view.backgroundColor = .systemGroupedBackground
+        container.backgroundColor = .secondarySystemGroupedBackground
         container.layer.cornerRadius = 16
         container.translatesAutoresizingMaskIntoConstraints = false
         

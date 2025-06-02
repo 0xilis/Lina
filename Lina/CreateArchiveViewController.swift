@@ -27,6 +27,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     private var selectedPrivateKeyURL: URL?
     private var selectedAuthDataURL: URL?
     private var currentTempURL: URL?
+    private var selectedCompression: Int32 = NEO_AA_COMPRESSION_LZFSE
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,43 +36,70 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     private func setupViews() {
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = .systemGroupedBackground
-        } else {
-            // Fallback on earlier versions
-        }
         title = "Create Archive"
         
         let container = UIView()
-        if #available(iOS 13.0, *) {
-            container.backgroundColor = .secondarySystemGroupedBackground
-        } else {
-            // Fallback on earlier versions
-        }
+        view.backgroundColor = .systemGroupedBackground
+        container.backgroundColor = .secondarySystemGroupedBackground
         container.layer.cornerRadius = 16
         container.translatesAutoresizingMaskIntoConstraints = false
         
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 24
+        stackView.spacing = 16
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let iconView = UIImageView()
+        iconView.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 14.0, *) {
+            iconView.image = UIImage(systemName: "folder.fill.badge.plus")
+        } else {
+            iconView.image = UIImage(systemName: "folder.badge.plus")
+        }
+        iconView.tintColor = .systemBlue
+        iconView.contentMode = .scaleAspectFit
+        
+        let aarLabel = UILabel()
+        aarLabel.text = "Creates .aar archives."
+        aarLabel.font = UIFont.preferredFont(forTextStyle: .callout)
+        aarLabel.textAlignment = .center
+        aarLabel.textColor = .secondaryLabel
+        aarLabel.numberOfLines = 1
+        aarLabel.adjustsFontSizeToFitWidth = true
+        aarLabel.minimumScaleFactor = 0.8
         
         let createButton = UIButton(type: .system)
         createButton.setTitle("Create Archive", for: .normal)
         createButton.makePrimaryActionButton()
         createButton.addTarget(self, action: #selector(pressedCreateArchive), for: .touchUpInside)
         
+        let aeaLabel = UILabel()
+        aeaLabel.text = "Creates encrypted .aea archives."
+        aeaLabel.font = UIFont.preferredFont(forTextStyle: .callout)
+        aeaLabel.textAlignment = .center
+        aeaLabel.textColor = .secondaryLabel
+        aeaLabel.numberOfLines = 1
+        aeaLabel.adjustsFontSizeToFitWidth = true
+        aeaLabel.minimumScaleFactor = 0.8
+        
         let createAEAButton = UIButton(type: .system)
         createAEAButton.setTitle("Create Encrypted Archive", for: .normal)
         createAEAButton.makePrimaryActionButton()
         createAEAButton.addTarget(self, action: #selector(pressedCreateAEAArchive), for: .touchUpInside)
+        createAEAButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        createAEAButton.titleLabel?.minimumScaleFactor = 0.8
+        createAEAButton.titleLabel?.numberOfLines = 1
         
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.isHidden = true
         
+        stackView.addArrangedSubview(iconView)
+        stackView.addArrangedSubview(aarLabel)
         stackView.addArrangedSubview(createButton)
+        stackView.addArrangedSubview(aeaLabel)
         stackView.addArrangedSubview(createAEAButton)
-        stackView.addArrangedSubview(progressView)
+        //TODO: Add a progress handler for NeoAppleArchive
+        //stackView.addArrangedSubview(progressView)
         
         container.addSubview(stackView)
         view.addSubview(container)
@@ -86,6 +114,9 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
             stackView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -24),
             stackView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -24),
             
+            iconView.heightAnchor.constraint(equalToConstant: 60),
+            iconView.widthAnchor.constraint(equalToConstant: 60),
+            
             progressView.heightAnchor.constraint(equalToConstant: 4)
         ])
     }
@@ -98,8 +129,30 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     
     @objc private func pressedCreateArchive() {
         currentCreationType = .aar
-        directoryPicker.delegate = self
-        present(directoryPicker, animated: true)
+        
+        let alert = UIAlertController(
+            title: "Compression Type",
+            message: "Select compression method for your archive.",
+            preferredStyle: .actionSheet
+        )
+        
+        let compressionOptions: [(title: String, value: Int32)] = [
+            ("LZFSE (Recommended)", NEO_AA_COMPRESSION_LZFSE),
+            ("ZLIB", NEO_AA_COMPRESSION_ZLIB),
+            ("LZBITMAP", NEO_AA_COMPRESSION_LZBITMAP),
+            ("Raw (Uncompressed)", NEO_AA_COMPRESSION_NONE)
+        ]
+        
+        for option in compressionOptions {
+            alert.addAction(UIAlertAction(title: option.title, style: .default) { _ in
+                self.selectedCompression = option.value
+                self.present(self.directoryPicker, animated: true)
+            })
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(alert, animated: true)
     }
     
     @objc private func pressedCreateAEAArchive() {
@@ -131,7 +184,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         DispatchQueue.global(qos: .userInitiated).async {
             let plainArchive = neo_aa_archive_plain_from_directory(inputURL.path)
             
-            neo_aa_archive_plain_compress_write_path(plainArchive, NEO_AA_COMPRESSION_LZFSE, outputPath.path)
+            neo_aa_archive_plain_compress_write_path(plainArchive, self.selectedCompression, outputPath.path)
             
             neo_aa_archive_plain_destroy_nozero(plainArchive)
             
