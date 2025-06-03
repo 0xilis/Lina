@@ -14,6 +14,8 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     private var selectedArchiveURL: URL?
     private let progressView = UIProgressView(progressViewStyle: .bar)
     var fileURLFromShare: URL?
+    private var iconView: UIImageView!
+    private var extractButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,14 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
             selectedArchiveURL = fileURLFromShare
             fileURLFromShare = nil
             extractArchive()
+        }
+        
+        if let iconView = self.iconView {
+            iconView.tintColor = AppColorSchemeManager.current.color
+        }
+        
+        if let extractButton = self.extractButton {
+            extractButton.backgroundColor = AppColorSchemeManager.current.color
         }
     }
     
@@ -52,8 +62,9 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         } else {
             iconView.image = UIImage(systemName: "archivebox") ?? UIImage()
         }
-        iconView.tintColor = .systemBlue
+        iconView.tintColor = AppColorSchemeManager.current.color
         iconView.contentMode = .scaleAspectFit
+        self.iconView = iconView
         
         let infoLabel = UILabel()
         infoLabel.text = "Extract .aea, .aar, and .yaa files."
@@ -66,6 +77,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         extractButton.setTitle("Extract Archive", for: .normal)
         extractButton.makePrimaryActionButton()
         extractButton.addTarget(self, action: #selector(pressedExtractArchive), for: .touchUpInside)
+        self.extractButton = extractButton
         
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.isHidden = true

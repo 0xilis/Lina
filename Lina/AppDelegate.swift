@@ -60,6 +60,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        let scheme = AppColorSchemeManager.current
+        tabBar.tintColor = scheme.color
+        navigationController?.navigationBar.tintColor = scheme.color
         let createVC = CreateArchiveViewController()
         var createVCImage = UIImage()
         if #available(iOS 13, *) {

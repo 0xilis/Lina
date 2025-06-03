@@ -14,11 +14,25 @@ class VerifyAEAViewController: UIViewController, UIDocumentPickerDelegate {
     private var keyPicker: UIDocumentPickerViewController!
     private var selectedAEAURL: URL?
     private var selectedKeyURL: URL?
+    private var iconView: UIImageView!
+    private var verifyButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupDocumentPickers()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let iconView = self.iconView {
+            iconView.tintColor = AppColorSchemeManager.current.color
+        }
+        
+        if let verifyButton = self.verifyButton {
+            verifyButton.backgroundColor = AppColorSchemeManager.current.color
+        }
     }
     
     private func setupViews() {
@@ -38,8 +52,9 @@ class VerifyAEAViewController: UIViewController, UIDocumentPickerDelegate {
         let iconView = UIImageView()
         iconView.translatesAutoresizingMaskIntoConstraints = false
         iconView.image = UIImage(systemName: "checkmark.shield.fill") ?? UIImage()
-        iconView.tintColor = .systemBlue
+        iconView.tintColor = AppColorSchemeManager.current.color
         iconView.contentMode = .scaleAspectFit
+        self.iconView = iconView
         
         let infoLabel = UILabel()
         infoLabel.text = "Verify the signature of .aea files using ECDSA-P256 public keys."
@@ -52,6 +67,7 @@ class VerifyAEAViewController: UIViewController, UIDocumentPickerDelegate {
         verifyButton.setTitle("Verify AEA", for: .normal)
         verifyButton.makePrimaryActionButton()
         verifyButton.addTarget(self, action: #selector(pressedVerifyAEA), for: .touchUpInside)
+        self.verifyButton = verifyButton
         
         stackView.addArrangedSubview(iconView)
         stackView.addArrangedSubview(infoLabel)

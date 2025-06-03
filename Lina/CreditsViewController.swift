@@ -28,6 +28,7 @@ class CreditsViewController: UIViewController {
     #if DEBUG || TESTFLIGHT
     private var resetOnboardingButton: UIButton!
     #endif
+    private var sourceCodeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,9 +129,11 @@ class CreditsViewController: UIViewController {
         sourceCodeButton.addTarget(self, action: #selector(openSourceCode), for: .touchUpInside)
         sourceCodeButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .medium)
         sourceCodeButton.translatesAutoresizingMaskIntoConstraints = false
+        sourceCodeButton.makePrimaryActionButton()
         NSLayoutConstraint.activate([
             sourceCodeButton.heightAnchor.constraint(equalToConstant: 44)
         ])
+        self.sourceCodeButton = sourceCodeButton
         
         let colorSchemeCard = createCard()
         let colorSchemeStack = UIStackView()
@@ -282,9 +285,12 @@ class CreditsViewController: UIViewController {
             self.view.tintColor = selectedColorScheme.color
             #if DEBUG || TESTFLIGHT
             if let resetOnboardingButton = self.resetOnboardingButton {
-                resetOnboardingButton.tintColor = selectedColorScheme.color
+                resetOnboardingButton.backgroundColor = selectedColorScheme.color
             }
             #endif
+            if let sourceCodeButton = self.sourceCodeButton {
+                sourceCodeButton.backgroundColor = selectedColorScheme.color
+            }
             
             for button in self.colorSchemeButtons {
                 if button.tag == selectedColorScheme.hashValue {

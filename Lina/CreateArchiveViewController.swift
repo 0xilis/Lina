@@ -28,11 +28,30 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     private var selectedAuthDataURL: URL?
     private var currentTempURL: URL?
     private var selectedCompression: Int32 = NEO_AA_COMPRESSION_LZFSE
+    private var iconView: UIImageView!
+    private var createButton: UIButton!
+    private var createAEAButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupDocumentPickers()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let iconView = self.iconView {
+            iconView.tintColor = AppColorSchemeManager.current.color
+        }
+        
+        if let createButton = self.createButton {
+            createButton.backgroundColor = AppColorSchemeManager.current.color
+        }
+        
+        if let createAEAButton = self.createAEAButton {
+            createAEAButton.backgroundColor = AppColorSchemeManager.current.color
+        }
     }
     
     private func setupViews() {
@@ -56,8 +75,9 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         } else {
             iconView.image = UIImage(systemName: "folder.badge.plus") ?? UIImage()
         }
-        iconView.tintColor = .systemBlue
+        iconView.tintColor = AppColorSchemeManager.current.color
         iconView.contentMode = .scaleAspectFit
+        self.iconView = iconView
         
         let aarLabel = UILabel()
         aarLabel.text = "Create .aar archives."
@@ -72,6 +92,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         createButton.setTitle("Create Archive", for: .normal)
         createButton.makePrimaryActionButton()
         createButton.addTarget(self, action: #selector(pressedCreateArchive), for: .touchUpInside)
+        self.createButton = createButton
         
         let aeaLabel = UILabel()
         aeaLabel.text = "Create signed .aea archives."
@@ -89,6 +110,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         createAEAButton.titleLabel?.adjustsFontSizeToFitWidth = true
         createAEAButton.titleLabel?.minimumScaleFactor = 0.8
         createAEAButton.titleLabel?.numberOfLines = 1
+        self.createAEAButton = createAEAButton
         
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.isHidden = true
@@ -367,7 +389,7 @@ extension UIViewController {
 
 extension UIButton {
     func makePrimaryActionButton() {
-        backgroundColor = .systemBlue
+        backgroundColor = AppColorSchemeManager.current.color
         layer.cornerRadius = 12
         layer.shadowOpacity = 0.25
         layer.shadowRadius = 8
