@@ -27,7 +27,6 @@ class CreateAEAShortcutsActionHandler : NSObject, CreateAEAIntentHandling {
         }
         
         let fileCoordinator = NSFileCoordinator()
-        let fileAccessor = FileAccessCoordinator()
         
         fileCoordinator.coordinate(readingItemAt: archiveURL, options: .withoutChanges, error: nil) { (coordinatedArchiveURL) in
             fileCoordinator.coordinate(readingItemAt: keyURL, options: .withoutChanges, error: nil) { (coordinatedKeyURL) in

@@ -38,9 +38,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         setupDocumentPickers()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    override func viewWillAppear(_ animated: Bool) {
         if let iconView = self.iconView {
             iconView.tintColor = AppColorSchemeManager.current.color
         }
@@ -52,6 +50,8 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         if let createAEAButton = self.createAEAButton {
             createAEAButton.backgroundColor = AppColorSchemeManager.current.color
         }
+        
+        super.viewWillAppear(animated)
     }
     
     private func setupViews() {

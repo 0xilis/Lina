@@ -23,6 +23,18 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         setupDocumentPickers()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let iconView = self.iconView {
+            iconView.tintColor = AppColorSchemeManager.current.color
+        }
+        
+        if let extractButton = self.extractButton {
+            extractButton.backgroundColor = AppColorSchemeManager.current.color
+        }
+        
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -30,14 +42,6 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
             selectedArchiveURL = fileURLFromShare
             fileURLFromShare = nil
             extractArchive()
-        }
-        
-        if let iconView = self.iconView {
-            iconView.tintColor = AppColorSchemeManager.current.color
-        }
-        
-        if let extractButton = self.extractButton {
-            extractButton.backgroundColor = AppColorSchemeManager.current.color
         }
     }
     

@@ -23,9 +23,7 @@ class VerifyAEAViewController: UIViewController, UIDocumentPickerDelegate {
         setupDocumentPickers()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    override func viewWillAppear(_ animated: Bool) {
         if let iconView = self.iconView {
             iconView.tintColor = AppColorSchemeManager.current.color
         }
@@ -33,6 +31,8 @@ class VerifyAEAViewController: UIViewController, UIDocumentPickerDelegate {
         if let verifyButton = self.verifyButton {
             verifyButton.backgroundColor = AppColorSchemeManager.current.color
         }
+        
+        super.viewWillAppear(animated)
     }
     
     private func setupViews() {
