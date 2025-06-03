@@ -17,7 +17,8 @@
 		B0271F2A2DDA98EC0085EF03 /* AEAProfile0Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0271F282DDA98EC0085EF03 /* AEAProfile0Handler.swift */; };
 		B03074242DED496E00AA3D6F /* libNeoAppleArchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; };
 		B03074252DED496E00AA3D6F /* libNeoAppleArchive.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		B03074312DEE6B0F00AA3D6F /* NeoAppleArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; };
+		B03C700A2DEF8AD200FAF77D /* AppColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C70092DEF8AD100FAF77D /* AppColorSchemeManager.swift */; };
+		B03C700B2DEF8AD200FAF77D /* AppColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C70092DEF8AD100FAF77D /* AppColorSchemeManager.swift */; };
 		B0626DA52DE6743D0012B7F9 /* NeoAppleArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; };
 		B0626DA62DE6743D0012B7F9 /* NeoAppleArchive.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B075939F2DE6A7BB000C7977 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B0626DA82DE690830012B7F9 /* Intents.intentdefinition */; };
@@ -45,6 +46,10 @@
 		B09870372DE782B6007F64B5 /* LinaIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B09870232DE7815D007F64B5 /* LinaIntents.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B0C8AA0C2DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8AA092DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift */; };
 		B0C8AA0E2DECB70900590D6E /* ExtractAEAShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8AA0D2DECB70900590D6E /* ExtractAEAShortcutsActionHandler.swift */; };
+		B0E9ADDE2DEEA5D600A32EF6 /* VerifyAEAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E9ADDD2DEEA5D600A32EF6 /* VerifyAEAViewController.swift */; };
+		B0E9ADDF2DEEA5D600A32EF6 /* VerifyAEAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E9ADDD2DEEA5D600A32EF6 /* VerifyAEAViewController.swift */; };
+		B0E9ADE42DEEA70F00A32EF6 /* libNeoAppleArchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E9ADE32DEEA70F00A32EF6 /* libNeoAppleArchive.dylib */; };
+		B0E9ADE52DEEA70F00A32EF6 /* libNeoAppleArchive.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = B0E9ADE32DEEA70F00A32EF6 /* libNeoAppleArchive.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +114,17 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B0E9ADE62DEEA70F00A32EF6 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B0E9ADE52DEEA70F00A32EF6 /* libNeoAppleArchive.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +135,7 @@
 		B03074112DED3C3900AA3D6F /* libNeoAppleArchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNeoAppleArchive.dylib; path = "Lina/Libraries/macosx-x86_64/libNeoAppleArchive.dylib"; sourceTree = "<group>"; };
 		B03074152DED3DC800AA3D6F /* libNeoAppleArchive.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNeoAppleArchive.a; path = "Lina/Libraries/macosx-x86_64/libNeoAppleArchive.a"; sourceTree = "<group>"; };
 		B030742D2DEE6AFC00AA3D6F /* NeoAppleArchive */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = NeoAppleArchive; path = Lina/Libraries/NeoAppleArchive.framework/NeoAppleArchive; sourceTree = "<group>"; };
+		B03C70092DEF8AD100FAF77D /* AppColorSchemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColorSchemeManager.swift; sourceTree = "<group>"; };
 		B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NeoAppleArchive.framework; path = Lina/Libraries/NeoAppleArchive.framework; sourceTree = "<group>"; };
 		B0626DA82DE690830012B7F9 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateArchiveShortcutsActionHandler.swift; sourceTree = "<group>"; };
@@ -144,6 +161,8 @@
 		B098703A2DE78578007F64B5 /* Lina.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lina.entitlements; sourceTree = "<group>"; };
 		B0C8AA092DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAEAShortcutsActionHandler.swift; sourceTree = "<group>"; };
 		B0C8AA0D2DECB70900590D6E /* ExtractAEAShortcutsActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractAEAShortcutsActionHandler.swift; sourceTree = "<group>"; };
+		B0E9ADDD2DEEA5D600A32EF6 /* VerifyAEAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAEAViewController.swift; sourceTree = "<group>"; };
+		B0E9ADE32DEEA70F00A32EF6 /* libNeoAppleArchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNeoAppleArchive.dylib; path = "Lina/Libraries/Simulator-debug/libNeoAppleArchive.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */,
-				B03074312DEE6B0F00AA3D6F /* NeoAppleArchive.framework in Frameworks */,
+				B0E9ADE42DEEA70F00A32EF6 /* libNeoAppleArchive.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +253,8 @@
 				B0271F1D2DD974B80085EF03 /* CreditsViewController.swift */,
 				B0271F202DDA56CD0085EF03 /* UIOnboardingHelper.swift */,
 				B0271F282DDA98EC0085EF03 /* AEAProfile0Handler.swift */,
+				B0E9ADDD2DEEA5D600A32EF6 /* VerifyAEAViewController.swift */,
+				B03C70092DEF8AD100FAF77D /* AppColorSchemeManager.swift */,
 			);
 			path = Lina;
 			sourceTree = "<group>";
@@ -257,6 +278,7 @@
 		B08D03ED2DD92F1E003847D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B0E9ADE32DEEA70F00A32EF6 /* libNeoAppleArchive.dylib */,
 				B030742D2DEE6AFC00AA3D6F /* NeoAppleArchive */,
 				B03074152DED3DC800AA3D6F /* libNeoAppleArchive.a */,
 				B03074112DED3C3900AA3D6F /* libNeoAppleArchive.dylib */,
@@ -332,6 +354,7 @@
 				B098701F2DE7815D007F64B5 /* Sources */,
 				B09870202DE7815D007F64B5 /* Frameworks */,
 				B09870212DE7815D007F64B5 /* Resources */,
+				B0E9ADE62DEEA70F00A32EF6 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -426,10 +449,12 @@
 				B08D03DB2DD92DD0003847D7 /* ExtractArchiveViewController.swift in Sources */,
 				B08D03B42DD920BD003847D7 /* CreateArchiveViewController.swift in Sources */,
 				B0271F212DDA56CD0085EF03 /* UIOnboardingHelper.swift in Sources */,
+				B03C700A2DEF8AD200FAF77D /* AppColorSchemeManager.swift in Sources */,
 				B0271F292DDA98EC0085EF03 /* AEAProfile0Handler.swift in Sources */,
 				B09870362DE7826E007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */,
 				B08D03B02DD920BD003847D7 /* AppDelegate.swift in Sources */,
 				B075939F2DE6A7BB000C7977 /* Intents.intentdefinition in Sources */,
+				B0E9ADDE2DEEA5D600A32EF6 /* VerifyAEAViewController.swift in Sources */,
 				B0271F1E2DD974B80085EF03 /* CreditsViewController.swift in Sources */,
 				B08D2EEE2DEA189300CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */,
 			);
@@ -442,10 +467,12 @@
 				B08D03DE2DD92E57003847D7 /* ExtractArchiveViewController.swift in Sources */,
 				B08D03DF2DD92E57003847D7 /* CreateArchiveViewController.swift in Sources */,
 				B0271F222DDA56CD0085EF03 /* UIOnboardingHelper.swift in Sources */,
+				B03C700B2DEF8AD200FAF77D /* AppColorSchemeManager.swift in Sources */,
 				B0271F2A2DDA98EC0085EF03 /* AEAProfile0Handler.swift in Sources */,
 				B09870352DE7826E007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */,
 				B08D03E02DD92E57003847D7 /* AppDelegate.swift in Sources */,
 				B07593A02DE6A7BB000C7977 /* Intents.intentdefinition in Sources */,
+				B0E9ADDF2DEEA5D600A32EF6 /* VerifyAEAViewController.swift in Sources */,
 				B0271F1F2DD974B80085EF03 /* CreditsViewController.swift in Sources */,
 				B08D2EED2DEA189300CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */,
 			);
@@ -627,7 +654,10 @@
 					"$(PROJECT_DIR)/Lina/Libraries",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Lina/Modules\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Lina/Modules\"",
+					"\"$(SRCROOT)/Lina/Modules/libNeoAppleArchive\"",
+				);
 				INFOPLIST_FILE = Lina/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Lina;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
@@ -677,7 +707,10 @@
 					"$(PROJECT_DIR)/Lina/Libraries",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Lina/Modules\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Lina/Modules\"",
+					"\"$(SRCROOT)/Lina/Modules/libNeoAppleArchive\"",
+				);
 				INFOPLIST_FILE = Lina/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Lina;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
@@ -719,7 +752,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RR5WP5NG77;
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Lina/Modules\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Lina/Modules\"",
+					"\"$(SRCROOT)/Lina/Modules/libNeoAppleArchive\"",
+				);
 				INFOPLIST_FILE = "Lina copy-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Lina;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -760,7 +796,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RR5WP5NG77;
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Lina/Modules\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Lina/Modules\"",
+					"\"$(SRCROOT)/Lina/Modules/libNeoAppleArchive\"",
+				);
 				INFOPLIST_FILE = "Lina copy-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Lina;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -803,7 +842,10 @@
 					"$(PROJECT_DIR)/Lina/Libraries",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Lina/Modules\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Lina/Modules\"",
+					"\"$(SRCROOT)/Lina/Modules/libNeoAppleArchive\"",
+				);
 				INFOPLIST_FILE = LinaIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LinaIntents;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -817,6 +859,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Lina/Libraries/Simulator",
 					"$(PROJECT_DIR)/Lina/Libraries/NeoAppleArchive.framework",
+					"$(PROJECT_DIR)/Lina/Libraries/Simulator-debug",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina.LinaIntents;
@@ -843,7 +886,10 @@
 					"$(PROJECT_DIR)/Lina/Libraries",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Lina/Modules\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Lina/Modules\"",
+					"\"$(SRCROOT)/Lina/Modules/libNeoAppleArchive\"",
+				);
 				INFOPLIST_FILE = LinaIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LinaIntents;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -857,6 +903,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Lina/Libraries/Simulator",
 					"$(PROJECT_DIR)/Lina/Libraries/NeoAppleArchive.framework",
+					"$(PROJECT_DIR)/Lina/Libraries/Simulator-debug",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina.LinaIntents;

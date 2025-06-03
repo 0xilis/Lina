@@ -78,6 +78,10 @@ class MainTabBarController: UITabBarController {
         }
         extractVC.tabBarItem = UITabBarItem(title: "Extract", image: extractVCImage, tag: 1)
         
+        let verifyVC = VerifyAEAViewController()
+        let verifyImage = UIImage(systemName: "checkmark.shield") ?? UIImage()
+        verifyVC.tabBarItem = UITabBarItem(title: "Verify", image: verifyImage, tag: 3)
+        
         let creditsVC = CreditsViewController()
         var creditsVCImage = UIImage()
         if #available(iOS 13, *) {
@@ -89,6 +93,7 @@ class MainTabBarController: UITabBarController {
         
         viewControllers = [UINavigationController(rootViewController: createVC),
                            UINavigationController(rootViewController: extractVC),
+                           UINavigationController(rootViewController: verifyVC),
                            UINavigationController(rootViewController: creditsVC)]
     }
     

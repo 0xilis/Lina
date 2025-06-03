@@ -44,10 +44,20 @@ struct UIOnboardingHelper {
     
     private static func setUpFeatures() -> [UIOnboardingFeature] {
         return [
-            UIOnboardingFeature(
+            /*UIOnboardingFeature(
                 icon: UIImage(systemName: "lock.circle.fill") ?? UIImage(),
                 title: "Secure Archives",
                 description: "Create encrypted Apple Archives with military-grade encryption."
+            ),*/
+            UIOnboardingFeature(
+                icon: UIImage(systemName: "archivebox.fill") ?? UIImage(),
+                title: "Compression Support",
+                description: "Compress files using LZFSE or other methods for efficient storage and transfer."
+            ),
+            UIOnboardingFeature(
+                icon: UIImage(systemName: "signature") ?? UIImage(),
+                title: "Digital Signatures",
+                description: "Sign archives with ECDSA-P256 for authenticity and integrity verification."
             ),
             UIOnboardingFeature(
                 icon: UIImage(systemName: "person.circle.fill") ?? UIImage(),

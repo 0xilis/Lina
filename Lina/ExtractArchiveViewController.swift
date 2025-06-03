@@ -32,7 +32,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     private func setupViews() {
-        title = "Extract Archive"
+        title = "Extract"
         
         let container = UIView()
         view.backgroundColor = .systemGroupedBackground

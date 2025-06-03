@@ -36,7 +36,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     private func setupViews() {
-        title = "Create Archive"
+        title = "Create"
         
         let container = UIView()
         view.backgroundColor = .systemGroupedBackground
@@ -74,7 +74,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         createButton.addTarget(self, action: #selector(pressedCreateArchive), for: .touchUpInside)
         
         let aeaLabel = UILabel()
-        aeaLabel.text = "Create encrypted .aea archives."
+        aeaLabel.text = "Create signed .aea archives."
         aeaLabel.font = UIFont.preferredFont(forTextStyle: .callout)
         aeaLabel.textAlignment = .center
         aeaLabel.textColor = .secondaryLabel
@@ -83,7 +83,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         aeaLabel.minimumScaleFactor = 0.8
         
         let createAEAButton = UIButton(type: .system)
-        createAEAButton.setTitle("Create Encrypted Archive", for: .normal)
+        createAEAButton.setTitle("Create Signed Archive", for: .normal)
         createAEAButton.makePrimaryActionButton()
         createAEAButton.addTarget(self, action: #selector(pressedCreateAEAArchive), for: .touchUpInside)
         createAEAButton.titleLabel?.adjustsFontSizeToFitWidth = true
