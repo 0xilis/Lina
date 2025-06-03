@@ -26,42 +26,60 @@ class CreateAEAShortcutsActionHandler : NSObject, CreateAEAIntentHandling {
             return
         }
         
-        do {
-            let accessGranted = archiveURL.startAccessingSecurityScopedResource()
-            guard accessGranted else {
-                completion(CreateAEAIntentResponse.failure(error: "Failed to access inputFile."))
-                return
+        let fileCoordinator = NSFileCoordinator()
+        let fileAccessor = FileAccessCoordinator()
+        
+        fileCoordinator.coordinate(readingItemAt: archiveURL, options: .withoutChanges, error: nil) { (coordinatedArchiveURL) in
+            fileCoordinator.coordinate(readingItemAt: keyURL, options: .withoutChanges, error: nil) { (coordinatedKeyURL) in
+                fileCoordinator.coordinate(readingItemAt: authURL, options: .withoutChanges, error: nil) { (coordinatedAuthURL) in
+                    do {
+                        // Access security-scoped resources
+                        let archiveAccess = coordinatedArchiveURL.startAccessingSecurityScopedResource()
+                        let keyAccess = coordinatedKeyURL.startAccessingSecurityScopedResource()
+                        let authAccess = coordinatedAuthURL.startAccessingSecurityScopedResource()
+                        
+                        guard archiveAccess && keyAccess && authAccess else {
+                            completion(CreateAEAIntentResponse.failure(error: "Failed to access files."))
+                            return
+                        }
+                        
+                        // Read file contents
+                        let keyData = try Data(contentsOf: coordinatedKeyURL)
+                        let authData = try Data(contentsOf: coordinatedAuthURL)
+                        
+                        // Create AEA
+                        let aeaData = try AEAProfile0Handler_Intents.createAEAFromAAR(
+                            aarURL: coordinatedArchiveURL,
+                            privateKey: keyData,
+                            authData: authData
+                        )
+                        
+                        // Create output file
+                        let outputFile = INFile(
+                            data: aeaData,
+                            filename: "EncryptedArchive.aea",
+                            typeIdentifier: "com.apple.encrypted-archive"
+                        )
+                        
+                        // Release resources
+                        coordinatedArchiveURL.stopAccessingSecurityScopedResource()
+                        coordinatedKeyURL.stopAccessingSecurityScopedResource()
+                        coordinatedAuthURL.stopAccessingSecurityScopedResource()
+                        
+                        completion(CreateAEAIntentResponse.success(result: outputFile))
+                    } catch let error as AEAProfile0Handler_Intents.AEAError {
+                        coordinatedArchiveURL.stopAccessingSecurityScopedResource()
+                        coordinatedKeyURL.stopAccessingSecurityScopedResource()
+                        coordinatedAuthURL.stopAccessingSecurityScopedResource()
+                        completion(CreateAEAIntentResponse.failure(error: "AEA Error: \(handleAEAError(error))"))
+                    } catch {
+                        coordinatedArchiveURL.stopAccessingSecurityScopedResource()
+                        coordinatedKeyURL.stopAccessingSecurityScopedResource()
+                        coordinatedAuthURL.stopAccessingSecurityScopedResource()
+                        completion(CreateAEAIntentResponse.failure(error: "Failed to create AEA: \(error.localizedDescription)"))
+                    }
+                }
             }
-            
-            let accessGranted2 = keyURL.startAccessingSecurityScopedResource()
-            guard accessGranted2 else {
-                completion(CreateAEAIntentResponse.failure(error: "Failed to access inputKey."))
-                return
-            }
-            
-            let accessGranted3 = authURL.startAccessingSecurityScopedResource()
-            guard accessGranted3 else {
-                completion(CreateAEAIntentResponse.failure(error: "Failed to access inputAuthData."))
-                return
-            }
-            
-            let keyData = try Data(contentsOf: keyURL)
-            let authData = try Data(contentsOf: authURL)
-            
-            let aeaData = try AEAProfile0Handler_Intents.createAEAFromAAR(aarURL: archiveURL, privateKey: keyData, authData: authData)
-            
-            let outputFile = INFile(data: aeaData, filename: "Output.aea", typeIdentifier: "com.apple.encrypted-archive")
-            
-            archiveURL.stopAccessingSecurityScopedResource()
-            keyURL.stopAccessingSecurityScopedResource()
-            authURL.stopAccessingSecurityScopedResource()
-            
-            completion(CreateAEAIntentResponse.success(result: outputFile))
-        } catch let error as AEAProfile0Handler_Intents.AEAError {
-            completion(CreateAEAIntentResponse.failure(error: "AEA error: \(handleAEAError(error))"))
-        } catch {
-            completion(CreateAEAIntentResponse.failure(error: "Failed to create AEA from AAR."))
-            return
         }
     }
     
@@ -90,6 +108,15 @@ class CreateAEAShortcutsActionHandler : NSObject, CreateAEAIntentHandling {
         }
         
         completion(INFileResolutionResult.success(with: inputAuthData))
+    }
+}
+
+class FileAccessCoordinator: NSObject, NSFilePresenter {
+    var presentedItemURL: URL?
+    let presentedItemOperationQueue = OperationQueue.main
+    
+    init(fileURL: URL? = nil) {
+        self.presentedItemURL = fileURL
     }
 }
 

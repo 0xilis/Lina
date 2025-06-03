@@ -151,35 +151,47 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
                 self.showAlert(title: "Error", message: error.localizedDescription)
             }
         } else if pathExtension == "aar" || pathExtension == "yaa" {
-            DispatchQueue.global(qos: .userInitiated).async {
                 
-                do {
-                    try FileManager.default.createDirectory(at: outputDirectory, withIntermediateDirectories: true)
-                } catch {
-                    archiveURL.stopAccessingSecurityScopedResource()
-                    self.progressView.isHidden = true
+            do {
+                try FileManager.default.createDirectory(at: outputDirectory, withIntermediateDirectories: true)
+            } catch {
+                archiveURL.stopAccessingSecurityScopedResource()
+                self.progressView.isHidden = true
+                DispatchQueue.main.async {
                     self.showAlert(title: "Error", message: "Failed to create directory at \(outputDirectory)")
                     return
                 }
+                return
+            }
                 
-                let (errorCode, stderrOutput) = captureStderrOutput {
-                    neo_aa_extract_aar_to_path_err(archiveURL.path, outputDirectory.path)
+            let isReadable = FileManager.default.isReadableFile(atPath: archiveURL.path)
+            if (isReadable == false) {
+                archiveURL.stopAccessingSecurityScopedResource()
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Error", message: "archiveURL.path is not readable (\(archiveURL.path)).")
+                    return
                 }
+                return
+            }
                 
-                if (errorCode == 0) {
-                    DispatchQueue.main.async {
-                        self.progressView.isHidden = true
-                        self.showSuccess(outputDirectory: outputDirectory)
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        self.progressView.isHidden = true
-                        let errorMessage = "neo_aa_extract_aar_to_path_err returned code: \(errorCode)." +
+            let (errorCode, stderrOutput) = captureStderrOutput {
+                neo_aa_extract_aar_to_path_err(archiveURL.path, outputDirectory.path)
+            }
+                
+            if (errorCode == 0) {
+                DispatchQueue.main.async {
+                    self.progressView.isHidden = true
+                    self.showSuccess(outputDirectory: outputDirectory)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.progressView.isHidden = true
+                    let errorMessage = "neo_aa_extract_aar_to_path_err returned code: \(errorCode)." +
                                     (stderrOutput.map { " Stderr: \($0)" } ?? "")
-                        self.showAlert(title: "Error", message: errorMessage)
-                    }
+                    self.showAlert(title: "Error", message: errorMessage)
                 }
             }
+
         } else {
             self.progressView.isHidden = true
             showAlert(title: "Error", message: "File is not AEA or AAR!")

@@ -60,7 +60,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         iconView.contentMode = .scaleAspectFit
         
         let aarLabel = UILabel()
-        aarLabel.text = "Creates .aar archives."
+        aarLabel.text = "Create .aar archives."
         aarLabel.font = UIFont.preferredFont(forTextStyle: .callout)
         aarLabel.textAlignment = .center
         aarLabel.textColor = .secondaryLabel
@@ -74,7 +74,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         createButton.addTarget(self, action: #selector(pressedCreateArchive), for: .touchUpInside)
         
         let aeaLabel = UILabel()
-        aeaLabel.text = "Creates encrypted .aea archives."
+        aeaLabel.text = "Create encrypted .aea archives."
         aeaLabel.font = UIFont.preferredFont(forTextStyle: .callout)
         aeaLabel.textAlignment = .center
         aeaLabel.textColor = .secondaryLabel
