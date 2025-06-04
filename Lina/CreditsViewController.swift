@@ -124,8 +124,9 @@ class CreditsViewController: UIViewController {
             appInfoStack.bottomAnchor.constraint(equalTo: appInfoCard.bottomAnchor, constant: -20)
         ])
         
+        let sourceCodeCard = createCard()
         let sourceCodeButton = UIButton(type: .system)
-        sourceCodeButton.setTitle("View Source Code on GitHub", for: .normal)
+        sourceCodeButton.setTitle("View Source Code", for: .normal)
         sourceCodeButton.addTarget(self, action: #selector(openSourceCode), for: .touchUpInside)
         sourceCodeButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .medium)
         sourceCodeButton.translatesAutoresizingMaskIntoConstraints = false
@@ -133,7 +134,20 @@ class CreditsViewController: UIViewController {
         NSLayoutConstraint.activate([
             sourceCodeButton.heightAnchor.constraint(equalToConstant: 44)
         ])
+        let sourceCodeButtonLabel = sourceCodeButton.titleLabel!
+        sourceCodeButtonLabel.numberOfLines = 1
+        sourceCodeButtonLabel.adjustsFontSizeToFitWidth = true
+        sourceCodeButtonLabel.minimumScaleFactor = 0.8
         self.sourceCodeButton = sourceCodeButton
+        sourceCodeCard.addSubview(sourceCodeButton)
+        
+        NSLayoutConstraint.activate([
+            sourceCodeButton.topAnchor.constraint(equalTo: sourceCodeCard.topAnchor, constant: 15),
+            sourceCodeButton.leadingAnchor.constraint(equalTo: sourceCodeCard.leadingAnchor, constant: 20),
+            sourceCodeButton.trailingAnchor.constraint(equalTo: sourceCodeCard.trailingAnchor, constant: -20),
+            sourceCodeButton.bottomAnchor.constraint(equalTo: sourceCodeCard.bottomAnchor, constant: -15),
+            sourceCodeButton.heightAnchor.constraint(equalToConstant: 44)
+        ])
         
         let colorSchemeCard = createCard()
         let colorSchemeStack = UIStackView()
@@ -264,7 +278,7 @@ class CreditsViewController: UIViewController {
         #endif
         
         mainStackView.addArrangedSubview(appInfoCard)
-        mainStackView.addArrangedSubview(sourceCodeButton)
+        mainStackView.addArrangedSubview(sourceCodeCard)
         mainStackView.addArrangedSubview(colorSchemeCard)
         mainStackView.addArrangedSubview(creditsCard)
         #if DEBUG || TESTFLIGHT

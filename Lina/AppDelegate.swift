@@ -44,12 +44,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if ["aar", "aea", "yaa", "shortcut"].contains(url.pathExtension.lowercased()) {
             guard let rootVC = window?.rootViewController as? MainTabBarController else { return false }
             
-            let extractVC = ExtractArchiveViewController()
-            extractVC.fileURLFromShare = url
+            rootVC.selectedIndex = 1
             
-            if let navController = rootVC.viewControllers?[1] as? UINavigationController {
-                navController.pushViewController(extractVC, animated: false)
-                rootVC.selectedIndex = 1
+            if let navController = rootVC.viewControllers?[1] as? UINavigationController,
+               let extractVC = navController.viewControllers.first as? ExtractArchiveViewController {
+                
+                extractVC.fileURLFromShare = url
+                
+                navController.popToRootViewController(animated: false)
             }
             
             return true
