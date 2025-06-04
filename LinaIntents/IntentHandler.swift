@@ -23,13 +23,18 @@ func clearTemporaryDirectory() {
     }
 }
 
+// TODO: i hate this but I need to do it like this so if a shortcut needs to access the output of an action which is in a temp directory afterwards, it doesn't bring any errors. look into better ways to do this...
+var clearedTemporaryDirectory = false
 
 class IntentHandler: INExtension {
     
     // Based off example by Alex Hay
     
     override func handler(for intent: INIntent) -> Any {
-        clearTemporaryDirectory()
+        if !clearedTemporaryDirectory {
+            clearTemporaryDirectory()
+            clearedTemporaryDirectory = true
+        }
         switch intent {
         case is CreateAARIntent:
             return CreateArchiveShortcutsActionHandler()

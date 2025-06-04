@@ -106,7 +106,7 @@ class CreditsViewController: UIViewController {
         }
         
         let descriptionLabel = UILabel()
-        descriptionLabel.text = "Create and extract AAR/AEA archives using libNeoAppleArchive. Sign and verify encrypted archives with ECDSA-P256 keys."
+        descriptionLabel.text = "Create and extract AAR/AEA archives using libNeoAppleArchive. Sign and verify archives with ECDSA-P256 keys."
         descriptionLabel.numberOfLines = 0
         descriptionLabel.textAlignment = .center
         descriptionLabel.font = .preferredFont(forTextStyle: .body)

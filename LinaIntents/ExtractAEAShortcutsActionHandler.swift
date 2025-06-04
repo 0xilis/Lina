@@ -15,8 +15,6 @@ class ExtractAEAShortcutsActionHandler : NSObject, ExtractAEAIntentHandling {
             return
         }
         
-        clearTemporaryDirectory()
-        
         do {
             let accessGranted = aeaURL.startAccessingSecurityScopedResource()
             guard accessGranted else {

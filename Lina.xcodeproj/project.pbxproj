@@ -122,7 +122,6 @@
 		B0271F1D2DD974B80085EF03 /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		B0271F202DDA56CD0085EF03 /* UIOnboardingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOnboardingHelper.swift; sourceTree = "<group>"; };
 		B0271F282DDA98EC0085EF03 /* AEAProfile0Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEAProfile0Handler.swift; sourceTree = "<group>"; };
-		B03074102DED37EF00AA3D6F /* LinaIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LinaIntents.entitlements; sourceTree = "<group>"; };
 		B03074112DED3C3900AA3D6F /* libNeoAppleArchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNeoAppleArchive.dylib; path = "Lina/Libraries/macosx-x86_64/libNeoAppleArchive.dylib"; sourceTree = "<group>"; };
 		B03074152DED3DC800AA3D6F /* libNeoAppleArchive.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNeoAppleArchive.a; path = "Lina/Libraries/macosx-x86_64/libNeoAppleArchive.a"; sourceTree = "<group>"; };
 		B030742D2DEE6AFC00AA3D6F /* NeoAppleArchive */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = NeoAppleArchive; path = Lina/Libraries/NeoAppleArchive.framework/NeoAppleArchive; sourceTree = "<group>"; };
@@ -191,7 +190,6 @@
 		B075938E2DE6A5BD000C7977 /* LinaIntents */ = {
 			isa = PBXGroup;
 			children = (
-				B03074102DED37EF00AA3D6F /* LinaIntents.entitlements */,
 				B0626DA82DE690830012B7F9 /* Intents.intentdefinition */,
 				B0C8AA092DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift */,
 				B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */,
@@ -826,7 +824,7 @@
 		B098702D2DE7815E007F64B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = LinaIntents/LinaIntents.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -870,7 +868,7 @@
 		B098702E2DE7815E007F64B5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = LinaIntents/LinaIntents.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;

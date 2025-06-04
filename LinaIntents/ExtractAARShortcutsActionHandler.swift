@@ -43,8 +43,6 @@ class ExtractAARShortcutsActionHandler : NSObject, ExtractAARIntentHandling {
             return
         }
         
-        clearTemporaryDirectory()
-        
         let fileManager = FileManager.default
         let tempDirectoryURL = fileManager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         

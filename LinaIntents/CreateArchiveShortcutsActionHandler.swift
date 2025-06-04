@@ -16,8 +16,6 @@ class CreateArchiveShortcutsActionHandler : NSObject, CreateAARIntentHandling {
             return
         }
         
-        clearTemporaryDirectory()
-        
         let fileManager = FileManager.default
         let tempDirectoryURL = fileManager.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         do {
