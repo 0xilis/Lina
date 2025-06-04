@@ -149,6 +149,8 @@ class CreateArchiveShortcutsActionHandler : NSObject, CreateAARIntentHandling {
                 filename: "output.aar",
                 typeIdentifier: "com.apple.archive"
             )
+            
+            clearTemporaryDirectory()
                     
             completion(CreateAARIntentResponse.success(result: outputFile))
         } catch {

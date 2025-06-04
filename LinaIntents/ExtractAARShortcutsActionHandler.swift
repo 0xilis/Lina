@@ -82,6 +82,8 @@ class ExtractAARShortcutsActionHandler : NSObject, ExtractAARIntentHandling {
                 )
             }
             
+            clearTemporaryDirectory()
+            
             archiveURL.stopAccessingSecurityScopedResource()
             
             completion(ExtractAARIntentResponse.success(result: outputFiles))

@@ -123,6 +123,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     @objc private func pressedExtractArchive() {
+        clearTemporaryDirectory()
         let keyPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeData as String], in: .open)
         keyPicker.delegate = self
         present(keyPicker, animated: true)

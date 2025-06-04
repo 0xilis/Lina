@@ -7,11 +7,29 @@
 
 import Intents
 
+func clearTemporaryDirectory() {
+    let tempDirectoryURL = FileManager.default.temporaryDirectory
+    do {
+        let tempDirectoryContents = try FileManager.default.contentsOfDirectory(at: tempDirectoryURL, includingPropertiesForKeys: nil, options: [])
+        for fileURL in tempDirectoryContents {
+            do {
+                try FileManager.default.removeItem(at: fileURL)
+            } catch {
+                print("Failed to remove file at \(fileURL.path): \(error)")
+            }
+        }
+    } catch {
+        print("Failed to read contents of temporary directory: \(error)")
+    }
+}
+
+
 class IntentHandler: INExtension {
     
     // Based off example by Alex Hay
     
     override func handler(for intent: INIntent) -> Any {
+        clearTemporaryDirectory()
         switch intent {
         case is CreateAARIntent:
             return CreateArchiveShortcutsActionHandler()

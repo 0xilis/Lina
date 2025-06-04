@@ -152,6 +152,8 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     @objc private func pressedCreateArchive() {
         currentCreationType = .aar
         
+        clearTemporaryDirectory()
+        
         let alert = UIAlertController(
             title: "Compression Type",
             message: "Select compression method for your archive.",
@@ -164,6 +166,8 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
             ("LZBITMAP", NEO_AA_COMPRESSION_LZBITMAP),
             ("Raw (Uncompressed)", NEO_AA_COMPRESSION_NONE)
         ]
+        
+        alert.view.tintColor = AppColorSchemeManager.current.color
         
         for option in compressionOptions {
             alert.addAction(UIAlertAction(title: option.title, style: .default) { _ in
@@ -179,6 +183,9 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     
     @objc private func pressedCreateAEAArchive() {
         currentCreationType = .aea
+        
+        clearTemporaryDirectory()
+        
         let keyPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeData as String], in: .open)
         keyPicker.delegate = self
         present(keyPicker, animated: true)
@@ -187,6 +194,12 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     private func createArchive() {
         guard let inputURL = selectedDirectoryURL else {
             showAlert(title: "Error", message: "Please select a directory first.")
+            return
+        }
+        
+        var isDirectory: ObjCBool = false
+        if !FileManager.default.fileExists(atPath: inputURL.path, isDirectory: &isDirectory) || !isDirectory.boolValue {
+            showAlert(title: "Invalid Selection", message: "The selected path is not a directory.")
             return
         }
         
@@ -383,6 +396,7 @@ extension UIViewController {
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
+        alert.view.tintColor = AppColorSchemeManager.current.color
         present(alert, animated: true)
     }
 }

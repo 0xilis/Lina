@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
         UIOnboardingHelper.showOnboardingIfNeeded(in: rootVC)
+        clearTemporaryDirectory()
         return true
     }
     
@@ -120,5 +121,21 @@ extension MainTabBarController: UIOnboardingViewControllerDelegate {
     
     func didTapLink(onboardingViewController: UIOnboardingViewController, url: URL) {
         UIApplication.shared.open(url)
+    }
+}
+
+func clearTemporaryDirectory() {
+    let tempDirectoryURL = FileManager.default.temporaryDirectory
+    do {
+        let tempDirectoryContents = try FileManager.default.contentsOfDirectory(at: tempDirectoryURL, includingPropertiesForKeys: nil, options: [])
+        for fileURL in tempDirectoryContents {
+            do {
+                try FileManager.default.removeItem(at: fileURL)
+            } catch {
+                print("Failed to remove file at \(fileURL.path): \(error)")
+            }
+        }
+    } catch {
+        print("Failed to read contents of temporary directory: \(error)")
     }
 }

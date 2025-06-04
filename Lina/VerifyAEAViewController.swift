@@ -156,11 +156,7 @@ class VerifyAEAViewController: UIViewController, UIDocumentPickerDelegate {
     private func showAlert(title: String, message: String, isSuccess: Bool = false) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
-        
-        if isSuccess {
-            alert.view.tintColor = .systemGreen
-        }
-        
+        alert.view.tintColor = AppColorSchemeManager.current.color
         present(alert, animated: true)
     }
     

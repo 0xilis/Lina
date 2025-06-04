@@ -19,7 +19,8 @@
 		B03074252DED496E00AA3D6F /* libNeoAppleArchive.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B03C700A2DEF8AD200FAF77D /* AppColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C70092DEF8AD100FAF77D /* AppColorSchemeManager.swift */; };
 		B03C700B2DEF8AD200FAF77D /* AppColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C70092DEF8AD100FAF77D /* AppColorSchemeManager.swift */; };
-		B057E6282DEFADEE00E67BB5 /* NeoAppleArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; };
+		B057E62B2DEFCE1000E67BB5 /* libNeoAppleArchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B08D03F52DD93A60003847D7 /* libNeoAppleArchive.dylib */; };
+		B057E62C2DEFCE1000E67BB5 /* libNeoAppleArchive.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = B08D03F52DD93A60003847D7 /* libNeoAppleArchive.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B0626DA52DE6743D0012B7F9 /* NeoAppleArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; };
 		B0626DA62DE6743D0012B7F9 /* NeoAppleArchive.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B075939F2DE6A7BB000C7977 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B0626DA82DE690830012B7F9 /* Intents.intentdefinition */; };
@@ -76,6 +77,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B03074252DED496E00AA3D6F /* libNeoAppleArchive.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B057E62D2DEFCE1000E67BB5 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B057E62C2DEFCE1000E67BB5 /* libNeoAppleArchive.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -177,7 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */,
-				B057E6282DEFADEE00E67BB5 /* NeoAppleArchive.framework in Frameworks */,
+				B057E62B2DEFCE1000E67BB5 /* libNeoAppleArchive.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +354,7 @@
 				B098701F2DE7815D007F64B5 /* Sources */,
 				B09870202DE7815D007F64B5 /* Frameworks */,
 				B09870212DE7815D007F64B5 /* Resources */,
+				B057E62D2DEFCE1000E67BB5 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
