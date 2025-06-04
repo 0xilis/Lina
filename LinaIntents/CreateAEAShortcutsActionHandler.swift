@@ -26,6 +26,8 @@ class CreateAEAShortcutsActionHandler : NSObject, CreateAEAIntentHandling {
             return
         }
         
+        clearTemporaryDirectory()
+        
         let fileCoordinator = NSFileCoordinator()
         
         fileCoordinator.coordinate(readingItemAt: archiveURL, options: .withoutChanges, error: nil) { (coordinatedArchiveURL) in

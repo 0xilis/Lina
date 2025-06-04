@@ -19,8 +19,7 @@
 		B03074252DED496E00AA3D6F /* libNeoAppleArchive.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B03C700A2DEF8AD200FAF77D /* AppColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C70092DEF8AD100FAF77D /* AppColorSchemeManager.swift */; };
 		B03C700B2DEF8AD200FAF77D /* AppColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C70092DEF8AD100FAF77D /* AppColorSchemeManager.swift */; };
-		B057E62B2DEFCE1000E67BB5 /* libNeoAppleArchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B08D03F52DD93A60003847D7 /* libNeoAppleArchive.dylib */; };
-		B057E62C2DEFCE1000E67BB5 /* libNeoAppleArchive.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = B08D03F52DD93A60003847D7 /* libNeoAppleArchive.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B057E62E2DEFE8D400E67BB5 /* NeoAppleArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; };
 		B0626DA52DE6743D0012B7F9 /* NeoAppleArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; };
 		B0626DA62DE6743D0012B7F9 /* NeoAppleArchive.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B075939F2DE6A7BB000C7977 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B0626DA82DE690830012B7F9 /* Intents.intentdefinition */; };
@@ -46,6 +45,9 @@
 		B09870352DE7826E007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */; };
 		B09870362DE7826E007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */; };
 		B09870372DE782B6007F64B5 /* LinaIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B09870232DE7815D007F64B5 /* LinaIntents.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B0A872262DEFEC620067A7CA /* AEAProfile0Handler_Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A872252DEFEC620067A7CA /* AEAProfile0Handler_Intents.swift */; };
+		B0A872272DEFEC810067A7CA /* AEAProfile0Handler_Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A872252DEFEC620067A7CA /* AEAProfile0Handler_Intents.swift */; };
+		B0A872282DEFEC810067A7CA /* AEAProfile0Handler_Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A872252DEFEC620067A7CA /* AEAProfile0Handler_Intents.swift */; };
 		B0C8AA0C2DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8AA092DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift */; };
 		B0C8AA0E2DECB70900590D6E /* ExtractAEAShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8AA0D2DECB70900590D6E /* ExtractAEAShortcutsActionHandler.swift */; };
 		B0E9ADDE2DEEA5D600A32EF6 /* VerifyAEAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E9ADDD2DEEA5D600A32EF6 /* VerifyAEAViewController.swift */; };
@@ -77,17 +79,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B03074252DED496E00AA3D6F /* libNeoAppleArchive.dylib in Embed Libraries */,
-			);
-			name = "Embed Libraries";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B057E62D2DEFCE1000E67BB5 /* Embed Libraries */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				B057E62C2DEFCE1000E67BB5 /* libNeoAppleArchive.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,6 +150,7 @@
 		B098702F2DE78199007F64B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B09870332DE78248007F64B5 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		B098703A2DE78578007F64B5 /* Lina.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lina.entitlements; sourceTree = "<group>"; };
+		B0A872252DEFEC620067A7CA /* AEAProfile0Handler_Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEAProfile0Handler_Intents.swift; sourceTree = "<group>"; };
 		B0C8AA092DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAEAShortcutsActionHandler.swift; sourceTree = "<group>"; };
 		B0C8AA0D2DECB70900590D6E /* ExtractAEAShortcutsActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractAEAShortcutsActionHandler.swift; sourceTree = "<group>"; };
 		B0E9ADDD2DEEA5D600A32EF6 /* VerifyAEAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAEAViewController.swift; sourceTree = "<group>"; };
@@ -189,7 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */,
-				B057E62B2DEFCE1000E67BB5 /* libNeoAppleArchive.dylib in Frameworks */,
+				B057E62E2DEFE8D400E67BB5 /* NeoAppleArchive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +199,7 @@
 				B09870332DE78248007F64B5 /* IntentHandler.swift */,
 				B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */,
 				B0C8AA0D2DECB70900590D6E /* ExtractAEAShortcutsActionHandler.swift */,
+				B0A872252DEFEC620067A7CA /* AEAProfile0Handler_Intents.swift */,
 			);
 			path = LinaIntents;
 			sourceTree = "<group>";
@@ -354,7 +347,6 @@
 				B098701F2DE7815D007F64B5 /* Sources */,
 				B09870202DE7815D007F64B5 /* Frameworks */,
 				B09870212DE7815D007F64B5 /* Resources */,
-				B057E62D2DEFCE1000E67BB5 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -448,6 +440,7 @@
 			files = (
 				B08D03DB2DD92DD0003847D7 /* ExtractArchiveViewController.swift in Sources */,
 				B08D03B42DD920BD003847D7 /* CreateArchiveViewController.swift in Sources */,
+				B0A872282DEFEC810067A7CA /* AEAProfile0Handler_Intents.swift in Sources */,
 				B0271F212DDA56CD0085EF03 /* UIOnboardingHelper.swift in Sources */,
 				B03C700A2DEF8AD200FAF77D /* AppColorSchemeManager.swift in Sources */,
 				B0271F292DDA98EC0085EF03 /* AEAProfile0Handler.swift in Sources */,
@@ -466,6 +459,7 @@
 			files = (
 				B08D03DE2DD92E57003847D7 /* ExtractArchiveViewController.swift in Sources */,
 				B08D03DF2DD92E57003847D7 /* CreateArchiveViewController.swift in Sources */,
+				B0A872272DEFEC810067A7CA /* AEAProfile0Handler_Intents.swift in Sources */,
 				B0271F222DDA56CD0085EF03 /* UIOnboardingHelper.swift in Sources */,
 				B03C700B2DEF8AD200FAF77D /* AppColorSchemeManager.swift in Sources */,
 				B0271F2A2DDA98EC0085EF03 /* AEAProfile0Handler.swift in Sources */,
@@ -487,6 +481,7 @@
 				B09870342DE78248007F64B5 /* IntentHandler.swift in Sources */,
 				B09870312DE7822D007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */,
 				B0C8AA0E2DECB70900590D6E /* ExtractAEAShortcutsActionHandler.swift in Sources */,
+				B0A872262DEFEC620067A7CA /* AEAProfile0Handler_Intents.swift in Sources */,
 				B08D2EEA2DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
