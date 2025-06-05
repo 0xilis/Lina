@@ -24,5 +24,4 @@ libNeoAppleArchive = LNAA, LNAA sounds like Lina, so I chose Lina.
 
 This app is planned to be on the App Store. Please DM/Contact me for a TestFlight link!
 
-- Figure out how to make "Show When Run" for the shortcuts action not appear and default to false.
-- Support for all AEA profiles, but this is not planned until a later update on the App Store and will not be in the first release.
+- The app is currently now deemed ready for iOS App Store!
