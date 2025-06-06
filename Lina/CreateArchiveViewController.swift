@@ -10,7 +10,8 @@ import NeoAppleArchive
 import MobileCoreServices
 import Foundation
 
-class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
+class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, LaunchBoardingDelegate {
+    
     enum CreationType {
         case aar
         case aea
@@ -31,6 +32,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     private var iconView: UIImageView!
     private var createButton: UIButton!
     private var createAEAButton: UIButton!
+    private var onboardingController: LaunchBoardingController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +58,24 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     
     private func setupViews() {
         title = "Create"
+        
+        #if LAUNCHBOARDING
+        /* LaunchBoarding, not included currently due to being very unfinished... */
+        let page1 = LaunchBoardingPage.init(icon: UIImage(systemName: "archivebox.fill") ?? UIImage(), title: "Compression Support", descriptionText: "Compress files using LZFSE or other methods for efficient storage and transfer.", showButton: false)
+        let page2 = LaunchBoardingPage.init(icon: UIImage(systemName: "signature") ?? UIImage(), title: "Digital Signatures", descriptionText: "Sign archives with ECDSA-P256 for authenticity and integrity verification.", showButton: false)
+        let page3 = LaunchBoardingPage.init(icon: UIImage(systemName: "person.circle.fill") ?? UIImage(), title: "Open Source", descriptionText: "Built on open standards and transparent cryptography.", showButton: false)
+        let config = LaunchBoardingConfiguration.init(pages: [page1, page2, page3])
+        config.tintColor = AppColorSchemeManager.current.color
+        config.buttonColor = AppColorSchemeManager.current.color
+        config.shouldShowSkipButton = false
+        
+        let onboarding = LaunchBoardingController.init(configuration: config)
+        onboarding.onboardingDelegate = self
+        onboarding.modalPresentationStyle = .fullScreen
+        onboardingController = onboarding
+        
+        self.present(onboarding, animated: true)
+        #endif
         
         let container = UIView()
         view.backgroundColor = .systemGroupedBackground
@@ -152,33 +172,41 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     @objc private func pressedCreateArchive() {
         currentCreationType = .aar
         
-        clearTemporaryDirectory()
+        DispatchQueue.main.async {
+            clearTemporaryDirectory()
         
-        let alert = UIAlertController(
-            title: "Compression Type",
-            message: "Select compression method for your archive.",
-            preferredStyle: .actionSheet
-        )
+            let alert = UIAlertController(
+                title: "Compression Type",
+                message: "Select compression method for your archive.",
+                preferredStyle: .actionSheet
+            )
         
-        let compressionOptions: [(title: String, value: Int32)] = [
-            ("LZFSE (Recommended)", NEO_AA_COMPRESSION_LZFSE),
-            ("ZLIB", NEO_AA_COMPRESSION_ZLIB),
-            ("LZBITMAP", NEO_AA_COMPRESSION_LZBITMAP),
-            ("Raw (Uncompressed)", NEO_AA_COMPRESSION_NONE)
-        ]
+            let compressionOptions: [(title: String, value: Int32)] = [
+                ("LZFSE (Recommended)", NEO_AA_COMPRESSION_LZFSE),
+                ("ZLIB", NEO_AA_COMPRESSION_ZLIB),
+                ("LZBITMAP", NEO_AA_COMPRESSION_LZBITMAP),
+                ("Raw (Uncompressed)", NEO_AA_COMPRESSION_NONE)
+            ]
         
-        alert.view.tintColor = AppColorSchemeManager.current.color
+            for option in compressionOptions {
+                alert.addAction(UIAlertAction(title: option.title, style: .default) { _ in
+                    self.selectedCompression = option.value
+                    self.present(self.directoryPicker, animated: true)
+                })
+            }
+            
+            alert.view.tintColor = AppColorSchemeManager.current.color
+            
+            if let popoverController = alert.popoverPresentationController {
+                popoverController.sourceView = self.createButton
+                popoverController.sourceRect = self.createButton.bounds
+                popoverController.permittedArrowDirections = .any
+            }
         
-        for option in compressionOptions {
-            alert.addAction(UIAlertAction(title: option.title, style: .default) { _ in
-                self.selectedCompression = option.value
-                self.present(self.directoryPicker, animated: true)
-            })
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+            self.present(alert, animated: true)
         }
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        
-        present(alert, animated: true)
     }
     
     @objc private func pressedCreateAEAArchive() {
@@ -381,6 +409,16 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         showAlert(title: "Error", message: "Nothing selected.")
+    }
+    
+    func onboardingDidFinish() {
+        // finished with launchboarding
+        onboardingController.dismiss(animated: true)
+    }
+    
+    func onboardingDidSkip() {
+        // skipped (no way this can normally happen)
+        onboardingController.dismiss(animated: true)
     }
     
     private func showInstructionAlert(title: String, message: String, completion: @escaping () -> Void) {
