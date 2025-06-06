@@ -8,6 +8,32 @@
 import UIKit
 import NeoAppleArchive
 
+func captureStderrOutput(perform block: () -> Int32) -> (Int32, String?) {
+    let originalStderr = dup(STDERR_FILENO)
+    
+    var pipeFD: [Int32] = [0, 0]
+    pipe(&pipeFD)
+    let pipeRead = pipeFD[0]
+    let pipeWrite = pipeFD[1]
+
+    dup2(pipeWrite, STDERR_FILENO)
+    close(pipeWrite)
+
+    let errorCode = block()
+
+    fflush(stderr)
+    dup2(originalStderr, STDERR_FILENO)
+    close(originalStderr)
+
+    let bufferSize = 1024
+    var buffer = [CChar](repeating: 0, count: bufferSize)
+    let bytesRead = read(pipeRead, &buffer, bufferSize - 1)
+    close(pipeRead)
+
+    let output = bytesRead > 0 ? String(cString: buffer) : nil
+    return (errorCode, output?.trimmingCharacters(in: .whitespacesAndNewlines))
+}
+
 class AEAProfile0Handler {
     static func createAEAFromAAR(aarURL: URL, privateKey: Data, authData: Data) throws -> Data {
         guard privateKey.count == 97 else {

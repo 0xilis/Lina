@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		B0271F1E2DD974B80085EF03 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0271F1D2DD974B80085EF03 /* CreditsViewController.swift */; };
 		B0271F1F2DD974B80085EF03 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0271F1D2DD974B80085EF03 /* CreditsViewController.swift */; };
-		B0271F212DDA56CD0085EF03 /* UIOnboardingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0271F202DDA56CD0085EF03 /* UIOnboardingHelper.swift */; };
-		B0271F222DDA56CD0085EF03 /* UIOnboardingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0271F202DDA56CD0085EF03 /* UIOnboardingHelper.swift */; };
-		B0271F252DDA57030085EF03 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = B0271F242DDA57030085EF03 /* UIOnboarding */; };
-		B0271F272DDA8E220085EF03 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = B0271F262DDA8E220085EF03 /* UIOnboarding */; };
+		B0271F212DDA56CD0085EF03 /* LaunchBoardingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0271F202DDA56CD0085EF03 /* LaunchBoardingHelper.swift */; };
+		B0271F222DDA56CD0085EF03 /* LaunchBoardingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0271F202DDA56CD0085EF03 /* LaunchBoardingHelper.swift */; };
 		B0271F292DDA98EC0085EF03 /* AEAProfile0Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0271F282DDA98EC0085EF03 /* AEAProfile0Handler.swift */; };
 		B0271F2A2DDA98EC0085EF03 /* AEAProfile0Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0271F282DDA98EC0085EF03 /* AEAProfile0Handler.swift */; };
 		B03C700A2DEF8AD200FAF77D /* AppColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C70092DEF8AD100FAF77D /* AppColorSchemeManager.swift */; };
@@ -32,19 +30,13 @@
 		B08D03E42DD92E57003847D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B08D03BA2DD920C3003847D7 /* LaunchScreen.storyboard */; };
 		B08D03E52DD92E57003847D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B08D03B82DD920C3003847D7 /* Assets.xcassets */; };
 		B08D2EEA2DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */; };
-		B08D2EED2DEA189300CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */; };
-		B08D2EEE2DEA189300CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D2EE92DEA167500CC7805 /* ExtractAARShortcutsActionHandler.swift */; };
 		B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B075938C2DE6A5BD000C7977 /* Intents.framework */; };
 		B098702B2DE7815E007F64B5 /* LinaIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B09870232DE7815D007F64B5 /* LinaIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B09870312DE7822D007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */; };
 		B09870322DE78234007F64B5 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B0626DA82DE690830012B7F9 /* Intents.intentdefinition */; };
 		B09870342DE78248007F64B5 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09870332DE78248007F64B5 /* IntentHandler.swift */; };
-		B09870352DE7826E007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */; };
-		B09870362DE7826E007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */; };
 		B09870372DE782B6007F64B5 /* LinaIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B09870232DE7815D007F64B5 /* LinaIntents.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B0A872262DEFEC620067A7CA /* AEAProfile0Handler_Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A872252DEFEC620067A7CA /* AEAProfile0Handler_Intents.swift */; };
-		B0A872272DEFEC810067A7CA /* AEAProfile0Handler_Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A872252DEFEC620067A7CA /* AEAProfile0Handler_Intents.swift */; };
-		B0A872282DEFEC810067A7CA /* AEAProfile0Handler_Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A872252DEFEC620067A7CA /* AEAProfile0Handler_Intents.swift */; };
 		B0C0DB4F2DF28F460083E763 /* LaunchBoarding.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C0DB4E2DF28F460083E763 /* LaunchBoarding.m */; };
 		B0C0DB502DF28F460083E763 /* LaunchBoarding.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C0DB4E2DF28F460083E763 /* LaunchBoarding.m */; };
 		B0C0DB512DF28F640083E763 /* libNeoAppleArchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B08D03F52DD93A60003847D7 /* libNeoAppleArchive.dylib */; };
@@ -122,7 +114,7 @@
 
 /* Begin PBXFileReference section */
 		B0271F1D2DD974B80085EF03 /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
-		B0271F202DDA56CD0085EF03 /* UIOnboardingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOnboardingHelper.swift; sourceTree = "<group>"; };
+		B0271F202DDA56CD0085EF03 /* LaunchBoardingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchBoardingHelper.swift; sourceTree = "<group>"; };
 		B0271F282DDA98EC0085EF03 /* AEAProfile0Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEAProfile0Handler.swift; sourceTree = "<group>"; };
 		B03074112DED3C3900AA3D6F /* libNeoAppleArchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNeoAppleArchive.dylib; path = "Lina/Libraries/macosx-x86_64/libNeoAppleArchive.dylib"; sourceTree = "<group>"; };
 		B03074152DED3DC800AA3D6F /* libNeoAppleArchive.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNeoAppleArchive.a; path = "Lina/Libraries/macosx-x86_64/libNeoAppleArchive.a"; sourceTree = "<group>"; };
@@ -165,7 +157,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0271F252DDA57030085EF03 /* UIOnboarding in Frameworks */,
 				B0626DA52DE6743D0012B7F9 /* NeoAppleArchive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,7 +165,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0271F272DDA8E220085EF03 /* UIOnboarding in Frameworks */,
 				B0C0DB512DF28F640083E763 /* libNeoAppleArchive.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,7 +237,7 @@
 				B08D03BD2DD920C3003847D7 /* Info.plist */,
 				B08D03DA2DD92DD0003847D7 /* ExtractArchiveViewController.swift */,
 				B0271F1D2DD974B80085EF03 /* CreditsViewController.swift */,
-				B0271F202DDA56CD0085EF03 /* UIOnboardingHelper.swift */,
+				B0271F202DDA56CD0085EF03 /* LaunchBoardingHelper.swift */,
 				B0271F282DDA98EC0085EF03 /* AEAProfile0Handler.swift */,
 				B0E9ADDD2DEEA5D600A32EF6 /* VerifyAEAViewController.swift */,
 				B03C70092DEF8AD100FAF77D /* AppColorSchemeManager.swift */,
@@ -323,7 +313,6 @@
 			);
 			name = Lina;
 			packageProductDependencies = (
-				B0271F242DDA57030085EF03 /* UIOnboarding */,
 			);
 			productName = Lina;
 			productReference = B08D03AC2DD920BD003847D7 /* Lina.app */;
@@ -346,7 +335,6 @@
 			);
 			name = "Lina Simulator";
 			packageProductDependencies = (
-				B0271F262DDA8E220085EF03 /* UIOnboarding */,
 			);
 			productName = Lina;
 			productReference = B08D03EB2DD92E58003847D7 /* Lina Simulator.app */;
@@ -453,16 +441,13 @@
 				B08D03DB2DD92DD0003847D7 /* ExtractArchiveViewController.swift in Sources */,
 				B08D03B42DD920BD003847D7 /* CreateArchiveViewController.swift in Sources */,
 				B0C0DB4F2DF28F460083E763 /* LaunchBoarding.m in Sources */,
-				B0A872282DEFEC810067A7CA /* AEAProfile0Handler_Intents.swift in Sources */,
-				B0271F212DDA56CD0085EF03 /* UIOnboardingHelper.swift in Sources */,
+				B0271F212DDA56CD0085EF03 /* LaunchBoardingHelper.swift in Sources */,
 				B03C700A2DEF8AD200FAF77D /* AppColorSchemeManager.swift in Sources */,
 				B0271F292DDA98EC0085EF03 /* AEAProfile0Handler.swift in Sources */,
-				B09870362DE7826E007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */,
 				B08D03B02DD920BD003847D7 /* AppDelegate.swift in Sources */,
 				B075939F2DE6A7BB000C7977 /* Intents.intentdefinition in Sources */,
 				B0E9ADDE2DEEA5D600A32EF6 /* VerifyAEAViewController.swift in Sources */,
 				B0271F1E2DD974B80085EF03 /* CreditsViewController.swift in Sources */,
-				B08D2EEE2DEA189300CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,16 +458,13 @@
 				B08D03DE2DD92E57003847D7 /* ExtractArchiveViewController.swift in Sources */,
 				B08D03DF2DD92E57003847D7 /* CreateArchiveViewController.swift in Sources */,
 				B0C0DB502DF28F460083E763 /* LaunchBoarding.m in Sources */,
-				B0A872272DEFEC810067A7CA /* AEAProfile0Handler_Intents.swift in Sources */,
-				B0271F222DDA56CD0085EF03 /* UIOnboardingHelper.swift in Sources */,
+				B0271F222DDA56CD0085EF03 /* LaunchBoardingHelper.swift in Sources */,
 				B03C700B2DEF8AD200FAF77D /* AppColorSchemeManager.swift in Sources */,
 				B0271F2A2DDA98EC0085EF03 /* AEAProfile0Handler.swift in Sources */,
-				B09870352DE7826E007F64B5 /* CreateArchiveShortcutsActionHandler.swift in Sources */,
 				B08D03E02DD92E57003847D7 /* AppDelegate.swift in Sources */,
 				B07593A02DE6A7BB000C7977 /* Intents.intentdefinition in Sources */,
 				B0E9ADDF2DEEA5D600A32EF6 /* VerifyAEAViewController.swift in Sources */,
 				B0271F1F2DD974B80085EF03 /* CreditsViewController.swift in Sources */,
-				B08D2EED2DEA189300CC7805 /* ExtractAARShortcutsActionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,7 +561,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -634,7 +616,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -676,7 +658,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -729,7 +711,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -772,7 +754,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -816,7 +798,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -977,19 +959,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B0271F242DDA57030085EF03 /* UIOnboarding */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B0271F232DDA57030085EF03 /* XCRemoteSwiftPackageReference "UIOnboarding" */;
-			productName = UIOnboarding;
-		};
-		B0271F262DDA8E220085EF03 /* UIOnboarding */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B0271F232DDA57030085EF03 /* XCRemoteSwiftPackageReference "UIOnboarding" */;
-			productName = UIOnboarding;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B08D03A42DD920BD003847D7 /* Project object */;
 }

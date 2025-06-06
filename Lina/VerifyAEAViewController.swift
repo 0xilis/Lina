@@ -39,8 +39,14 @@ class VerifyAEAViewController: UIViewController, UIDocumentPickerDelegate {
         title = "Verify"
         
         let container = UIView()
-        view.backgroundColor = .systemGroupedBackground
-        container.backgroundColor = .secondarySystemGroupedBackground
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemGroupedBackground
+            container.backgroundColor = .secondarySystemGroupedBackground
+        } else {
+            view.backgroundColor = .white
+            container.backgroundColor = UIColor(red: (240 / 256), green: (240 / 256), blue: (240 / 256), alpha: 1)
+        }
+        
         container.layer.cornerRadius = 16
         container.translatesAutoresizingMaskIntoConstraints = false
         
@@ -51,7 +57,10 @@ class VerifyAEAViewController: UIViewController, UIDocumentPickerDelegate {
         
         let iconView = UIImageView()
         iconView.translatesAutoresizingMaskIntoConstraints = false
-        iconView.image = UIImage(systemName: "checkmark.shield.fill") ?? UIImage()
+        if let originalImage = UIImage(named: "checkmark.shield.fill") {
+            let tintedImage = originalImage.withRenderingMode(.alwaysTemplate)
+            iconView.image = tintedImage
+        }
         iconView.tintColor = AppColorSchemeManager.current.color
         iconView.contentMode = .scaleAspectFit
         self.iconView = iconView
@@ -60,7 +69,9 @@ class VerifyAEAViewController: UIViewController, UIDocumentPickerDelegate {
         infoLabel.text = "Verify the signature of .aea files using ECDSA-P256 public keys."
         infoLabel.textAlignment = .center
         infoLabel.numberOfLines = 0
-        infoLabel.textColor = .secondaryLabel
+        if #available(iOS 13.0, *) {
+            infoLabel.textColor = .secondaryLabel
+        }
         infoLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         
         let verifyButton = UIButton(type: .system)

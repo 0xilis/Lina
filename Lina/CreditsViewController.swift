@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class CreditsViewController: UIViewController {
     
@@ -40,7 +41,11 @@ class CreditsViewController: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .systemGroupedBackground
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemGroupedBackground
+        } else {
+            view.backgroundColor = .white
+        }
         title = "Credits"
         
         scrollView = UIScrollView()
@@ -84,7 +89,7 @@ class CreditsViewController: UIViewController {
         appInfoStack.alignment = .center
         
         let appIcon = UIImageView()
-        appIcon.image = UIImage(named: "LinaIcon") ?? UIImage(systemName: "archivebox.fill") ?? UIImage()
+        appIcon.image = UIImage(named: "LinaIcon") ?? UIImage()
         appIcon.contentMode = .scaleAspectFit
         appIcon.layer.cornerRadius = 16
         appIcon.clipsToBounds = true
@@ -100,7 +105,9 @@ class CreditsViewController: UIViewController {
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             let versionLabel = UILabel()
             versionLabel.text = "Version \(version)"
-            versionLabel.textColor = .secondaryLabel
+            if #available(iOS 13.0, *) {
+                versionLabel.textColor = .secondaryLabel
+            }
             versionLabel.font = .systemFont(ofSize: 16, weight: .regular)
             appInfoStack.addArrangedSubview(versionLabel)
         }
@@ -173,7 +180,13 @@ class CreditsViewController: UIViewController {
             button.addTarget(self, action: #selector(colorSchemeSelected(_:)), for: .touchUpInside)
             
             if scheme == selectedColorScheme {
-                button.setImage(UIImage(systemName: "checkmark"), for: .normal)
+                if #available(iOS 13.0, *) {
+                    button.setImage(UIImage(systemName: "checkmark"), for: .normal)
+                } else {
+                    // TODO: Checkmark appears too big...
+                    let checkmark = UIImage(named: "checkmark") ?? UIImage()
+                    button.setImage(checkmark.withRenderingMode(.alwaysTemplate).tabBarIcon(), for: .normal)
+                }
                 button.tintColor = .white
             }
             
@@ -246,7 +259,9 @@ class CreditsViewController: UIViewController {
         thanksLabel.text = "...and thanks to users like you!"
         thanksLabel.font = .systemFont(ofSize: 14, weight: .regular)
         thanksLabel.textAlignment = .center
-        thanksLabel.textColor = .secondaryLabel
+        if #available(iOS 13.0, *) {
+            thanksLabel.textColor = .secondaryLabel
+        }
         creditsStack.addArrangedSubview(thanksLabel)
         
         creditsCard.addSubview(creditsStack)
@@ -288,7 +303,11 @@ class CreditsViewController: UIViewController {
     
     private func createCard() -> UIView {
         let card = UIView()
-        card.backgroundColor = .secondarySystemGroupedBackground
+        if #available(iOS 13.0, *) {
+            card.backgroundColor = .secondarySystemGroupedBackground
+        } else {
+            card.backgroundColor = UIColor(red: (240 / 256), green: (240 / 256), blue: (240 / 256), alpha: 1)
+        }
         card.layer.cornerRadius = 16
         return card
     }
@@ -308,7 +327,13 @@ class CreditsViewController: UIViewController {
             
             for button in self.colorSchemeButtons {
                 if button.tag == selectedColorScheme.hashValue {
-                    button.setImage(UIImage(systemName: "checkmark"), for: .normal)
+                    if #available(iOS 13.0, *) {
+                        button.setImage(UIImage(systemName: "checkmark"), for: .normal)
+                    } else {
+                        // TODO: Checkmark appears too big...
+                        let checkmark = UIImage(named: "checkmark") ?? UIImage()
+                        button.setImage(checkmark.withRenderingMode(.alwaysTemplate).tabBarIcon(), for: .normal)
+                    }
                     button.tintColor = .white
                 } else {
                     button.setImage(nil, for: .normal)
@@ -349,7 +374,9 @@ class CreditsViewController: UIViewController {
         
         let nameLabel = UILabel()
         nameLabel.text = name
-        nameLabel.font = .boldSystemFont(ofSize: 18)
+        if #available(iOS 13.0, *) {
+            nameLabel.font = .boldSystemFont(ofSize: 18)
+        }
         nameLabel.numberOfLines = 1
         nameLabel.adjustsFontSizeToFitWidth = true
         nameLabel.minimumScaleFactor = 0.8
@@ -357,7 +384,9 @@ class CreditsViewController: UIViewController {
         let roleLabel = UILabel()
         roleLabel.text = role
         roleLabel.font = .systemFont(ofSize: 14)
-        roleLabel.textColor = .secondaryLabel
+        if #available(iOS 13.0, *) {
+            roleLabel.textColor = .secondaryLabel
+        }
         roleLabel.numberOfLines = 1
         roleLabel.adjustsFontSizeToFitWidth = true
         roleLabel.minimumScaleFactor = 0.8
@@ -407,7 +436,7 @@ class CreditsViewController: UIViewController {
     
     #if DEBUG || TESTFLIGHT
     @objc private func resetOnboarding() {
-        UIOnboardingHelper.resetOnboarding()
+        LaunchBoardingHelper.resetOnboarding()
         self.showAlert(title: "Onboarding Reset", message: "Will show on next launch.")
     }
     #endif

@@ -30,8 +30,10 @@
     config.pages = pages;
     
     config.tintColor = [UIColor systemBlueColor];
-    config.titleColor = [UIColor labelColor];
-    config.textColor = [UIColor secondaryLabelColor];
+    if (@available(iOS 13.0, *)) {
+        config.titleColor = [UIColor labelColor];
+        config.textColor = [UIColor secondaryLabelColor];
+    }
     config.buttonColor = [UIColor systemBlueColor];
     config.buttonTextColor = [UIColor whiteColor];
     config.titleFont = [UIFont systemFontOfSize:28 weight:UIFontWeightBold];
@@ -100,7 +102,11 @@
         backgroundView.frame = self.view.bounds;
         [self.view insertSubview:backgroundView atIndex:0];
     } else {
-        self.view.backgroundColor = [UIColor systemBackgroundColor];
+        if (@available(iOS 13.0, *)) {
+            self.view.backgroundColor = [UIColor systemBackgroundColor];
+        } else {
+            self.view.backgroundColor = [UIColor whiteColor];
+        }
     }
 }
 

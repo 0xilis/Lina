@@ -32,7 +32,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
     private var iconView: UIImageView!
     private var createButton: UIButton!
     private var createAEAButton: UIButton!
-    private var onboardingController: LaunchBoardingController!
+    var onboardingController: LaunchBoardingController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,27 +59,17 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
     private func setupViews() {
         title = "Create"
         
-        #if LAUNCHBOARDING
-        /* LaunchBoarding, not included currently due to being very unfinished... */
-        let page1 = LaunchBoardingPage.init(icon: UIImage(systemName: "archivebox.fill") ?? UIImage(), title: "Compression Support", descriptionText: "Compress files using LZFSE or other methods for efficient storage and transfer.", showButton: false)
-        let page2 = LaunchBoardingPage.init(icon: UIImage(systemName: "signature") ?? UIImage(), title: "Digital Signatures", descriptionText: "Sign archives with ECDSA-P256 for authenticity and integrity verification.", showButton: false)
-        let page3 = LaunchBoardingPage.init(icon: UIImage(systemName: "person.circle.fill") ?? UIImage(), title: "Open Source", descriptionText: "Built on open standards and transparent cryptography.", showButton: false)
-        let config = LaunchBoardingConfiguration.init(pages: [page1, page2, page3])
-        config.tintColor = AppColorSchemeManager.current.color
-        config.buttonColor = AppColorSchemeManager.current.color
-        config.shouldShowSkipButton = false
-        
-        let onboarding = LaunchBoardingController.init(configuration: config)
-        onboarding.onboardingDelegate = self
-        onboarding.modalPresentationStyle = .fullScreen
-        onboardingController = onboarding
-        
-        self.present(onboarding, animated: true)
-        #endif
+        LaunchBoardingHelper.showOnboardingIfNeeded(in: self)
         
         let container = UIView()
-        view.backgroundColor = .systemGroupedBackground
-        container.backgroundColor = .secondarySystemGroupedBackground
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemGroupedBackground
+            container.backgroundColor = .secondarySystemGroupedBackground
+        } else {
+            view.backgroundColor = .white
+            container.backgroundColor = UIColor(red: (240 / 256), green: (240 / 256), blue: (240 / 256), alpha: 1)
+        }
+        
         container.layer.cornerRadius = 16
         container.translatesAutoresizingMaskIntoConstraints = false
         
@@ -90,10 +80,14 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
         
         let iconView = UIImageView()
         iconView.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 14.0, *) {
-            iconView.image = UIImage(systemName: "folder.fill.badge.plus")
+        if #available (iOS 14, *) {
+            iconView.image = UIImage(systemName: "folder.fill.badge.plus") ?? UIImage()
         } else {
-            iconView.image = UIImage(systemName: "folder.badge.plus") ?? UIImage()
+            // TODO: The plus is filled in by mistake...
+            if let originalImage = UIImage(named: "folder.fill.badge.plus") {
+                let tintedImage = originalImage.withRenderingMode(.alwaysTemplate)
+                iconView.image = tintedImage
+            }
         }
         iconView.tintColor = AppColorSchemeManager.current.color
         iconView.contentMode = .scaleAspectFit
@@ -103,7 +97,9 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
         aarLabel.text = "Create .aar archives."
         aarLabel.font = UIFont.preferredFont(forTextStyle: .callout)
         aarLabel.textAlignment = .center
-        aarLabel.textColor = .secondaryLabel
+        if #available(iOS 13.0, *) {
+            aarLabel.textColor = .secondaryLabel
+        }
         aarLabel.numberOfLines = 1
         aarLabel.adjustsFontSizeToFitWidth = true
         aarLabel.minimumScaleFactor = 0.8
@@ -118,7 +114,9 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
         aeaLabel.text = "Create signed .aea archives."
         aeaLabel.font = UIFont.preferredFont(forTextStyle: .callout)
         aeaLabel.textAlignment = .center
-        aeaLabel.textColor = .secondaryLabel
+        if #available(iOS 13.0, *) {
+            aeaLabel.textColor = .secondaryLabel
+        }
         aeaLabel.numberOfLines = 1
         aeaLabel.adjustsFontSizeToFitWidth = true
         aeaLabel.minimumScaleFactor = 0.8
@@ -413,6 +411,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
     
     func onboardingDidFinish() {
         // finished with launchboarding
+        LaunchBoardingHelper.completeOnboarding()
         onboardingController.dismiss(animated: true)
     }
     

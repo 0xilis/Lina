@@ -49,8 +49,13 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         title = "Extract"
         
         let container = UIView()
-        view.backgroundColor = .systemGroupedBackground
-        container.backgroundColor = .secondarySystemGroupedBackground
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemGroupedBackground
+            container.backgroundColor = .secondarySystemGroupedBackground
+        } else {
+            view.backgroundColor = .white
+            container.backgroundColor = UIColor(red: (240 / 256), green: (240 / 256), blue: (240 / 256), alpha: 1)
+        }
         container.layer.cornerRadius = 16
         container.translatesAutoresizingMaskIntoConstraints = false
         
@@ -61,10 +66,13 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         
         let iconView = UIImageView()
         iconView.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 14.0, *) {
-            iconView.image = UIImage(systemName: "archivebox.fill")
+        if #available(iOS 13, *) {
+            iconView.image = UIImage(systemName: "archivebox.fill") ?? UIImage()
         } else {
-            iconView.image = UIImage(systemName: "archivebox") ?? UIImage()
+            if let originalImage = UIImage(named: "archivebox.fill") {
+                let tintedImage = originalImage.withRenderingMode(.alwaysTemplate)
+                iconView.image = tintedImage
+            }
         }
         iconView.tintColor = AppColorSchemeManager.current.color
         iconView.contentMode = .scaleAspectFit
@@ -74,7 +82,9 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         infoLabel.text = "Extract .aea, .aar, and .yaa files."
         infoLabel.textAlignment = .center
         infoLabel.numberOfLines = 0
-        infoLabel.textColor = .secondaryLabel
+        if #available(iOS 13.0, *) {
+            infoLabel.textColor = .secondaryLabel
+        }
         infoLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         
         let extractButton = UIButton(type: .system)
