@@ -29,10 +29,10 @@ libNeoAppleArchive = LNAA, LNAA sounds like Lina, so I chose Lina.
 ### Next Release (1.1):
 
 - [x] Support iOS 11 and iOS 12.
-- [ ] Migrate from UIOnboarding to new LaunchBoarding framework. (partially complete, LaunchBoard not yet complete)
+- [x] Migrate from UIOnboarding to new LaunchBoarding framework.
 - [ ] Figure out documentation for App Encryption for release in France.
 - [ ] Translators, primarily ones for French.
-- [ ] Update NeoAppleArchive.framework.
+- [x] Update NeoAppleArchive.framework.
 - [ ] Add new "Verify AEA" shortcuts action.
 
 ### Future Releases
