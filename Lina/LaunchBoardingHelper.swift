@@ -11,10 +11,12 @@ struct LaunchBoardingHelper {
     static let shouldShowOnboardingKey = "hasCompletedOnboarding"
     
     static func showOnboardingIfNeeded(in viewController: CreateArchiveViewController) {
+        #if !DEBUG
         guard !UserDefaults.standard.bool(forKey: shouldShowOnboardingKey) else { return }
+        #endif
         
         /* LaunchBoarding, not included currently due to being very unfinished... */
-        let page1icon = UIImage(named: "archivebox.fill") ?? UIImage()
+        let page1icon = UIImage(named: "archiveboxfill") ?? UIImage()
         let page1 = LaunchBoardingPage.init(icon: page1icon.withRenderingMode(.alwaysTemplate), title: "Compression Support", descriptionText: "Compress files using LZFSE or other methods for efficient storage and transfer.", showButton: false)
         let page2icon = UIImage(named: "signature") ?? UIImage()
         let page2 = LaunchBoardingPage.init(icon: page2icon.withRenderingMode(.alwaysTemplate), title: "Digital Signatures", descriptionText: "Sign archives with ECDSA-P256 for authenticity and integrity verification.", showButton: false)
@@ -29,7 +31,9 @@ struct LaunchBoardingHelper {
         let config = LaunchBoardingConfiguration.init(pages: [page1, page2, page3])
         config.tintColor = AppColorSchemeManager.current.color
         config.buttonColor = AppColorSchemeManager.current.color
-        config.shouldShowSkipButton = true
+        config.shouldShowSkipButton = false
+        config.showWelcomePage = true
+        config.autoAdvanceWelcomePage = true
         
         let onboarding = LaunchBoardingController.init(configuration: config)
         onboarding.onboardingDelegate = viewController

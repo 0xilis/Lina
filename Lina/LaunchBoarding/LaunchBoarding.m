@@ -6,6 +6,7 @@
 //
 
 #import "LaunchBoarding.h"
+#import <CoreText/CoreText.h>
 
 @implementation LaunchBoardingPage
 
@@ -23,228 +24,119 @@
 
 @end
 
-@implementation LaunchBoardingConfiguration
-
-+ (instancetype)configurationWithPages:(NSArray<LaunchBoardingPage *> *)pages {
-    LaunchBoardingConfiguration *config = [[LaunchBoardingConfiguration alloc] init];
-    config.pages = pages;
-    
-    config.tintColor = [UIColor systemBlueColor];
-    if (@available(iOS 13.0, *)) {
-        config.titleColor = [UIColor labelColor];
-        config.textColor = [UIColor secondaryLabelColor];
-    }
-    config.buttonColor = [UIColor systemBlueColor];
-    config.buttonTextColor = [UIColor whiteColor];
-    config.titleFont = [UIFont systemFontOfSize:28 weight:UIFontWeightBold];
-    config.textFont = [UIFont systemFontOfSize:17 weight:UIFontWeightRegular];
-    config.shouldShowSkipButton = YES;
-    
-    return config;
-}
-
-@end
-
-@interface LaunchBoardingContentViewController : UIViewController
-@property (nonatomic, strong) LaunchBoardingPage *page;
-@property (nonatomic, strong) LaunchBoardingConfiguration *configuration;
+@interface LaunchBoardingBaseContentViewController : UIViewController
 @property (nonatomic, assign) NSInteger pageIndex;
 @end
 
-@interface LaunchBoardingController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
-@property (nonatomic, strong) UIPageControl *pageControl;
-@property (nonatomic, strong) UIButton *skipButton;
-@property (nonatomic, strong) UIButton *continueButton;
-@property (nonatomic, strong) NSArray<LaunchBoardingContentViewController *> *contentViewControllers;
+@implementation LaunchBoardingBaseContentViewController
 @end
 
-@implementation LaunchBoardingController {
-    BOOL _isAnimatingTransition;
-}
+@interface LaunchBoardingWelcomeViewController : LaunchBoardingBaseContentViewController
+@property (nonatomic, strong) LaunchBoardingConfiguration *configuration;
+@property (nonatomic, strong) CAShapeLayer *welcomeLayer;
+@end
 
-- (instancetype)initWithConfiguration:(LaunchBoardingConfiguration *)configuration {
-    self = [super initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
-                    navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
-                                  options:nil];
-    if (self) {
-        _configuration = configuration;
-        [self commonInit];
-    }
-    return self;
-}
+@interface LaunchBoardingController ()
+- (void)advanceFromWelcomePage;
+@end
 
-- (void)commonInit {
-    self.dataSource = self;
-    self.delegate = self;
-    _isAnimatingTransition = NO;
-}
+@implementation LaunchBoardingWelcomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupView];
-    [self createContentViewControllers];
-    [self setupPageControl];
-    [self setupButtons];
+    self.view.backgroundColor = [UIColor clearColor];
     
-    if (self.contentViewControllers.count > 0) {
-        [self setViewControllers:@[self.contentViewControllers.firstObject]
-                      direction:UIPageViewControllerNavigationDirectionForward
-                       animated:NO
-                     completion:nil];
+    UIBezierPath *welcomePath = [self cursivePathForString:@"Welcome"];
+    CGRect pathBounds = CGPathGetBoundingBox(welcomePath.CGPath);
+    
+    self.welcomeLayer = [CAShapeLayer layer];
+    self.welcomeLayer.bounds = pathBounds;
+    self.welcomeLayer.position = self.view.center;
+    self.welcomeLayer.geometryFlipped = YES;
+    self.welcomeLayer.fillColor = [UIColor clearColor].CGColor;
+    if (@available(iOS 13.0, *)) {
+        self.welcomeLayer.strokeColor = [UIColor labelColor].CGColor;
+    } else {
+        self.welcomeLayer.strokeColor = [UIColor blackColor].CGColor;
     }
+    self.welcomeLayer.lineWidth = 4.0;
+    self.welcomeLayer.lineCap = kCALineCapRound;
+    self.welcomeLayer.lineJoin = kCALineJoinRound;
+    self.welcomeLayer.path = welcomePath.CGPath;
+    self.welcomeLayer.strokeEnd = 0.0;
+    
+    [self.view.layer addSublayer:self.welcomeLayer];
 }
 
-- (void)setupView {
-    UIImage *backgroundImage = self.configuration.backgroundImage;
-    if (backgroundImage) {
-        UIImageView *backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
-        backgroundView.contentMode = UIViewContentModeScaleAspectFill;
-        backgroundView.frame = self.view.bounds;
-        [self.view insertSubview:backgroundView atIndex:0];
-    } else {
-        if (@available(iOS 13.0, *)) {
-            self.view.backgroundColor = [UIColor systemBackgroundColor];
-        } else {
-            self.view.backgroundColor = [UIColor whiteColor];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self setupWelcomeAnimation];
+}
+
+- (void)setupWelcomeAnimation {
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    animation.duration = 3.0;
+    animation.fromValue = @0.0;
+    animation.toValue = @1.0;
+    animation.repeatCount = HUGE_VALF;
+    animation.autoreverses = YES;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    
+    [self.welcomeLayer addAnimation:animation forKey:@"strokeEndAnimation"];
+}
+
+- (UIBezierPath *)cursivePathForString:(NSString *)string {
+    CGMutablePathRef letters = CGPathCreateMutable();
+    
+    CTFontRef font = CTFontCreateWithName(CFSTR("Snell Roundhand"), 72, NULL);
+    NSDictionary *attrs = @{(id)kCTFontAttributeName: (__bridge id)font};
+    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:string attributes:attrs];
+    CTLineRef line = CTLineCreateWithAttributedString((CFAttributedStringRef)attrString);
+    
+    CFArrayRef runArray = CTLineGetGlyphRuns(line);
+    for (CFIndex runIndex = 0; runIndex < CFArrayGetCount(runArray); runIndex++) {
+        CTRunRef run = (CTRunRef)CFArrayGetValueAtIndex(runArray, runIndex);
+        CTFontRef runFont = CFDictionaryGetValue(CTRunGetAttributes(run), kCTFontAttributeName);
+        
+        for (CFIndex runGlyphIndex = 0; runGlyphIndex < CTRunGetGlyphCount(run); runGlyphIndex++) {
+            CFRange thisGlyphRange = CFRangeMake(runGlyphIndex, 1);
+            CGGlyph glyph;
+            CGPoint position;
+            CTRunGetGlyphs(run, thisGlyphRange, &glyph);
+            CTRunGetPositions(run, thisGlyphRange, &position);
+            
+            CGPathRef letter = CTFontCreatePathForGlyph(runFont, glyph, NULL);
+            if (letter) {
+                CGAffineTransform t = CGAffineTransformMakeTranslation(position.x, position.y);
+                CGPathAddPath(letters, &t, letter);
+                CGPathRelease(letter);
+            }
         }
     }
-}
-
-- (void)createContentViewControllers {
-    NSMutableArray *controllers = [NSMutableArray array];
-    LaunchBoardingConfiguration *configuration = self.configuration;
-    for (NSInteger i = 0; i < configuration.pages.count; i++) {
-        LaunchBoardingContentViewController *vc = [[LaunchBoardingContentViewController alloc] init];
-        vc.page = configuration.pages[i];
-        vc.configuration = configuration;
-        vc.pageIndex = i;
-        [controllers addObject:vc];
-    }
-    self.contentViewControllers = controllers.copy;
-}
-
-- (void)setupPageControl {
-    UIPageControl *pageControl = [[UIPageControl alloc] init];
-    self.pageControl = pageControl;
-    pageControl.numberOfPages = self.configuration.pages.count;
-    pageControl.currentPage = 0;
-    pageControl.pageIndicatorTintColor = [UIColor systemGrayColor];
-    pageControl.currentPageIndicatorTintColor = self.configuration.tintColor;
-    pageControl.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:pageControl];
     
-    [NSLayoutConstraint activateConstraints:@[
-        [self.pageControl.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
-        [self.pageControl.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-100]
-    ]];
-}
-
-- (void)setupButtons {
-    UIButton *skipButton;
-    if (self.configuration.shouldShowSkipButton) {
-        skipButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        self.skipButton = skipButton;
-        [skipButton setTitle:@"Skip" forState:UIControlStateNormal];
-        [skipButton setTitleColor:self.configuration.textColor forState:UIControlStateNormal];
-        skipButton.titleLabel.font = [UIFont systemFontOfSize:17 weight:UIFontWeightMedium];
-        [skipButton addTarget:self action:@selector(skipTapped) forControlEvents:UIControlEventTouchUpInside];
-        skipButton.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.view addSubview:skipButton];
-    }
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointZero];
+    [path appendPath:[UIBezierPath bezierPathWithCGPath:letters]];
     
-    UIButton *continueButton;
-    continueButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.continueButton = continueButton;
-    [continueButton setTitle:@"Continue" forState:UIControlStateNormal];
-    [continueButton setTitleColor:self.configuration.buttonTextColor forState:UIControlStateNormal];
-    continueButton.backgroundColor = self.configuration.buttonColor;
-    continueButton.titleLabel.font = [UIFont systemFontOfSize:17 weight:UIFontWeightSemibold];
-    continueButton.layer.cornerRadius = 14;
-    continueButton.layer.masksToBounds = YES;
-    [continueButton addTarget:self action:@selector(continueTapped) forControlEvents:UIControlEventTouchUpInside];
-    continueButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:continueButton];
+    CFRelease(line);
+    CFRelease(font);
+    CGPathRelease(letters);
     
-    if (skipButton) {
-        [NSLayoutConstraint activateConstraints:@[
-            [skipButton.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
-            [skipButton.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-20],
-            [continueButton.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
-            [continueButton.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-20],
-            [continueButton.heightAnchor constraintEqualToConstant:50],
-            [continueButton.widthAnchor constraintEqualToConstant:150]
-        ]];
-    } else {
-        [NSLayoutConstraint activateConstraints:@[
-            [continueButton.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
-            [continueButton.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-20],
-            [continueButton.heightAnchor constraintEqualToConstant:50],
-            [continueButton.widthAnchor constraintEqualToConstant:150]
-        ]];
+    return path;
+}
+
+- (void)advanceToNextPage {
+    if ([self.parentViewController isKindOfClass:[LaunchBoardingController class]]) {
+        LaunchBoardingController *parent = (LaunchBoardingController *)self.parentViewController;
+        [parent advanceFromWelcomePage];
     }
 }
 
-- (void)skipTapped {
-    [self.onboardingDelegate onboardingDidSkip];
-}
+@end
 
-- (void)continueTapped {
-    NSInteger currentIndex = ((LaunchBoardingContentViewController *)self.viewControllers.firstObject).pageIndex;
-    if (currentIndex == self.contentViewControllers.count - 1) {
-        [self.onboardingDelegate onboardingDidFinish];
-    } else {
-        LaunchBoardingContentViewController *nextVC = self.contentViewControllers[currentIndex + 1];
-        [self setViewControllers:@[nextVC]
-                      direction:UIPageViewControllerNavigationDirectionForward
-                       animated:YES
-                     completion:nil];
-        self.pageControl.currentPage = currentIndex + 1;
-        [self updateButtonForPage:currentIndex + 1];
-    }
-}
-
-- (void)updateButtonForPage:(NSInteger)pageIndex {
-    if (pageIndex == self.contentViewControllers.count - 1) {
-        [self.continueButton setTitle:@"Get Started" forState:UIControlStateNormal];
-        [self.skipButton setHidden:YES];
-    } else {
-        [self.continueButton setTitle:@"Continue" forState:UIControlStateNormal];
-        [self.skipButton setHidden:NO];
-    }
-}
-
-#pragma mark - PageViewController DataSource & Delegate
-
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
-      viewControllerBeforeViewController:(UIViewController *)viewController {
-    NSInteger currentIndex = ((LaunchBoardingContentViewController *)viewController).pageIndex;
-    if (currentIndex == 0) return nil;
-    return self.contentViewControllers[currentIndex - 1];
-}
-
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
-       viewControllerAfterViewController:(UIViewController *)viewController {
-    NSInteger currentIndex = ((LaunchBoardingContentViewController *)viewController).pageIndex;
-    if (currentIndex == self.contentViewControllers.count - 1) return nil;
-    return self.contentViewControllers[currentIndex + 1];
-}
-
-- (void)pageViewController:(UIPageViewController *)pageViewController
-        didFinishAnimating:(BOOL)finished
-   previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers
-       transitionCompleted:(BOOL)completed {
-    if (completed && !_isAnimatingTransition) {
-        NSInteger currentIndex = ((LaunchBoardingContentViewController *)self.viewControllers.firstObject).pageIndex;
-        self.pageControl.currentPage = currentIndex;
-        [self updateButtonForPage:currentIndex];
-    }
-}
-
-- (void)pageViewController:(UIPageViewController *)pageViewController
-willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
-    _isAnimatingTransition = YES;
-}
-
+@interface LaunchBoardingContentViewController : LaunchBoardingBaseContentViewController
+@property (nonatomic, strong) LaunchBoardingPage *page;
+@property (nonatomic, strong) LaunchBoardingConfiguration *configuration;
 @end
 
 @implementation LaunchBoardingContentViewController
@@ -311,6 +203,247 @@ willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewContro
             [actionButton.widthAnchor constraintEqualToConstant:200],
             [actionButton.heightAnchor constraintEqualToConstant:44]
         ]];
+    }
+}
+
+@end
+
+@implementation LaunchBoardingConfiguration
+
++ (instancetype)configurationWithPages:(NSArray<LaunchBoardingPage *> *)pages {
+    LaunchBoardingConfiguration *config = [[LaunchBoardingConfiguration alloc] init];
+    config.pages = pages;
+    
+    config.tintColor = [UIColor systemBlueColor];
+    if (@available(iOS 13.0, *)) {
+        config.titleColor = [UIColor labelColor];
+        config.textColor = [UIColor secondaryLabelColor];
+    } else {
+        config.titleColor = [UIColor blackColor];
+    }
+    
+    config.buttonColor = [UIColor systemBlueColor];
+    config.buttonTextColor = [UIColor whiteColor];
+    config.titleFont = [UIFont systemFontOfSize:28 weight:UIFontWeightBold];
+    config.textFont = [UIFont systemFontOfSize:17 weight:UIFontWeightRegular];
+    config.shouldShowSkipButton = YES;
+    config.showWelcomePage = NO; /* off by default */
+    config.autoAdvanceWelcomePage = NO;
+    
+    return config;
+}
+
+@end
+
+@interface LaunchBoardingController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@property (nonatomic, strong) UIPageControl *pageControl;
+@property (nonatomic, strong) UIButton *skipButton;
+@property (nonatomic, strong) UIButton *continueButton;
+@property (nonatomic, strong) NSArray<LaunchBoardingBaseContentViewController *> *contentViewControllers;
+@end
+
+@implementation LaunchBoardingController
+
+- (instancetype)initWithConfiguration:(LaunchBoardingConfiguration *)configuration {
+    self = [super initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+                    navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+                                  options:nil];
+    if (self) {
+        _configuration = configuration;
+        [self commonInit];
+    }
+    return self;
+}
+
+- (void)commonInit {
+    self.dataSource = self;
+    self.delegate = self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self setupView];
+    [self createContentViewControllers];
+    [self setupPageControl];
+    [self setupButtons];
+    
+    if (self.contentViewControllers.count > 0) {
+        [self setViewControllers:@[self.contentViewControllers.firstObject]
+                      direction:UIPageViewControllerNavigationDirectionForward
+                       animated:NO
+                     completion:^(BOOL finished) {
+            self.pageControl.currentPage = 0;
+            [self updateButtonForPage:0];
+        }];
+    }
+}
+
+- (void)setupView {
+    UIImage *backgroundImage = self.configuration.backgroundImage;
+    if (backgroundImage) {
+        UIImageView *backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
+        backgroundView.contentMode = UIViewContentModeScaleAspectFill;
+        backgroundView.frame = self.view.bounds;
+        [self.view insertSubview:backgroundView atIndex:0];
+    } else {
+        if (@available(iOS 13.0, *)) {
+            self.view.backgroundColor = [UIColor systemBackgroundColor];
+        } else {
+            self.view.backgroundColor = [UIColor whiteColor];
+        }
+    }
+}
+
+- (void)createContentViewControllers {
+    NSMutableArray *controllers = [NSMutableArray array];
+    LaunchBoardingConfiguration *configuration = self.configuration;
+    
+    if (configuration.showWelcomePage) {
+        LaunchBoardingWelcomeViewController *welcomeVC = [[LaunchBoardingWelcomeViewController alloc] init];
+        welcomeVC.configuration = configuration;
+        welcomeVC.view.frame = self.view.bounds;
+        [controllers addObject:welcomeVC];
+    }
+    
+    for (NSInteger i = 0; i < configuration.pages.count; i++) {
+        LaunchBoardingContentViewController *vc = [[LaunchBoardingContentViewController alloc] init];
+        vc.page = configuration.pages[i];
+        vc.configuration = configuration;
+        [controllers addObject:vc];
+    }
+    
+    for (NSInteger i = 0; i < controllers.count; i++) {
+        LaunchBoardingBaseContentViewController *vc = (LaunchBoardingBaseContentViewController *)controllers[i];
+        vc.pageIndex = i;
+    }
+    
+    self.contentViewControllers = controllers.copy;
+}
+
+- (void)setupPageControl {
+    UIPageControl *pageControl = [[UIPageControl alloc] init];
+    self.pageControl = pageControl;
+    pageControl.numberOfPages = self.contentViewControllers.count;
+    pageControl.currentPage = 0;
+    pageControl.pageIndicatorTintColor = [UIColor systemGrayColor];
+    pageControl.currentPageIndicatorTintColor = self.configuration.tintColor;
+    pageControl.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:pageControl];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [self.pageControl.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+        [self.pageControl.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-100]
+    ]];
+}
+
+- (void)setupButtons {
+    if (self.configuration.shouldShowSkipButton) {
+        self.skipButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        [self.skipButton setTitle:@"Skip" forState:UIControlStateNormal];
+        [self.skipButton setTitleColor:self.configuration.textColor forState:UIControlStateNormal];
+        self.skipButton.titleLabel.font = [UIFont systemFontOfSize:17 weight:UIFontWeightMedium];
+        [self.skipButton addTarget:self action:@selector(skipTapped) forControlEvents:UIControlEventTouchUpInside];
+        self.skipButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.view addSubview:self.skipButton];
+    }
+    
+    self.continueButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.continueButton setTitle:@"Continue" forState:UIControlStateNormal];
+    [self.continueButton setTitleColor:self.configuration.buttonTextColor forState:UIControlStateNormal];
+    self.continueButton.backgroundColor = self.configuration.buttonColor;
+    self.continueButton.titleLabel.font = [UIFont systemFontOfSize:17 weight:UIFontWeightSemibold];
+    self.continueButton.layer.cornerRadius = 14;
+    self.continueButton.layer.masksToBounds = YES;
+    [self.continueButton addTarget:self action:@selector(continueTapped) forControlEvents:UIControlEventTouchUpInside];
+    self.continueButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.continueButton];
+    
+    if (self.skipButton) {
+        [NSLayoutConstraint activateConstraints:@[
+            [self.skipButton.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
+            [self.skipButton.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-20],
+            [self.continueButton.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
+            [self.continueButton.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-20],
+            [self.continueButton.heightAnchor constraintEqualToConstant:50],
+            [self.continueButton.widthAnchor constraintEqualToConstant:150]
+        ]];
+    } else {
+        [NSLayoutConstraint activateConstraints:@[
+            [self.continueButton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+            [self.continueButton.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-20],
+            [self.continueButton.heightAnchor constraintEqualToConstant:50],
+            [self.continueButton.widthAnchor constraintEqualToConstant:150]
+        ]];
+    }
+}
+
+- (void)skipTapped {
+    [self.onboardingDelegate onboardingDidSkip];
+}
+
+- (void)continueTapped {
+    NSInteger currentIndex = ((LaunchBoardingContentViewController *)self.viewControllers.firstObject).pageIndex;
+    if (currentIndex == self.contentViewControllers.count - 1) {
+        [self.onboardingDelegate onboardingDidFinish];
+    } else {
+        LaunchBoardingBaseContentViewController *nextVC = self.contentViewControllers[currentIndex + 1];
+        [self setViewControllers:@[nextVC]
+                      direction:UIPageViewControllerNavigationDirectionForward
+                       animated:YES
+                     completion:nil];
+        self.pageControl.currentPage = currentIndex + 1;
+        [self updateButtonForPage:currentIndex + 1];
+    }
+}
+
+- (void)advanceFromWelcomePage {
+    if (self.contentViewControllers.count > 1) {
+        [self setViewControllers:@[self.contentViewControllers[1]]
+                      direction:UIPageViewControllerNavigationDirectionForward
+                       animated:YES
+                     completion:nil];
+        self.pageControl.currentPage = 1;
+        [self updateButtonForPage:1];
+    }
+}
+
+- (void)updateButtonForPage:(NSInteger)pageIndex {
+    self.continueButton.hidden = NO;
+    self.pageControl.hidden = NO;
+    
+    if (pageIndex == self.contentViewControllers.count - 1) {
+        [self.continueButton setTitle:@"Get Started" forState:UIControlStateNormal];
+        self.skipButton.hidden = YES;
+    } else {
+        [self.continueButton setTitle:@"Continue" forState:UIControlStateNormal];
+        self.skipButton.hidden = !self.configuration.shouldShowSkipButton;
+    }
+}
+
+#pragma mark - PageViewController DataSource & Delegate
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+      viewControllerBeforeViewController:(UIViewController *)viewController {
+    NSInteger currentIndex = ((LaunchBoardingBaseContentViewController *)viewController).pageIndex;
+    if (currentIndex == 0) return nil;
+    return self.contentViewControllers[currentIndex - 1];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+       viewControllerAfterViewController:(UIViewController *)viewController {
+    NSInteger currentIndex = ((LaunchBoardingBaseContentViewController *)viewController).pageIndex;
+    if (currentIndex == self.contentViewControllers.count - 1) return nil;
+    return self.contentViewControllers[currentIndex + 1];
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController
+        didFinishAnimating:(BOOL)finished
+   previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers
+       transitionCompleted:(BOOL)completed {
+    if (completed) {
+        NSInteger currentIndex = ((LaunchBoardingBaseContentViewController *)self.viewControllers.firstObject).pageIndex;
+        self.pageControl.currentPage = currentIndex;
+        [self updateButtonForPage:currentIndex];
     }
 }
 

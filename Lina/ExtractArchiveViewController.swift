@@ -69,7 +69,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         if #available(iOS 13, *) {
             iconView.image = UIImage(systemName: "archivebox.fill") ?? UIImage()
         } else {
-            if let originalImage = UIImage(named: "archivebox.fill") {
+            if let originalImage = UIImage(named: "archiveboxfill") {
                 let tintedImage = originalImage.withRenderingMode(.alwaysTemplate)
                 iconView.image = tintedImage
             }

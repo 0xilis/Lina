@@ -651,7 +651,7 @@
 				);
 				INFOPLIST_FILE = Lina/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Lina;
-				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = NO;
 				INFOPLIST_KEY_NSSiriUsageDescription = "App needs Siri access for Siri Shortcuts actions.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -667,7 +667,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Lina/Libraries",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -704,7 +704,7 @@
 				);
 				INFOPLIST_FILE = Lina/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Lina;
-				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = NO;
 				INFOPLIST_KEY_NSSiriUsageDescription = "App needs Siri access for Siri Shortcuts actions.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -720,7 +720,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Lina/Libraries",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Lina Distribution Certificate (22/05/2025)";
@@ -764,7 +764,7 @@
 					"$(PROJECT_DIR)/Lina/Libraries/Simulator",
 					"$(PROJECT_DIR)/Lina/Libraries/macosx-x86_64",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
@@ -808,7 +808,7 @@
 					"$(PROJECT_DIR)/Lina/Libraries/Simulator",
 					"$(PROJECT_DIR)/Lina/Libraries/macosx-x86_64",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
@@ -839,6 +839,7 @@
 				);
 				INFOPLIST_FILE = LinaIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LinaIntents;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -852,7 +853,7 @@
 					"$(PROJECT_DIR)/Lina/Libraries/NeoAppleArchive.framework",
 					"$(PROJECT_DIR)/Lina/Libraries/Simulator-debug",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina.LinaIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -883,6 +884,7 @@
 				);
 				INFOPLIST_FILE = LinaIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LinaIntents;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -896,7 +898,7 @@
 					"$(PROJECT_DIR)/Lina/Libraries/NeoAppleArchive.framework",
 					"$(PROJECT_DIR)/Lina/Libraries/Simulator-debug",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina.LinaIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Lina Intests Distribution Profile (28/05/2025)";

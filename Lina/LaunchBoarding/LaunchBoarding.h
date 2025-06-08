@@ -12,7 +12,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class LaunchBoardingPage;
+@class LaunchBoardingConfiguration;
+@class LaunchBoardingController;
+
+@protocol LaunchBoardingDelegate <NSObject>
+@optional
+- (void)onboardingDidFinish;
+- (void)onboardingDidSkip;
+@end
+
 @interface LaunchBoardingPage : NSObject
+
 @property (nonatomic, strong) UIImage *icon;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *descriptionText;
@@ -22,10 +33,14 @@ NS_ASSUME_NONNULL_BEGIN
                        title:(NSString *)title
              descriptionText:(NSString *)descriptionText
                   showButton:(BOOL)showButton;
+
 @end
 
 @interface LaunchBoardingConfiguration : NSObject
-@property (nonatomic, copy) NSArray<LaunchBoardingPage *> *pages;
+
+@property (nonatomic, strong) NSArray<LaunchBoardingPage *> *pages;
+@property (nonatomic, strong) UIImage *backgroundImage;
+
 @property (nonatomic, strong) UIColor *tintColor;
 @property (nonatomic, strong) UIColor *titleColor;
 @property (nonatomic, strong) UIColor *textColor;
@@ -33,22 +48,22 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIColor *buttonTextColor;
 @property (nonatomic, strong) UIFont *titleFont;
 @property (nonatomic, strong) UIFont *textFont;
-@property (nonatomic, strong) UIImage *backgroundImage;
+
 @property (nonatomic, assign) BOOL shouldShowSkipButton;
+@property (nonatomic, assign) BOOL showWelcomePage;
+@property (nonatomic, assign) BOOL autoAdvanceWelcomePage;
 
 + (instancetype)configurationWithPages:(NSArray<LaunchBoardingPage *> *)pages;
-@end
 
-@protocol LaunchBoardingDelegate <NSObject>
-- (void)onboardingDidFinish;
-- (void)onboardingDidSkip;
 @end
 
 @interface LaunchBoardingController : UIPageViewController
+
 @property (nonatomic, strong) LaunchBoardingConfiguration *configuration;
 @property (nonatomic, weak) id<LaunchBoardingDelegate> onboardingDelegate;
 
 - (instancetype)initWithConfiguration:(LaunchBoardingConfiguration *)configuration;
+
 @end
 
 NS_ASSUME_NONNULL_END
