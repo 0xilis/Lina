@@ -40,3 +40,9 @@ libNeoAppleArchive = LNAA, LNAA sounds like Lina, so I chose Lina.
 - [ ] Add support for all AEAProfile types (Extraction can currently be done but creation needs libNeoAppleArchive updates).
 - [ ] Add support for all compression types (Needs libNeoAppleArchive updates).
 - [ ] OS X native app, or at least a Catalyst one.
+- [ ] URL schemes.
+
+### Cool Ideas, but not Currently Planned:
+
+- iOS 12 support with Siri Shortcut actions. This would be neat and we already support iOS 13 so this would be the last version we need to support, which would be awesome to support every version of Siri Shortcuts, but this is honestly just too hard for me. For iOS 12 I probably will support using x-callback URL schemes in Shortcuts in the future so it will have some functionality with iOS 12 Shortcuts, even if not ideal.
+- Creating ECDSA-P256 key pairs in the app itself. This would be convenient for users so they can instantly generate keys to sign their AEAs with natively in the app itself rather than going to somewhere else and needing extra work, however I do not plan to add this because to be honest I'm not sure of a great way to make a easy to understand UI for this, and it's too much work for something that the user can already do using other tools. If someone else wants to implement this however, feel free!
