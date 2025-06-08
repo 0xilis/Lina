@@ -9,6 +9,7 @@ import UIKit
 import NeoAppleArchive
 import MobileCoreServices
 import Foundation
+import LaunchBoarding
 
 class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, LaunchBoardingDelegate {
     
@@ -54,12 +55,12 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
         }
         
         super.viewWillAppear(animated)
-        
-        LaunchBoardingHelper.showOnboardingIfNeeded(in: self)
     }
     
     private func setupViews() {
         title = "Create"
+        
+        LaunchBoardingHelper.showOnboardingIfNeeded(in: self)
         
         let container = UIView()
         if #available(iOS 13.0, *) {

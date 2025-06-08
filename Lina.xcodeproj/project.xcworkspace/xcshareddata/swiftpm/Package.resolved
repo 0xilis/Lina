@@ -1,12 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "uionboarding",
+      "identity" : "launchboarding",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/lascic/UIOnboarding",
+      "location" : "https://github.com/0xilis/LaunchBoarding",
       "state" : {
-        "branch" : "main",
-        "revision" : "88d304a0a78b608fd993c9065bb86631f962aaf9"
+        "branch" : "master",
+        "revision" : "a36c9e383091dc5285f4debf1ad4f8e0a9fd7271"
       }
     }
   ],
