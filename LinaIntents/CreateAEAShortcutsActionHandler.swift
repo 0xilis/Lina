@@ -134,6 +134,8 @@ func handleAEAError(_ error: AEAProfile0Handler_Intents.AEAError) -> String {
         message = "Unsupported AEA profile (Currently only AEAProfile 0 is supported)"
     case .extractionFailed:
         message = "Failed to extract archive"
+    case .invalidPublicKey:
+        message = "Public key must be 65 bytes (Raw X9.63 ECDSA-P256)"
     }
     return message
 }

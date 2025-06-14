@@ -39,6 +39,7 @@
 				<string>CreateAEAIntent</string>
 				<string>ExtractAARIntent</string>
 				<string>ExtractAEAIntent</string>
+				<string>VerifyAEAIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>

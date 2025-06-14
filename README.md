@@ -33,7 +33,10 @@ libNeoAppleArchive = LNAA, LNAA sounds like Lina, so I chose Lina.
 - [ ] Figure out documentation for App Encryption for release in France.
 - [ ] Translators, primarily ones for French.
 - [x] Update NeoAppleArchive.framework.
-- [ ] Add new "Verify AEA" shortcuts action.
+- [x] Add new "Verify AEA" shortcuts action.
+- [ ] Ensure Voice Over support throughout the app for Accessibility.
+- [ ] Add Voice Control support for Accessibility.
+- [ ] Look into more Accessibility features to support.
 
 ### Future Releases
 

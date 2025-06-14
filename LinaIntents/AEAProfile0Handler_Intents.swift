@@ -75,6 +75,28 @@ class AEAProfile0Handler_Intents {
         return Data(bytes: extractedData, count: outSize)
     }
     
+    static func verifyAEA(aeaURL: URL, keyURL: URL) throws -> Bool {
+        let keyData = try Data(contentsOf: keyURL)
+        guard keyData.count == 65, keyData.first == 0x04 else {
+            throw AEAError.invalidPublicKey
+        }
+        
+        let aea = neo_aea_with_path(aeaURL.path)
+        guard aea != nil else {
+            throw AEAError.invalidArchive
+        }
+        
+        let verificationResult = keyData.withUnsafeBytes { keyPtr in
+            neo_aea_verify(aea, UnsafeMutableRawPointer(mutating: keyPtr.baseAddress!.assumingMemoryBound(to: UInt8.self)))
+        }
+        
+        if verificationResult == 0 {
+            return true
+        }
+        
+        return false
+    }
+    
     enum AEAError: Error {
         case invalidKeySize
         case invalidKeyFormat
@@ -82,5 +104,6 @@ class AEAProfile0Handler_Intents {
         case invalidArchive
         case unsupportedProfile
         case extractionFailed
+        case invalidPublicKey
     }
 }

@@ -44,6 +44,8 @@ class IntentHandler: INExtension {
             return CreateAEAShortcutsActionHandler()
         case is ExtractAEAIntent:
             return ExtractAEAShortcutsActionHandler()
+        case is VerifyAEAIntent:
+            return VerifyAEAShortcutsActionHandler()
         default:
             fatalError("No handler for this intent")
         }
