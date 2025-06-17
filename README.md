@@ -29,11 +29,13 @@ libNeoAppleArchive = LNAA, LNAA sounds like Lina, so I chose Lina.
 ### Next Release (1.1):
 
 - [x] Support iOS 11 and iOS 12.
+- [ ] Test out iOS 10 armv7 support.
 - [x] Migrate from UIOnboarding to new LaunchBoarding framework.
 - [ ] Figure out documentation for App Encryption for release in France.
 - [ ] Translators, primarily ones for French.
 - [x] Update NeoAppleArchive.framework.
 - [x] Add new "Verify AEA" shortcuts action.
+- [ ] macOS Catalyst App
 - [ ] Ensure Voice Over support throughout the app for Accessibility.
 - [ ] Add Voice Control support for Accessibility.
 - [ ] Look into more Accessibility features to support.
@@ -43,7 +45,6 @@ libNeoAppleArchive = LNAA, LNAA sounds like Lina, so I chose Lina.
 - [ ] Add support for all AEAProfile types (Extraction can currently be done but creation needs libNeoAppleArchive updates).
 - [ ] Add option for dark mode in iOS 11/12 app.
 - [ ] Add support for all compression types (Needs libNeoAppleArchive updates).
-- [ ] OS X native app, or at least a Catalyst one.
 - [ ] URL schemes.
 
 ### Cool Ideas, but not Currently Planned:

@@ -165,7 +165,9 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
     private func setupDocumentPickers() {
         directoryPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeFolder as String], in: .open)
         directoryPicker.delegate = self
-        directoryPicker.allowsMultipleSelection = false
+        if #available(iOS 11.0, *) {
+            directoryPicker.allowsMultipleSelection = false
+        }
     }
     
     @objc private func pressedCreateArchive() {
