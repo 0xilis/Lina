@@ -46,7 +46,7 @@ class CreditsViewController: UIViewController {
         } else {
             view.backgroundColor = .white
         }
-        title = "Credits"
+        title = trans("Credits")
         
         scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -113,7 +113,7 @@ class CreditsViewController: UIViewController {
         }
         
         let descriptionLabel = UILabel()
-        descriptionLabel.text = "Create and extract AAR/AEA archives using libNeoAppleArchive. Sign and verify archives with ECDSA-P256 keys."
+        descriptionLabel.text = trans("Create and extract AAR/AEA archives using libNeoAppleArchive. Sign and verify archives with ECDSA-P256 keys.")
         descriptionLabel.numberOfLines = 0
         descriptionLabel.textAlignment = .center
         descriptionLabel.font = .preferredFont(forTextStyle: .body)
@@ -133,7 +133,7 @@ class CreditsViewController: UIViewController {
         
         let sourceCodeCard = createCard()
         let sourceCodeButton = UIButton(type: .system)
-        sourceCodeButton.setTitle("View Source Code", for: .normal)
+        sourceCodeButton.setTitle(trans("View Source Code"), for: .normal)
         sourceCodeButton.addTarget(self, action: #selector(openSourceCode), for: .touchUpInside)
         sourceCodeButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .medium)
         sourceCodeButton.translatesAutoresizingMaskIntoConstraints = false
@@ -162,7 +162,7 @@ class CreditsViewController: UIViewController {
         colorSchemeStack.spacing = 16
         
         let colorSchemeTitle = UILabel()
-        colorSchemeTitle.text = "App Color Scheme"
+        colorSchemeTitle.text = trans("App Color Scheme")
         colorSchemeTitle.font = .systemFont(ofSize: 18, weight: .semibold)
         
         let buttonContainer = UIView()
@@ -221,7 +221,7 @@ class CreditsViewController: UIViewController {
         creditsStack.spacing = 20
         
         let creditsTitle = UILabel()
-        creditsTitle.text = "Credits"
+        creditsTitle.text = trans("Credits")
         creditsTitle.font = .systemFont(ofSize: 18, weight: .semibold)
         creditsStack.addArrangedSubview(creditsTitle)
         
@@ -232,7 +232,7 @@ class CreditsViewController: UIViewController {
         let firstUserView = createUserCard(
             imageName: "snoolie_pfp_Lina",
             name: "0xilis",
-            role: "Main Developer"
+            role: trans("Main Developer")
         )
         addTapGesture(to: firstUserView, with: "0xilis")
         usersStack.addArrangedSubview(firstUserView)
@@ -240,7 +240,7 @@ class CreditsViewController: UIViewController {
         let secondUserView = createUserCard(
             imageName: "plx_pfp_Lina",
             name: "justtryingthingsout",
-            role: "Core Contributor"
+            role: trans("Core Contributor")
         )
         addTapGesture(to: secondUserView, with: "justtryingthingsout")
         usersStack.addArrangedSubview(secondUserView)
@@ -248,7 +248,7 @@ class CreditsViewController: UIViewController {
         let thirdUserView = createUserCard(
             imageName: "ade_pfp_Lina",
             name: "AdelaideSky",
-            role: "Miscellaneous"
+            role: trans("Miscellaneous")
         )
         addTapGesture(to: thirdUserView, with: "AdelaideSky")
         usersStack.addArrangedSubview(thirdUserView)
@@ -256,7 +256,7 @@ class CreditsViewController: UIViewController {
         creditsStack.addArrangedSubview(usersStack)
         
         let thanksLabel = UILabel()
-        thanksLabel.text = "...and thanks to users like you!"
+        thanksLabel.text = trans("...and thanks to users like you!")
         thanksLabel.font = .systemFont(ofSize: 14, weight: .regular)
         thanksLabel.textAlignment = .center
         if #available(iOS 13.0, *) {
@@ -276,7 +276,7 @@ class CreditsViewController: UIViewController {
         #if DEBUG || TESTFLIGHT
         let resetCard = createCard()
         let resetButton = UIButton(type: .system)
-        resetButton.setTitle("Reset Onboarding", for: .normal)
+        resetButton.setTitle(trans("Reset Onboarding"), for: .normal)
         resetButton.makePrimaryActionButton()
         resetButton.addTarget(self, action: #selector(resetOnboarding), for: .touchUpInside)
         resetButton.translatesAutoresizingMaskIntoConstraints = false
@@ -437,7 +437,7 @@ class CreditsViewController: UIViewController {
     #if DEBUG || TESTFLIGHT
     @objc private func resetOnboarding() {
         LaunchBoardingHelper.resetOnboarding()
-        self.showAlert(title: "Onboarding Reset", message: "Will show on next launch.")
+        self.showAlert(title: trans("Onboarding Reset"), message: trans("Will show on next launch."))
     }
     #endif
     

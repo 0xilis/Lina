@@ -46,7 +46,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     private func setupViews() {
-        title = "Extract"
+        title = trans("Extract")
         
         let container = UIView()
         if #available(iOS 13.0, *) {
@@ -79,7 +79,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         self.iconView = iconView
         
         let infoLabel = UILabel()
-        infoLabel.text = "Extract .aea, .aar, and .yaa files."
+        infoLabel.text = trans("Extract .aea, .aar, and .yaa files.")
         infoLabel.textAlignment = .center
         infoLabel.numberOfLines = 0
         if #available(iOS 13.0, *) {
@@ -88,7 +88,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         infoLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         
         let extractButton = UIButton(type: .system)
-        extractButton.setTitle("Extract Archive", for: .normal)
+        extractButton.setTitle(trans("Extract Archive"), for: .normal)
         extractButton.makePrimaryActionButton()
         extractButton.addTarget(self, action: #selector(pressedExtractArchive), for: .touchUpInside)
         self.extractButton = extractButton
@@ -141,7 +141,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
     
     private func extractArchive() {
         guard let archiveURL = selectedArchiveURL else {
-            showAlert(title: "Error", message: "Please select an archive first.")
+            showAlert(title: trans("Error"), message: trans("Please select an archive first."))
             return
         }
         
@@ -154,7 +154,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         let securityAccessGranted = archiveURL.startAccessingSecurityScopedResource()
         
         guard securityAccessGranted else {
-            showAlert(title: "Access Error", message: "Could not access selected files.")
+            showAlert(title: trans("Error"), message: trans("Could not access selected files."))
             return
         }
         
@@ -168,14 +168,14 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
                 let extractedData = try AEAProfile0Handler.extractAEA(aeaURL: archiveURL)
                 // Assume AEA output is AAR even though thats not always the case...
                 let outputPath = FileManager.default.temporaryDirectory
-                .appendingPathComponent("Extracted.aar")
+                .appendingPathComponent(trans("Extracted.aar"))
                         
                 try extractedData.write(to: outputPath)
                 showSuccess(outputDirectory: outputPath)
             } catch let error as AEAProfile0Handler.AEAError {
                 handleAEAError(error)
             } catch {
-                self.showAlert(title: "Error", message: error.localizedDescription)
+                self.showAlert(title: trans("Error"), message: error.localizedDescription)
             }
         } else if pathExtension == "aar" || pathExtension == "yaa" {
                 
@@ -185,7 +185,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
                 archiveURL.stopAccessingSecurityScopedResource()
                 self.progressView.isHidden = true
                 DispatchQueue.main.async {
-                    self.showAlert(title: "Error", message: "Failed to create directory at \(outputDirectory)")
+                    self.showAlert(title: trans("Error"), message: "Failed to create directory at \(outputDirectory)")
                     return
                 }
                 return
@@ -195,7 +195,7 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
             if (isReadable == false) {
                 archiveURL.stopAccessingSecurityScopedResource()
                 DispatchQueue.main.async {
-                    self.showAlert(title: "Error", message: "archiveURL.path is not readable (\(archiveURL.path)).")
+                    self.showAlert(title: trans("Error"), message: "archiveURL.path is not readable (\(archiveURL.path)).")
                     return
                 }
                 return
@@ -215,13 +215,13 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
                     self.progressView.isHidden = true
                     let errorMessage = "neo_aa_extract_aar_to_path_err returned code: \(errorCode)." +
                                     (stderrOutput.map { " Stderr: \($0)" } ?? "")
-                    self.showAlert(title: "Error", message: errorMessage)
+                    self.showAlert(title: trans("Error"), message: errorMessage)
                 }
             }
 
         } else {
             self.progressView.isHidden = true
-            showAlert(title: "Error", message: "File is not AEA or AAR!")
+            showAlert(title: trans("Error"), message: trans("File is not AEA or AAR!"))
         }
         
         archiveURL.stopAccessingSecurityScopedResource()
@@ -231,30 +231,30 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
         let message: String
         switch error {
         case .invalidKeySize:
-            message = "Private key must be 97 bytes (Raw X9.63 ECDSA-P256)."
+            message = trans("Private key must be 97 bytes (Raw X9.63 ECDSA-P256).")
         case .invalidKeyFormat:
-            message = "Invalid ECDSA-P256 key format (Needs Raw X9.63 ECDSA-P256)."
+            message = trans("Invalid ECDSA-P256 key format (Needs Raw X9.63 ECDSA-P256).")
         case .signingFailed:
-            message = "Failed to sign archive."
+            message = trans("Failed to sign archive.")
         case .invalidArchive:
-            message = "Invalid AAR file."
+            message = trans("Invalid AAR file.")
         case .unsupportedProfile:
-            message = "Unsupported AEA profile (Currently only AEAProfile 0 is supported)."
+            message = trans("Unsupported AEA profile.")
         case .extractionFailed:
-            message = "Failed to extract archive."
+            message = trans("Failed to extract archive.")
         }
-        showAlert(title: "Error", message: message)
+        showAlert(title: trans("Error"), message: message)
     }
     
     private func showSuccess(outputDirectory: URL) {
         let alert = UIAlertController(
-            title: "Extraction Complete!",
+            title: trans("Extraction Complete!"),
             message: "Files extracted to \(outputDirectory.lastPathComponent)",
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        alert.addAction(UIAlertAction(title: "View Files", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: trans("OK"), style: .default))
+        alert.addAction(UIAlertAction(title: trans("View Files"), style: .default) { _ in
             self.presentFileBrowser(at: outputDirectory)
         })
         

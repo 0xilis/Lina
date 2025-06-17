@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		B014C5532DFCC33E00706877 /* VerifyAEAShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B014C5522DFCC33E00706877 /* VerifyAEAShortcutsActionHandler.swift */; };
+		B01E10EA2E00CE6300610310 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B01E10ED2E00CE6300610310 /* Localizable.strings */; };
+		B01E10EB2E00CE6300610310 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B01E10ED2E00CE6300610310 /* Localizable.strings */; };
+		B01E10EE2E00D07800610310 /* libNeoAppleArchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; };
+		B01E10F12E00D07D00610310 /* libNeoAppleArchive.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B0271F1E2DD974B80085EF03 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0271F1D2DD974B80085EF03 /* CreditsViewController.swift */; };
 		B0271F1F2DD974B80085EF03 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0271F1D2DD974B80085EF03 /* CreditsViewController.swift */; };
 		B0271F212DDA56CD0085EF03 /* LaunchBoardingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0271F202DDA56CD0085EF03 /* LaunchBoardingHelper.swift */; };
@@ -16,7 +20,6 @@
 		B0271F2A2DDA98EC0085EF03 /* AEAProfile0Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0271F282DDA98EC0085EF03 /* AEAProfile0Handler.swift */; };
 		B03C700A2DEF8AD200FAF77D /* AppColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C70092DEF8AD100FAF77D /* AppColorSchemeManager.swift */; };
 		B03C700B2DEF8AD200FAF77D /* AppColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C70092DEF8AD100FAF77D /* AppColorSchemeManager.swift */; };
-		B05A6E0B2DFCC97000C86BAE /* NeoAppleArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; };
 		B0626DA52DE6743D0012B7F9 /* NeoAppleArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; };
 		B0626DA62DE6743D0012B7F9 /* NeoAppleArchive.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B075939F2DE6A7BB000C7977 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B0626DA82DE690830012B7F9 /* Intents.intentdefinition */; };
@@ -67,6 +70,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		B01E10F22E00D07D00610310 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B01E10F12E00D07D00610310 /* libNeoAppleArchive.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B0626DA72DE6743D0012B7F9 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,6 +129,7 @@
 
 /* Begin PBXFileReference section */
 		B014C5522DFCC33E00706877 /* VerifyAEAShortcutsActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAEAShortcutsActionHandler.swift; sourceTree = "<group>"; };
+		B01E10EC2E00CE6300610310 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B0271F1D2DD974B80085EF03 /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		B0271F202DDA56CD0085EF03 /* LaunchBoardingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchBoardingHelper.swift; sourceTree = "<group>"; };
 		B0271F282DDA98EC0085EF03 /* AEAProfile0Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEAProfile0Handler.swift; sourceTree = "<group>"; };
@@ -176,7 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */,
-				B05A6E0B2DFCC97000C86BAE /* NeoAppleArchive.framework in Frameworks */,
+				B01E10EE2E00D07800610310 /* libNeoAppleArchive.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +258,7 @@
 				B0271F282DDA98EC0085EF03 /* AEAProfile0Handler.swift */,
 				B0E9ADDD2DEEA5D600A32EF6 /* VerifyAEAViewController.swift */,
 				B03C70092DEF8AD100FAF77D /* AppColorSchemeManager.swift */,
+				B01E10ED2E00CE6300610310 /* Localizable.strings */,
 			);
 			path = Lina;
 			sourceTree = "<group>";
@@ -342,6 +358,7 @@
 				B098701F2DE7815D007F64B5 /* Sources */,
 				B09870202DE7815D007F64B5 /* Frameworks */,
 				B09870212DE7815D007F64B5 /* Resources */,
+				B01E10F22E00D07D00610310 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -406,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B08D03BC2DD920C3003847D7 /* LaunchScreen.storyboard in Resources */,
+				B01E10EA2E00CE6300610310 /* Localizable.strings in Resources */,
 				B08D03B92DD920C3003847D7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B08D03E42DD92E57003847D7 /* LaunchScreen.storyboard in Resources */,
+				B01E10EB2E00CE6300610310 /* Localizable.strings in Resources */,
 				B08D03E52DD92E57003847D7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,6 +511,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B01E10ED2E00CE6300610310 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B01E10EC2E00CE6300610310 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		B08D03BA2DD920C3003847D7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -508,6 +535,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -569,6 +597,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -629,7 +658,7 @@
 				CODE_SIGN_ENTITLEMENTS = Lina/Lina.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RR5WP5NG77;
 				ENABLE_BITCODE = NO;
@@ -682,7 +711,7 @@
 				CODE_SIGN_ENTITLEMENTS = Lina/Lina.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RR5WP5NG77;
 				ENABLE_BITCODE = NO;
@@ -733,7 +762,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Lina Simulator.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = RR5WP5NG77;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -777,7 +806,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Lina Simulator.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = RR5WP5NG77;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -818,7 +847,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = RR5WP5NG77;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -863,7 +892,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = RR5WP5NG77;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

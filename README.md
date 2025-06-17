@@ -41,6 +41,7 @@ libNeoAppleArchive = LNAA, LNAA sounds like Lina, so I chose Lina.
 ### Future Releases
 
 - [ ] Add support for all AEAProfile types (Extraction can currently be done but creation needs libNeoAppleArchive updates).
+- [ ] Add option for dark mode in iOS 11/12 app.
 - [ ] Add support for all compression types (Needs libNeoAppleArchive updates).
 - [ ] OS X native app, or at least a Catalyst one.
 - [ ] URL schemes.

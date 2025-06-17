@@ -36,7 +36,7 @@ class VerifyAEAViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     private func setupViews() {
-        title = "Verify"
+        title = trans("Verify")
         
         let container = UIView()
         if #available(iOS 13.0, *) {
@@ -66,7 +66,7 @@ class VerifyAEAViewController: UIViewController, UIDocumentPickerDelegate {
         self.iconView = iconView
         
         let infoLabel = UILabel()
-        infoLabel.text = "Verify the signature of .aea files using ECDSA-P256 public keys."
+        infoLabel.text = trans("Verify the signature of .aea files using ECDSA-P256 public keys.")
         infoLabel.textAlignment = .center
         infoLabel.numberOfLines = 0
         if #available(iOS 13.0, *) {
@@ -75,7 +75,7 @@ class VerifyAEAViewController: UIViewController, UIDocumentPickerDelegate {
         infoLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         
         let verifyButton = UIButton(type: .system)
-        verifyButton.setTitle("Verify AEA", for: .normal)
+        verifyButton.setTitle(trans("Verify AEA"), for: .normal)
         verifyButton.makePrimaryActionButton()
         verifyButton.addTarget(self, action: #selector(pressedVerifyAEA), for: .touchUpInside)
         self.verifyButton = verifyButton
@@ -120,12 +120,12 @@ class VerifyAEAViewController: UIViewController, UIDocumentPickerDelegate {
     
     private func verifyAEA() {
         guard let aeaURL = selectedAEAURL else {
-            showAlert(title: "Error", message: "Please select an AEA file first.")
+            showAlert(title: trans("Error"), message: trans("Please select an AEA file first."))
             return
         }
         
         guard let keyURL = selectedKeyURL else {
-            showAlert(title: "Error", message: "Please select a public key file.")
+            showAlert(title: trans("Error"), message: trans("Please select a public key file."))
             return
         }
         
@@ -140,13 +140,13 @@ class VerifyAEAViewController: UIViewController, UIDocumentPickerDelegate {
         do {
             let keyData = try Data(contentsOf: keyURL)
             guard keyData.count == 65, keyData.first == 0x04 else {
-                showAlert(title: "Invalid Key", message: "Public key must be 65 bytes starting with 0x04 (uncompressed X9.63 format).")
+                showAlert(title: trans("Error (Invalid Key)"), message: trans("Public key must be 65 bytes starting with 0x04 (Raw X9.63 ECDSA-P256)."))
                 return
             }
             
             let aea = neo_aea_with_path(aeaURL.path)
             guard aea != nil else {
-                showAlert(title: "Invalid Archive", message: "Could not open AEA file.")
+                showAlert(title: trans("Error"), message: trans("Could not open AEA file."))
                 return
             }
             
@@ -155,12 +155,12 @@ class VerifyAEAViewController: UIViewController, UIDocumentPickerDelegate {
             }
             
             if verificationResult == 0 {
-                showAlert(title: "Verification Successful", message: "The AEA file is authentic and valid.", isSuccess: true)
+                showAlert(title: trans("Verification Successful"), message: trans("The AEA file is authentic and valid."), isSuccess: true)
             } else {
-                showAlert(title: "Verification Failed", message: "The signature is invalid or the file has been tampered with.")
+                showAlert(title: trans("Verification Failed"), message: trans("The signature is invalid or the file has been tampered with."))
             }
         } catch {
-            showAlert(title: "Error", message: error.localizedDescription)
+            showAlert(title: trans("Error"), message: error.localizedDescription)
         }
     }
     

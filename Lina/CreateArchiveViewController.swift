@@ -58,7 +58,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
     }
     
     private func setupViews() {
-        title = "Create"
+        title = trans("Create")
         
         LaunchBoardingHelper.showOnboardingIfNeeded(in: self)
         
@@ -95,7 +95,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
         self.iconView = iconView
         
         let aarLabel = UILabel()
-        aarLabel.text = "Create .aar archives."
+        aarLabel.text = trans("Create .aar archives.")
         aarLabel.font = UIFont.preferredFont(forTextStyle: .callout)
         aarLabel.textAlignment = .center
         if #available(iOS 13.0, *) {
@@ -106,13 +106,13 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
         aarLabel.minimumScaleFactor = 0.8
         
         let createButton = UIButton(type: .system)
-        createButton.setTitle("Create Archive", for: .normal)
+        createButton.setTitle(trans("Create Archive"), for: .normal)
         createButton.makePrimaryActionButton()
         createButton.addTarget(self, action: #selector(pressedCreateArchive), for: .touchUpInside)
         self.createButton = createButton
         
         let aeaLabel = UILabel()
-        aeaLabel.text = "Create signed .aea archives."
+        aeaLabel.text = trans("Create signed .aea archives.")
         aeaLabel.font = UIFont.preferredFont(forTextStyle: .callout)
         aeaLabel.textAlignment = .center
         if #available(iOS 13.0, *) {
@@ -123,7 +123,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
         aeaLabel.minimumScaleFactor = 0.8
         
         let createAEAButton = UIButton(type: .system)
-        createAEAButton.setTitle("Create Signed Archive", for: .normal)
+        createAEAButton.setTitle(trans("Create Signed Archive"), for: .normal)
         createAEAButton.makePrimaryActionButton()
         createAEAButton.addTarget(self, action: #selector(pressedCreateAEAArchive), for: .touchUpInside)
         createAEAButton.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -175,16 +175,16 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
             clearTemporaryDirectory()
         
             let alert = UIAlertController(
-                title: "Compression Type",
-                message: "Select compression method for your archive.",
+                title: trans("Compression Type"),
+                message: trans("Select compression method for your archive."),
                 preferredStyle: .actionSheet
             )
         
             let compressionOptions: [(title: String, value: Int32)] = [
-                ("LZFSE (Recommended)", NEO_AA_COMPRESSION_LZFSE),
+                (trans("LZFSE (Recommended)"), NEO_AA_COMPRESSION_LZFSE),
                 ("ZLIB", NEO_AA_COMPRESSION_ZLIB),
                 ("LZBITMAP", NEO_AA_COMPRESSION_LZBITMAP),
-                ("Raw (Uncompressed)", NEO_AA_COMPRESSION_NONE)
+                (trans("Raw (Uncompressed)"), NEO_AA_COMPRESSION_NONE)
             ]
         
             for option in compressionOptions {
@@ -202,7 +202,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
                 popoverController.permittedArrowDirections = .any
             }
         
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            alert.addAction(UIAlertAction(title: trans("Cancel"), style: .cancel))
         
             self.present(alert, animated: true)
         }
@@ -220,13 +220,13 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
     
     private func createArchive() {
         guard let inputURL = selectedDirectoryURL else {
-            showAlert(title: "Error", message: "Please select a directory first.")
+            showAlert(title: trans("Error"), message: trans("Please select a directory first."))
             return
         }
         
         var isDirectory: ObjCBool = false
         if !FileManager.default.fileExists(atPath: inputURL.path, isDirectory: &isDirectory) || !isDirectory.boolValue {
-            showAlert(title: "Invalid Selection", message: "The selected path is not a directory.")
+            showAlert(title: trans("Error"), message: trans("The selected path is not a directory."))
             return
         }
         
@@ -239,7 +239,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
         let securityAccessGranted = inputURL.startAccessingSecurityScopedResource()
         
         guard securityAccessGranted else {
-            showAlert(title: "Access Error", message: "Could not access selected files.")
+            showAlert(title: trans("Error"), message: trans("Could not access selected files."))
             return
         }
         
@@ -263,14 +263,14 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
         do {
             let keyData = try Data(contentsOf: url)
             guard keyData.count == 97 else {
-                showAlert(title: "Invalid Key", message: "Key must be 97 bytes ECDSA-P256 in X9.63 format.")
+                showAlert(title: trans("Error (Invalid Key)"), message: trans("Private key must be 97 bytes (Raw X9.63 ECDSA-P256)."))
                 return
             }
                 
             selectedPrivateKeyURL = url
             promptForAuthData()
         } catch {
-            showAlert(title: "Error", message: "Could not read key file.")
+            showAlert(title: trans("Error"), message: trans("Could not read key file."))
         }
     }
         
@@ -293,7 +293,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
                     && authURL.startAccessingSecurityScopedResource()
             
             guard securityAccessGranted else {
-                showAlert(title: "Access Error", message: "Could not access selected files.")
+                showAlert(title: trans("Error"), message: trans("Could not access selected files."))
                 return
             }
             
@@ -332,40 +332,38 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
         } catch let error as AEAProfile0Handler.AEAError {
             handleAEAError(error)
         } catch {
-            showAlert(title: "Error", message: error.localizedDescription)
+            showAlert(title: trans("Error"), message: error.localizedDescription)
         }
-        
-        print("done with createAEAArchive()")
     }
     
     private func handleAEAError(_ error: AEAProfile0Handler.AEAError) {
         let message: String
         switch error {
         case .invalidKeySize:
-            message = "Private key must be 97 bytes (Raw X9.63 ECDSA-P256)."
+            message = trans("Private key must be 97 bytes (Raw X9.63 ECDSA-P256).")
         case .invalidKeyFormat:
-            message = "Invalid ECDSA-P256 key format (Needs Raw X9.63 ECDSA-P256)."
+            message = trans("Invalid ECDSA-P256 key format (Needs Raw X9.63 ECDSA-P256).")
         case .signingFailed:
-            message = "Failed to sign archive."
+            message = trans("Failed to sign archive.")
         case .invalidArchive:
-            message = "Invalid AAR file."
+            message = trans("Invalid AAR file.")
         case .unsupportedProfile:
-            message = "Unsupported AEA profile."
+            message = trans("Unsupported AEA profile.")
         case .extractionFailed:
-            message = "Failed to extract archive."
+            message = trans("Failed to extract archive.")
         }
-        showAlert(title: "Error", message: message)
+        showAlert(title: trans("Error"), message: message)
     }
     
     private func showSuccess(outputPath: URL) {
         let alert = UIAlertController(
-            title: "Success!",
+            title: trans("Success!"),
             message: "Archive created at \(outputPath.lastPathComponent). Press \"Share\" to save your file.",
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        alert.addAction(UIAlertAction(title: "Share", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: trans("OK"), style: .default))
+        alert.addAction(UIAlertAction(title: trans("Share"), style: .default) { _ in
             self.shareFile(url: outputPath)
         })
         
@@ -386,7 +384,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
         } else if currentCreationType == .aea {
             selectedDirectoryURL = url
             currentCreationType = .key
-            showInstructionAlert(title: "AEA Creation", message: "Select the ECDSA-P256 raw X9.63 private key.") { [weak self] in
+            showInstructionAlert(title: trans("AEA Creation"), message: trans("Select the ECDSA-P256 raw X9.63 private key.")) { [weak self] in
                 let keyPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeData as String], in: .open)
                 keyPicker.delegate = self
                 self?.present(keyPicker, animated: true)
@@ -394,7 +392,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
         } else if currentCreationType == .key {
             selectedPrivateKeyURL = url
             currentCreationType = .auth
-            showInstructionAlert(title: "AEA Creation", message: "Select auth data for the AEA.") {
+            showInstructionAlert(title: trans("AEA Creation"), message: trans("Select auth data for the AEA.")) {
                 let authPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeData as String], in: .open)
                 authPicker.delegate = self
                 self.present(authPicker, animated: true)
@@ -407,7 +405,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        showAlert(title: "Error", message: "Nothing selected.")
+        showAlert(title: trans("Error"), message: trans("Nothing selected."))
     }
     
     func onboardingDidFinish() {
@@ -423,7 +421,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
     
     private func showInstructionAlert(title: String, message: String, completion: @escaping () -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: trans("OK"), style: .default) { _ in
             completion()
         })
         present(alert, animated: true)
@@ -433,7 +431,7 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
 extension UIViewController {
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        alert.addAction(UIAlertAction(title: trans("OK"), style: .default))
         alert.view.tintColor = AppColorSchemeManager.current.color
         present(alert, animated: true)
     }

@@ -58,10 +58,10 @@ class MainTabBarController: UITabBarController {
         var createVCImage = UIImage()
         if #available(iOS 13, *) {
             createVCImage = UIImage(systemName: "folder") ?? UIImage()
-            createVC.tabBarItem = UITabBarItem(title: "Create", image: createVCImage, tag: 0)
+            createVC.tabBarItem = UITabBarItem(title: trans("Create"), image: createVCImage, tag: 0)
         } else {
             createVCImage = UIImage(named: "folder")?.tabBarIcon() ?? UIImage()
-            createVC.tabBarItem = UITabBarItem(title: "Create", image: createVCImage, tag: 0)
+            createVC.tabBarItem = UITabBarItem(title: trans("Create"), image: createVCImage, tag: 0)
             //createVC.tabBarItem.imageInsets = UIEdgeInsets(top: 85, left: 85, bottom: 85, right: 85)
         }
         
@@ -69,20 +69,20 @@ class MainTabBarController: UITabBarController {
         var extractVCImage = UIImage()
         if #available(iOS 13, *) {
             extractVCImage = UIImage(systemName: "archivebox") ?? UIImage()
-            extractVC.tabBarItem = UITabBarItem(title: "Extract", image: extractVCImage, tag: 1)
+            extractVC.tabBarItem = UITabBarItem(title: trans("Extract"), image: extractVCImage, tag: 1)
         } else {
             extractVCImage = UIImage(named: "archivebox")?.tabBarIcon() ?? UIImage()
-            extractVC.tabBarItem = UITabBarItem(title: "Extract", image: extractVCImage, tag: 1)
+            extractVC.tabBarItem = UITabBarItem(title: trans("Extract"), image: extractVCImage, tag: 1)
             //extractVC.tabBarItem.imageInsets = UIEdgeInsets(top: 85, left: 85, bottom: 85, right: 85)
         }
         
         let verifyVC = VerifyAEAViewController()
         if #available(iOS 13, *) {
             let verifyImage = UIImage(systemName: "checkmark.shield") ?? UIImage()
-            verifyVC.tabBarItem = UITabBarItem(title: "Verify", image: verifyImage, tag: 3)
+            verifyVC.tabBarItem = UITabBarItem(title: trans("Verify"), image: verifyImage, tag: 3)
         } else {
             let verifyImage = UIImage(named: "checkmark.shield")?.tabBarIcon() ?? UIImage()
-            verifyVC.tabBarItem = UITabBarItem(title: "Verify", image: verifyImage, tag: 3)
+            verifyVC.tabBarItem = UITabBarItem(title: trans("Verify"), image: verifyImage, tag: 3)
             //verifyVC.tabBarItem.imageInsets = UIEdgeInsets(top: 85, left: 85, bottom: 85, right: 85)
         }
         
@@ -90,10 +90,10 @@ class MainTabBarController: UITabBarController {
         var creditsVCImage = UIImage()
         if #available(iOS 13, *) {
             creditsVCImage = UIImage(systemName: "heart") ?? UIImage()
-            creditsVC.tabBarItem = UITabBarItem(title: "Credits", image: creditsVCImage, tag: 2)
+            creditsVC.tabBarItem = UITabBarItem(title: trans("Credits"), image: creditsVCImage, tag: 2)
         } else {
             creditsVCImage = UIImage(named: "heart")?.tabBarIcon() ?? UIImage()
-            creditsVC.tabBarItem = UITabBarItem(title: "Credits", image: creditsVCImage, tag: 2)
+            creditsVC.tabBarItem = UITabBarItem(title: trans("Credits"), image: creditsVCImage, tag: 2)
             //creditsVC.tabBarItem.imageInsets = UIEdgeInsets(top: 85, left: 85, bottom: 85, right: 85)
         }
         
@@ -170,4 +170,8 @@ func clearTemporaryDirectory() {
     } catch {
         print("Failed to read contents of temporary directory: \(error)")
     }
+}
+
+func trans(_ text: String) -> String {
+    return NSLocalizedString(text, comment: "")
 }
