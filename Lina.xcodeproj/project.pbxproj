@@ -39,7 +39,7 @@
 		B09870322DE78234007F64B5 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B0626DA82DE690830012B7F9 /* Intents.intentdefinition */; };
 		B09870342DE78248007F64B5 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09870332DE78248007F64B5 /* IntentHandler.swift */; };
 		B09D42672E01421800A4928D /* NeoAppleArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0626DA42DE6743D0012B7F9 /* NeoAppleArchive.framework */; };
-		B09D426C2E020F8000A4928D /* LaunchBoarding.o in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D426B2E020F7100A4928D /* LaunchBoarding.o */; };
+		B09D426E2E02145700A4928D /* LaunchBoarding in Frameworks */ = {isa = PBXBuildFile; productRef = B09D426D2E02145700A4928D /* LaunchBoarding */; };
 		B0A872262DEFEC620067A7CA /* AEAProfile0Handler_Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A872252DEFEC620067A7CA /* AEAProfile0Handler_Intents.swift */; };
 		B0C46AA12DF5FB940009B08F /* LaunchBoarding in Frameworks */ = {isa = PBXBuildFile; productRef = B0C46AA02DF5FB940009B08F /* LaunchBoarding */; };
 		B0C8AA0C2DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8AA092DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift */; };
@@ -137,7 +137,6 @@
 		B08D03B82DD920C3003847D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B08D03BB2DD920C3003847D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B08D03BD2DD920C3003847D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B08D03D52DD92A8C003847D7 /* libNeoAppleArchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libNeoAppleArchive.dylib; sourceTree = "<group>"; };
 		B08D03DA2DD92DD0003847D7 /* ExtractArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractArchiveViewController.swift; sourceTree = "<group>"; };
 		B08D03EB2DD92E58003847D7 /* Lina Simulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lina Simulator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B08D03EC2DD92E58003847D7 /* Lina copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Lina copy-Info.plist"; path = "/Users/zachary7829/Documents/Xcode Projects/Lina/Lina copy-Info.plist"; sourceTree = "<absolute>"; };
@@ -161,8 +160,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B09D426C2E020F8000A4928D /* LaunchBoarding.o in Frameworks */,
 				B0626DA52DE6743D0012B7F9 /* NeoAppleArchive.framework in Frameworks */,
+				B09D426E2E02145700A4928D /* LaunchBoarding in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +255,6 @@
 			isa = PBXGroup;
 			children = (
 				B08D03F42DD93A60003847D7 /* Simulator */,
-				B08D03D52DD92A8C003847D7 /* libNeoAppleArchive.dylib */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -312,6 +310,7 @@
 			);
 			name = Lina;
 			packageProductDependencies = (
+				B09D426D2E02145700A4928D /* LaunchBoarding */,
 			);
 			productName = Lina;
 			productReference = B08D03AC2DD920BD003847D7 /* Lina.app */;
@@ -523,10 +522,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					arm64,
-					armv7s,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -589,10 +585,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					arm64,
-					armv7s,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -648,10 +641,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ARCHS = (
-					arm64,
-					armv7s,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -705,10 +695,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ARCHS = (
-					arm64,
-					armv7s,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -761,6 +748,7 @@
 		B08D03E92DD92E58003847D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -805,6 +793,7 @@
 		B08D03EA2DD92E58003847D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -878,7 +867,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Lina/Libraries/Simulator",
 					"$(PROJECT_DIR)/Lina/Libraries/NeoAppleArchive.framework",
-					"$(PROJECT_DIR)/Lina/Libraries/Simulator-debug",
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina.LinaIntents;
@@ -924,7 +912,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Lina/Libraries/Simulator",
 					"$(PROJECT_DIR)/Lina/Libraries/NeoAppleArchive.framework",
-					"$(PROJECT_DIR)/Lina/Libraries/Simulator-debug",
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina.LinaIntents;
@@ -991,6 +978,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B09D426D2E02145700A4928D /* LaunchBoarding */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0C46A9D2DF5FB800009B08F /* XCRemoteSwiftPackageReference "LaunchBoarding" */;
+			productName = LaunchBoarding;
+		};
 		B0C46AA02DF5FB940009B08F /* LaunchBoarding */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B0C46A9D2DF5FB800009B08F /* XCRemoteSwiftPackageReference "LaunchBoarding" */;

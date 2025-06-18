@@ -2,8 +2,3 @@ module NeoAppleArchive [system] {
     header "libNeoAppleArchive/libNeoAppleArchive.h"
     export *
 }
-
-module LaunchBoarding [system] {
-    header "LaunchBoarding/LaunchBoarding.h"
-    export *
-}
