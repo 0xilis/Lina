@@ -145,8 +145,15 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
             return
         }
         
-        let outputDirectory = FileManager.default.temporaryDirectory
-            .appendingPathComponent(UUID().uuidString)
+        var outputDirectory: URL
+        if #available(iOS 10.0, *) {
+            outputDirectory = FileManager.default.temporaryDirectory
+                .appendingPathComponent(UUID().uuidString)
+        } else {
+            let tempDirPath = NSTemporaryDirectory()
+            outputDirectory = URL(fileURLWithPath: tempDirPath)
+                .appendingPathComponent(UUID().uuidString)
+        }
         
         progressView.isHidden = false
         progressView.progress = 0
@@ -167,8 +174,15 @@ class ExtractArchiveViewController: UIViewController, UIDocumentPickerDelegate {
             do {
                 let extractedData = try AEAProfile0Handler.extractAEA(aeaURL: archiveURL)
                 // Assume AEA output is AAR even though thats not always the case...
-                let outputPath = FileManager.default.temporaryDirectory
-                .appendingPathComponent(trans("Extracted.aar"))
+                var outputPath: URL
+                if #available(iOS 10.0, *) {
+                    outputPath = FileManager.default.temporaryDirectory
+                        .appendingPathComponent(trans("Extracted.aar"))
+                } else {
+                    let tempDirPath = NSTemporaryDirectory()
+                    outputPath = URL(fileURLWithPath: tempDirPath)
+                        .appendingPathComponent(trans("Extracted.aar"))
+                }
                         
                 try extractedData.write(to: outputPath)
                 showSuccess(outputDirectory: outputPath)

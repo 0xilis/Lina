@@ -102,32 +102,12 @@ class MainTabBarController: UITabBarController {
                            UINavigationController(rootViewController: verifyVC),
                            UINavigationController(rootViewController: creditsVC)]
     }
-    
-    /*func didTapButton(_ onboardingViewController: UIOnboardingViewController) {
-        onboardingViewController.dismiss(animated: true) {
-            UIOnboardingHelper.completeOnboarding()
-        }
-    }
-        
-    func didTapLink(_ onboardingViewController: UIOnboardingViewController, url: URL) {
-        UIApplication.shared.open(url)
-    }*/
 }
 
 /*
  
  TODO: In the future move LaunchBoardingDelagate to MainTabBarController instead of the CreateArchiveViewController
  
- extension MainTabBarController: UIOnboardingViewControllerDelegate {
-    func didFinishOnboarding(onboardingViewController: UIOnboardingViewController) {
-        onboardingViewController.dismiss(animated: true) {
-            UIOnboardingHelper.completeOnboarding()
-        }
-    }
-    
-    func didTapLink(onboardingViewController: UIOnboardingViewController, url: URL) {
-        UIApplication.shared.open(url)
-    }
 }*/
 
 extension UIImage {
@@ -145,8 +125,16 @@ extension UIImage {
     }
     
     func resized(to size: CGSize) -> UIImage {
-        return UIGraphicsImageRenderer(size: size).image { _ in
+        if #available(iOS 10.0, *) {
+            return UIGraphicsImageRenderer(size: size).image { _ in
+                self.draw(in: CGRect(origin: .zero, size: size))
+            }
+        } else {
+            UIGraphicsBeginImageContextWithOptions(size, false, self.scale)
             self.draw(in: CGRect(origin: .zero, size: size))
+            let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return resizedImage ?? self
         }
     }
     
@@ -157,7 +145,13 @@ extension UIImage {
 }
 
 func clearTemporaryDirectory() {
-    let tempDirectoryURL = FileManager.default.temporaryDirectory
+    var tempDirectoryURL: URL
+    if #available(iOS 10.0, *) {
+        tempDirectoryURL = FileManager.default.temporaryDirectory
+    } else {
+        let tempDirPath = NSTemporaryDirectory()
+        tempDirectoryURL = URL(fileURLWithPath: tempDirPath)
+    }
     do {
         let tempDirectoryContents = try FileManager.default.contentsOfDirectory(at: tempDirectoryURL, includingPropertiesForKeys: nil, options: [])
         for fileURL in tempDirectoryContents {

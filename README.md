@@ -24,12 +24,16 @@ libNeoAppleArchive = LNAA, LNAA sounds like Lina, so I chose Lina.
 
 [This app is on the iOS App Store!](https://apps.apple.com/us/app/lina-aar-aea-app/id6746178492) If you want to test pre-release builds on TestFlight, please DM/Contact me for a TestFlight link!
 
+# Compatibility
+
+**Lina 1.1:** iOS 9.0+ armv7/arm64, macOS 10.15+ Catalyst x86_64/arm64
+**Lina 1.0:** iOS 13.0+ arm64 (macOS arm64, visionOS can run iOS app)
+
 # Planned
 
 ### Next Release (1.1):
 
-- [x] Support iOS 11 and iOS 12.
-- [ ] Test out iOS 10 armv7 support.
+- [x] Support iOS 9, iOS 10, iOS 11, and iOS 12. armv7 iOS 9/10 is also supported.
 - [x] Migrate from UIOnboarding to new LaunchBoarding framework.
 - [ ] Figure out documentation for App Encryption for release in France.
 - [ ] Translators, primarily ones for French.
@@ -43,7 +47,7 @@ libNeoAppleArchive = LNAA, LNAA sounds like Lina, so I chose Lina.
 ### Future Releases
 
 - [ ] Add support for all AEAProfile types (Extraction can currently be done but creation needs libNeoAppleArchive updates).
-- [ ] Add option for dark mode in iOS 11/12 app.
+- [ ] Add option for dark mode in iOS 9/10/11/12 app.
 - [ ] Add support for all compression types (Needs libNeoAppleArchive updates).
 - [ ] URL schemes.
 

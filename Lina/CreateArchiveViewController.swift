@@ -232,8 +232,14 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
             return
         }
         
-        let outputPath = FileManager.default.temporaryDirectory
+        var outputPath: URL
+        if #available(iOS 10.0, *) {
+            outputPath = FileManager.default.temporaryDirectory
             .appendingPathComponent("Archive_\(Date().timeIntervalSince1970).aar")
+        } else {
+            let tempDirPath = NSTemporaryDirectory()
+            outputPath = URL(fileURLWithPath: tempDirPath).appendingPathComponent("Archive_\(Date().timeIntervalSince1970).aar")
+        }
         
         progressView.isHidden = false
         progressView.progress = 0
@@ -307,8 +313,14 @@ class CreateArchiveViewController: UIViewController, UIDocumentPickerDelegate, L
                 authData: authData
             )
             
-            let tempURL = FileManager.default.temporaryDirectory
+            var tempURL: URL
+            if #available(iOS 10.0, *) {
+                tempURL = FileManager.default.temporaryDirectory
                 .appendingPathComponent("temp_\(Date().timeIntervalSince1970).aea")
+            } else {
+                let tempDirPath = NSTemporaryDirectory()
+                tempURL = URL(fileURLWithPath: tempDirPath).appendingPathComponent("temp_\(Date().timeIntervalSince1970).aea")
+            }
             try aeaData.write(to: tempURL)
             
             self.currentTempURL = tempURL

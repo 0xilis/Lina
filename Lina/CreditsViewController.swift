@@ -436,11 +436,19 @@ class CreditsViewController: UIViewController {
               let url = URL(string: urlString) else {
             return
         }
-        UIApplication.shared.open(url)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
     
     @objc private func openSourceCode() {
-        UIApplication.shared.open(sourceCodeURL)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(sourceCodeURL)
+        } else {
+            UIApplication.shared.openURL(sourceCodeURL)
+        }
     }
     
     @objc private func colorSchemeSelected(_ sender: UIButton) {
