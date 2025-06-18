@@ -39,10 +39,10 @@ libNeoAppleArchive = LNAA, LNAA sounds like Lina, so I chose Lina.
 - [ ] Translators, primarily ones for French.
 - [x] Update NeoAppleArchive.framework.
 - [x] Add new "Verify AEA" shortcuts action.
-- [ ] macOS Catalyst App
-- [ ] Ensure Voice Over support throughout the app for Accessibility.
+- [ ] macOS Catalyst App.
+- [ ] Ensure Voice Over support throughout the app for Accessibility. Currently the only thing that voiceover cannot read which it should is the app color scheme buttons.
 - [ ] Add Voice Control support for Accessibility.
-- [ ] Look into more Accessibility features to support.
+- [ ] Larger Text Accessibility support.
 
 ### Future Releases
 
@@ -50,6 +50,7 @@ libNeoAppleArchive = LNAA, LNAA sounds like Lina, so I chose Lina.
 - [ ] Add option for dark mode in iOS 9/10/11/12 app.
 - [ ] Add support for all compression types (Needs libNeoAppleArchive updates).
 - [ ] URL schemes.
+- [ ] Look into more Accessibility features to support.
 
 ### Cool Ideas, but not Currently Planned:
 
