@@ -34,6 +34,16 @@ class AppColorSchemeManager {
             case .systemPurple: return "Purple"
             }
         }
+        
+        var localizedName: String {
+            switch self {
+            case .systemBlue: return trans("Blue")
+            case .systemGreen: return trans("Green")
+            case .systemOrange: return trans("Orange")
+            case .systemRed: return trans("Red")
+            case .systemPurple: return trans("Purple")
+            }
+        }
     }
     
     static var current: ColorScheme {

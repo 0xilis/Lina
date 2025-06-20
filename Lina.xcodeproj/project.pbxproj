@@ -37,23 +37,26 @@
 		B09870342DE78248007F64B5 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09870332DE78248007F64B5 /* IntentHandler.swift */; };
 		B09D426E2E02145700A4928D /* LaunchBoarding in Frameworks */ = {isa = PBXBuildFile; productRef = B09D426D2E02145700A4928D /* LaunchBoarding */; };
 		B09D42702E0258D400A4928D /* libNeoAppleArchive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D426F2E0258AE00A4928D /* libNeoAppleArchive.a */; };
-		B09D42712E0258E700A4928D /* libNeoAppleArchive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D426F2E0258AE00A4928D /* libNeoAppleArchive.a */; };
 		B09D42722E0259AA00A4928D /* LinaIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B09870232DE7815D007F64B5 /* LinaIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B09D42772E0260F200A4928D /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D42762E0260DF00A4928D /* libcrypto.a */; };
 		B09D427B2E02611600A4928D /* liblzfse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D42782E02610400A4928D /* liblzfse.a */; };
 		B09D427C2E02611600A4928D /* libzbitmap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D427A2E02610400A4928D /* libzbitmap.a */; };
 		B09D427D2E02611700A4928D /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D42792E02610400A4928D /* libssl.a */; };
-		B09D427E2E02615D00A4928D /* liblzfse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D42782E02610400A4928D /* liblzfse.a */; };
-		B09D427F2E02615D00A4928D /* libzbitmap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D427A2E02610400A4928D /* libzbitmap.a */; };
-		B09D42802E02615D00A4928D /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D42792E02610400A4928D /* libssl.a */; };
-		B09D42812E02615D00A4928D /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D42762E0260DF00A4928D /* libcrypto.a */; };
+		B09D428D2E0336D700A4928D /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D42762E0260DF00A4928D /* libcrypto.a */; };
+		B09D428E2E0336D700A4928D /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D42792E02610400A4928D /* libssl.a */; };
+		B09D428F2E0336D700A4928D /* liblzfse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D42782E02610400A4928D /* liblzfse.a */; };
+		B09D42902E0336D700A4928D /* libzbitmap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D427A2E02610400A4928D /* libzbitmap.a */; };
+		B09D42912E0336D700A4928D /* libNeoAppleArchive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D426F2E0258AE00A4928D /* libNeoAppleArchive.a */; };
+		B09D42922E0336F200A4928D /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D42762E0260DF00A4928D /* libcrypto.a */; };
+		B09D42932E0336F200A4928D /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D42792E02610400A4928D /* libssl.a */; };
+		B09D42942E0336F200A4928D /* liblzfse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D42782E02610400A4928D /* liblzfse.a */; };
+		B09D42952E0336F200A4928D /* libzbitmap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D427A2E02610400A4928D /* libzbitmap.a */; };
+		B09D42962E0336F200A4928D /* libNeoAppleArchive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B09D426F2E0258AE00A4928D /* libNeoAppleArchive.a */; };
 		B0A872262DEFEC620067A7CA /* AEAProfile0Handler_Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A872252DEFEC620067A7CA /* AEAProfile0Handler_Intents.swift */; };
 		B0C46AA12DF5FB940009B08F /* LaunchBoarding in Frameworks */ = {isa = PBXBuildFile; productRef = B0C46AA02DF5FB940009B08F /* LaunchBoarding */; };
 		B0C8AA0C2DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8AA092DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift */; };
 		B0C8AA0E2DECB70900590D6E /* ExtractAEAShortcutsActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8AA0D2DECB70900590D6E /* ExtractAEAShortcutsActionHandler.swift */; };
-		B0DCF8262DF9EA9E0019544F /* libNeoAppleArchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; };
-		B0DCF8272DF9EA9E0019544F /* libNeoAppleArchive.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = B08D03F02DD935D8003847D7 /* libNeoAppleArchive.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		B0DCF8292DF9EF960019544F /* LinaIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B09870232DE7815D007F64B5 /* LinaIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B0DCF8292DF9EF960019544F /* LinaIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B09870232DE7815D007F64B5 /* LinaIntents.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B0E9ADDE2DEEA5D600A32EF6 /* VerifyAEAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E9ADDD2DEEA5D600A32EF6 /* VerifyAEAViewController.swift */; };
 		B0E9ADDF2DEEA5D600A32EF6 /* VerifyAEAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E9ADDD2DEEA5D600A32EF6 /* VerifyAEAViewController.swift */; };
 /* End PBXBuildFile section */
@@ -85,17 +88,6 @@
 				B09D42722E0259AA00A4928D /* LinaIntents.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B0DCF8282DF9EA9E0019544F /* Embed Libraries */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				B0DCF8272DF9EA9E0019544F /* libNeoAppleArchive.dylib in Embed Libraries */,
-			);
-			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B0DCF82C2DF9EF970019544F /* Embed App Extensions */ = {
@@ -149,6 +141,8 @@
 		B09D42782E02610400A4928D /* liblzfse.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblzfse.a; path = Lina/Libraries/Static/liblzfse.a; sourceTree = "<group>"; };
 		B09D42792E02610400A4928D /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = Lina/Libraries/Static/libssl.a; sourceTree = "<group>"; };
 		B09D427A2E02610400A4928D /* libzbitmap.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzbitmap.a; path = Lina/Libraries/Static/libzbitmap.a; sourceTree = "<group>"; };
+		B09D42852E032E8500A4928D /* LinaIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LinaIntents.entitlements; sourceTree = "<group>"; };
+		B09D42862E032F9C00A4928D /* libNeoAppleArchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNeoAppleArchive.dylib; path = Lina/Libraries/libNeoAppleArchive.dylib; sourceTree = "<group>"; };
 		B0A872252DEFEC620067A7CA /* AEAProfile0Handler_Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEAProfile0Handler_Intents.swift; sourceTree = "<group>"; };
 		B0C8AA092DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAEAShortcutsActionHandler.swift; sourceTree = "<group>"; };
 		B0C8AA0D2DECB70900590D6E /* ExtractAEAShortcutsActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractAEAShortcutsActionHandler.swift; sourceTree = "<group>"; };
@@ -174,8 +168,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B09D428F2E0336D700A4928D /* liblzfse.a in Frameworks */,
+				B09D428D2E0336D700A4928D /* libcrypto.a in Frameworks */,
+				B09D42902E0336D700A4928D /* libzbitmap.a in Frameworks */,
 				B0C46AA12DF5FB940009B08F /* LaunchBoarding in Frameworks */,
-				B0DCF8262DF9EA9E0019544F /* libNeoAppleArchive.dylib in Frameworks */,
+				B09D42912E0336D700A4928D /* libNeoAppleArchive.a in Frameworks */,
+				B09D428E2E0336D700A4928D /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,12 +181,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B09D42802E02615D00A4928D /* libssl.a in Frameworks */,
-				B09D42712E0258E700A4928D /* libNeoAppleArchive.a in Frameworks */,
-				B09D42812E02615D00A4928D /* libcrypto.a in Frameworks */,
-				B09D427F2E02615D00A4928D /* libzbitmap.a in Frameworks */,
-				B09D427E2E02615D00A4928D /* liblzfse.a in Frameworks */,
+				B09D42942E0336F200A4928D /* liblzfse.a in Frameworks */,
+				B09D42922E0336F200A4928D /* libcrypto.a in Frameworks */,
+				B09D42952E0336F200A4928D /* libzbitmap.a in Frameworks */,
 				B09870242DE7815E007F64B5 /* Intents.framework in Frameworks */,
+				B09D42962E0336F200A4928D /* libNeoAppleArchive.a in Frameworks */,
+				B09D42932E0336F200A4928D /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +196,7 @@
 		B075938E2DE6A5BD000C7977 /* LinaIntents */ = {
 			isa = PBXGroup;
 			children = (
+				B09D42852E032E8500A4928D /* LinaIntents.entitlements */,
 				B0626DA82DE690830012B7F9 /* Intents.intentdefinition */,
 				B0C8AA092DECB6B500590D6E /* CreateAEAShortcutsActionHandler.swift */,
 				B0626DAB2DE693430012B7F9 /* CreateArchiveShortcutsActionHandler.swift */,
@@ -278,6 +277,7 @@
 		B08D03ED2DD92F1E003847D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B09D42862E032F9C00A4928D /* libNeoAppleArchive.dylib */,
 				B09D42782E02610400A4928D /* liblzfse.a */,
 				B09D42792E02610400A4928D /* libssl.a */,
 				B09D427A2E02610400A4928D /* libzbitmap.a */,
@@ -336,7 +336,6 @@
 				B08D03DD2DD92E57003847D7 /* Sources */,
 				B08D03E12DD92E57003847D7 /* Frameworks */,
 				B08D03E32DD92E57003847D7 /* Resources */,
-				B0DCF8282DF9EA9E0019544F /* Embed Libraries */,
 				B0DCF82C2DF9EF970019544F /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -505,6 +504,7 @@
 		};
 		B0DCF82B2DF9EF960019544F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = B09870222DE7815D007F64B5 /* LinaIntents */;
 			targetProxy = B0DCF82A2DF9EF960019544F /* PBXContainerItemProxy */;
 		};
@@ -784,6 +784,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Lina/Libraries/Simulator",
 					"$(PROJECT_DIR)/Lina/Libraries/macosx-x86_64",
+					"$(PROJECT_DIR)/Lina/Libraries",
+					"$(PROJECT_DIR)/Lina/Libraries/Static",
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina;
@@ -829,6 +831,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Lina/Libraries/Simulator",
 					"$(PROJECT_DIR)/Lina/Libraries/macosx-x86_64",
+					"$(PROJECT_DIR)/Lina/Libraries",
+					"$(PROJECT_DIR)/Lina/Libraries/Static",
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina;
@@ -845,7 +849,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = arm64;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = LinaIntents/LinaIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
@@ -870,6 +874,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Lina/Libraries/Static",
+					"$(PROJECT_DIR)/Lina/Libraries/Simulator",
+					"$(PROJECT_DIR)/Lina/Libraries",
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina.LinaIntents;
@@ -886,7 +892,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = arm64;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = LinaIntents/LinaIntents.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 8;
@@ -911,6 +917,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Lina/Libraries/Static",
+					"$(PROJECT_DIR)/Lina/Libraries/Simulator",
+					"$(PROJECT_DIR)/Lina/Libraries",
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0xilis.Lina.LinaIntents;

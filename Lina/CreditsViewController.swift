@@ -353,6 +353,18 @@ class CreditsViewController: UIViewController {
                     button.setImage(nil, for: .normal)
                 }
             }
+            
+            for button in self.colorSchemeButtons {
+                if let scheme = AppColorSchemeManager.ColorScheme.allCases.first(where: {
+                    $0.hashValue == button.tag
+                }) {
+                    if scheme == selectedColorScheme {
+                        button.accessibilityTraits.insert(.selected)
+                    } else {
+                        button.accessibilityTraits.remove(.selected)
+                    }
+                }
+            }
         }
         
         if let tabBar = tabBarController?.tabBar {
