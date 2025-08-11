@@ -138,8 +138,8 @@
  * These are the verify AEA archive button and labels for
  * the verify AEA view controller.
  */
-"Verify the signature of .aea files using ECDSA-P256 public keys." = "Verify the signature of .aea files using ECDSA-P256 public keys.";
-"Verify AEA" = "Verify AEA";
+"Verify the signature of .aea files using ECDSA-P256 public keys." = "Vérifier la signature d'un fichier AEA en utilisant un clé public ECDSA-P256.";
+"Verify AEA" = "Vérifier un fichier AEA";
 
 /*
  * Verification alerts...
