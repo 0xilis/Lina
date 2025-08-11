@@ -168,3 +168,6 @@
 "...and thanks to users like you!" = "...et merci aux utilisateurs comme vous!"; /* This is a label under the credits section thanking the users for downloading and using the app. */
 "Onboarding Reset" = "Rafraîchir l'intégration"; /* Title of the alert that is displayed after an onboarding reset. */
 "Will show on next launch." = "L'intégration apparaîtra la prochaîne lancée de l'application."; /* Subtitle of the alert that is displayed after an onboarding reset. */
+
+
+/* tabarnak */
