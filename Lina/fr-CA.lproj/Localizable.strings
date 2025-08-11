@@ -59,7 +59,7 @@
 "Select compression method for your archive." = "Sélectionnez la méthode de compression pour votre archive";
 "LZFSE (Recommended)" = "LZFSE (Recommandé)";
 /* ZLIB and LZBITMAP are also options too in the middle */
-"Raw (Uncompressed)" = "Raw (Sans compression)";
+"Raw (Uncompressed)" = "Brute (Sans compression)";
 "Cancel" = "Annuler";
 
 /*
