@@ -115,8 +115,8 @@
 /*
  * These are errors if we failed to remove any temporary files afterward.
  */
-"Failed to read contents of temporary directory: ((ERROR))" = "Incapable de lire le contenu du dossier temporaire : ((ERROR))";
-"Failed to remove file at ((PATH)): ((ERROR))" = "Incapable de supprimer le fichier dans ((PATH)): ((ERROR))";
+"Failed to read contents of temporary directory: ((ERROR))" = "Échec de : ((ERROR))";
+"Failed to remove file at ((PATH)): ((ERROR))" = "Failed to remove file at ((PATH)): ((ERROR))";
 
 /*
  * Similar to the create archive buttons and labels mentioned
@@ -128,10 +128,10 @@
 /*
  * Extract Archive alerts and more stuff...
  */
-"Extracted.aar" = "Extrait.aar"; /* This is the default filename for when the user extracts an aar inside of an aea. You can change Extracted if you feel like it makes sense, just don't change the file extension. */
+"Extracted.aar" = "Extracted.aar"; /* This is the default filename for when the user extracts an aar inside of an aea. You can change Extracted if you feel like it makes sense, just don't change the file extension. */
 "View Files" = "View Files"; /* Save the directory or Extracted.aar file to the files app. */
-"Files extracted to ((PATH))" = "Fichiers extraits à ((PATH))"; /* Going to have to come back to this later. */
-"Files extracted successfully." = "Fichiers décompressés avec succès.";
+"Files extracted to ((PATH))" = "Files extracted to ((PATH))";
+"Files extracted successfully." = "Files extracted successfully.";
 
 
 /*
@@ -144,16 +144,16 @@
 /*
  * Verification alerts...
  */
-"Verification Successful" = "Vérification complété avec succès"; /* Need to come back to this */
-"The AEA file is authentic and valid." = "Le fichier AEA et authentique et valide.";
-"Verification Failed" = "Vérification échouée";
-"The signature is invalid or the file has been tampered with." = "La signature est invalide ou le fichier à été modifié.";
+"Verification Successful" = "Verification Successful";
+"The AEA file is authentic and valid." = "The AEA file is authentic and valid.";
+"Verification Failed" = "Verification Failed";
+"The signature is invalid or the file has been tampered with." = "The signature is invalid or the file has been tampered with.";
 
 /*
  * These are buttons shown in the credits section.
  */
-"View Source Code" = "Regarder le code source";
-"Reset Onboarding" = "Réinitialiser l'intégration"; /* This button is only shown in DEBUG builds and certain TESTFLIGHT builds. It resets the onboarding, so next launch the app will show the onboarding process again. */
+"View Source Code" = "View Source Code";
+"Reset Onboarding" = "Reset Onboarding"; /* This button is only shown in DEBUG builds and certain TESTFLIGHT builds. It resets the onboarding, so next launch the app will show the onboarding process again. */
 
 /*
  * These are labels in the credits section.
