@@ -67,7 +67,7 @@
  * it guides them for the process of selecting
  * the correct files.
  */
-"AEA Creation" = "Création de AEA"; /* This is the title for an alert */
+"AEA Creation" = "Création du fichier AEA"; /* This is the title for an alert */
 "Select the ECDSA-P256 raw X9.63 private key." = "Sélectionnez le clé privé brute ECDSA-P256 au format X9.23.";
 "Select auth data for the AEA." = "Sélectionnez les données d'authentification pour le fichier AEA";
 
@@ -99,14 +99,14 @@
  * AEA Errors...
  */
 "Error (Invalid Key)" = "Erreur (Clé invalide)";
-"Private key must be 97 bytes (Raw X9.63 ECDSA-P256)." = "Le clé privé doit être de 97 octets (Raw X9.63 ECDSA-P256).";
-"Public key must be 65 bytes starting with 0x04 (Raw X9.63 ECDSA-P256)." = "Le clé public doit être de 65 octets et doit commencer par 0x04 (Raw X9.63 ECDSA-P256).";
-"Invalid ECDSA-P256 key format (Needs Raw X9.63 ECDSA-P256)." = "Format de clé ECDSA-P256 invalide (Besoin d'un cle brute X9.63 ECDSA-P256).";
+"Private key must be 97 bytes (Raw X9.63 ECDSA-P256)." = "Le clé privé doit avoir 97 octets (Raw X9.63 ECDSA-P256).";
+"Public key must be 65 bytes starting with 0x04 (Raw X9.63 ECDSA-P256)." = "Le clé public doit avoir 65 octets et doit commencer par 0x04 (Raw X9.63 ECDSA-P256).";
+"Invalid ECDSA-P256 key format (Needs Raw X9.63 ECDSA-P256)." = "Format du clé ECDSA-P256 invalide (Besoin d'un cle brute X9.63 ECDSA-P256).";
 "Failed to sign archive." = "Échec de la signature de l'archive.";
 "Invalid AAR file." = "Fichier AAR invalide.";
 "Unsupported AEA profile." = "Profil AEA non supporté.";
 "Failed to extract archive." = "Échec de l'extraction de l'archive.";
-"Could not access selected files." = "Pas capable d'accéder aux fichiers."; /* This error only occours when there is an annoying sandbox issue... */
+"Could not access selected files." = "Incapable d'accéder aux fichiers."; /* This error only occours when there is an annoying sandbox issue... */
 "File is not AEA or AAR!" = "Le fichier n'est pas un AEA ou un AAR!"; /* The user selects a file for extraction, but that file doesn't end with .aea, .aar, .yaa or .shortcut. */
 "Please select an AEA file first." = "Selectionnez un fichier AEA d'abord"; /* The user did not select an AEA file, or any file to that matter. */
 "Please select a public key file." = "Selectionnez un fichier de clé publique"; /* This error occours in verification. If the user did not select a public key to verify the AEA with, they are presented with this error. */
