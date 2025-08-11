@@ -158,13 +158,13 @@
 /*
  * These are labels in the credits section.
  */
-"Version ((VERSION))" = "Version ((VERSION))";
-"Create and extract AAR/AEA archives using libNeoAppleArchive. Sign and verify archives with ECDSA-P256 keys." = "Create and extract AAR/AEA archives using libNeoAppleArchive. Sign and verify archives with ECDSA-P256 keys.";
+"Version ((VERSION))" = "Vérsion ((VERSION))";
+"Create and extract AAR/AEA archives using libNeoAppleArchive. Sign and verify archives with ECDSA-P256 keys." = "Créer et extraire des archive AEA et AAR en utilisant libNeoAppleArchive. Signer et vérifier des archive en utilisant des clés ECDSA-P256.";
 "App Color Scheme" = "App Color Scheme"; /* This is above buttons that the user can press to change the color scheme of the app. */
-"Main Developer" = "Main Developer"; /* This is under my card in the credits section. */
-"Core Contributor" = "Core Contributor"; /* This is under plx/justtryingthingsout's card in the credits section */
-"Miscellaneous" = "Miscellaneous"; /* Under AdelaideSky's card in the credits section. */
-"Translator - English)" = "Translator - English"; /* Will be under your card in the credits section, just make sure to change English to whatever language you with to translate to. If a specific variant of a language (for example, you are specifically translating into canadian french rather than france french) please put something like Translator - French (Canada) or something else that makes sense. */
-"...and thanks to users like you!" = "...and thanks to users like you!"; /* This is a label under the credits section thanking the users for downloading and using the app. */
-"Onboarding Reset" = "Onboarding Reset"; /* Title of the alert that is displayed after an onboarding reset. */
-"Will show on next launch." = "Will show on next launch."; /* Subtitle of the alert that is displayed after an onboarding reset. */
+"Main Developer" = "Développeur principale"; /* This is under my card in the credits section. */
+"Core Contributor" = "Contributeur principal"; /* This is under plx/justtryingthingsout's card in the credits section */
+"Miscellaneous" = "Divers"; /* Under AdelaideSky's card in the credits section. */
+"Translator - English)" = "Traducteur - Français"; /* Will be under your card in the credits section, just make sure to change English to whatever language you with to translate to. If a specific variant of a language (for example, you are specifically translating into canadian french rather than france french) please put something like Translator - French (Canada) or something else that makes sense. */
+"...and thanks to users like you!" = "...et merci aux utilisateurs comme vous!"; /* This is a label under the credits section thanking the users for downloading and using the app. */
+"Onboarding Reset" = "Rafraîchir l'intégration"; /* Title of the alert that is displayed after an onboarding reset. */
+"Will show on next launch." = "L'intégration apparaîtra la prochaîne lancée de l'application."; /* Subtitle of the alert that is displayed after an onboarding reset. */
