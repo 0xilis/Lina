@@ -21,7 +21,7 @@
 /* Below onboarding text is not yet in use by the app, but will be. */
 "Secure Archives" = "Archives Sécurisées";
 "Create encrypted archives with military-grade encryption." = "Créer des archives cryptées avec de la chiffrage de qualité militaire.";
-"Create Apple Encrypted Archives (.aea) with military-grade encryption." = "Créer un fichier Apple Encrypted Archive (.aea) avec de la chiffrage de qualité militaire."; /* alternative version of top text */
+"Create Apple Encrypted Archives (.aea) with military-grade encryption." = "Créer des fichiers Apple Encrypted Archive (.aea) avec de la chiffrage de qualité militaire."; /* alternative version of top text */
 
 /*
  * At the bottom, there is a tab bar that presents
