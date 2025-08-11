@@ -145,7 +145,7 @@
  * Verification alerts...
  */
 "Verification Successful" = "Vérification complété avec succès"; /* Need to come back to this */
-"The AEA file is authentic and valid." = "Le fichier AEA et authentique et valide.";
+"The AEA file is authentic and valid." = "Le fichier AEA et authentique et valide.";  
 "Verification Failed" = "Vérification échouée";
 "The signature is invalid or the file has been tampered with." = "La signature est invalide ou le fichier à été modifié.";
 
@@ -158,7 +158,7 @@
 /*
  * These are labels in the credits section.
  */
-"Version ((VERSION))" = "Vérsion ((VERSION))";
+"Version ((VERSION))" = "Version ((VERSION))";
 "Create and extract AAR/AEA archives using libNeoAppleArchive. Sign and verify archives with ECDSA-P256 keys." = "Créer et extraire des archive AEA et AAR en utilisant libNeoAppleArchive. Signer et vérifier des archive en utilisant des clés ECDSA-P256.";
 "App Color Scheme" = "App Color Scheme"; /* This is above buttons that the user can press to change the color scheme of the app. */
 "Main Developer" = "Développeur principale"; /* This is under my card in the credits section. */
