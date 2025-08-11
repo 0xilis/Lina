@@ -99,9 +99,9 @@
  * AEA Errors...
  */
 "Error (Invalid Key)" = "Erreur (Clé invalide)";
-"Private key must be 97 bytes (Raw X9.63 ECDSA-P256)." = "Le clé privé doit avoir 97 octets (Raw X9.63 ECDSA-P256).";
-"Public key must be 65 bytes starting with 0x04 (Raw X9.63 ECDSA-P256)." = "Le clé public doit avoir 65 octets et doit commencer par 0x04 (Raw X9.63 ECDSA-P256).";
-"Invalid ECDSA-P256 key format (Needs Raw X9.63 ECDSA-P256)." = "Format du clé ECDSA-P256 invalide (Besoin d'un cle brute X9.63 ECDSA-P256).";
+"Private key must be 97 bytes (Raw X9.63 ECDSA-P256)." = "La clé privée doit avoir 97 octets (Raw X9.63 ECDSA-P256).";
+"Public key must be 65 bytes starting with 0x04 (Raw X9.63 ECDSA-P256)." = "La clé publique doit avoir 65 octets et doit commencer par 0x04 (Raw X9.63 ECDSA-P256).";
+"Invalid ECDSA-P256 key format (Needs Raw X9.63 ECDSA-P256)." = "Le format de la clé ECDSA-P256 est invalide (Besoin d'un cle brute X9.63 ECDSA-P256).";
 "Failed to sign archive." = "Échec de la signature de l'archive.";
 "Invalid AAR file." = "Fichier AAR invalide.";
 "Unsupported AEA profile." = "Profil AEA non supporté.";
@@ -109,7 +109,7 @@
 "Could not access selected files." = "Incapable d'accéder aux fichiers."; /* This error only occours when there is an annoying sandbox issue... */
 "File is not AEA or AAR!" = "Le fichier n'est pas un AEA ou un AAR!"; /* The user selects a file for extraction, but that file doesn't end with .aea, .aar, .yaa or .shortcut. */
 "Please select an AEA file first." = "Selectionnez un fichier AEA d'abord"; /* The user did not select an AEA file, or any file to that matter. */
-"Please select a public key file." = "Selectionnez un fichier de clé publique"; /* This error occours in verification. If the user did not select a public key to verify the AEA with, they are presented with this error. */
+"Please select a public key file." = "Selectionnez un fichier contenant une clé publique"; /* This error occours in verification. If the user did not select a public key to verify the AEA with, they are presented with this error. */
 "Could not open AEA file." = "Incapable d'ouvrir la fichier AEA.";
 
 /*
@@ -138,7 +138,7 @@
  * These are the verify AEA archive button and labels for
  * the verify AEA view controller.
  */
-"Verify the signature of .aea files using ECDSA-P256 public keys." = "Vérifier la signature d'un fichier AEA en utilisant un clé public ECDSA-P256.";
+"Verify the signature of .aea files using ECDSA-P256 public keys." = "Vérifier la signature d'un fichier AEA en utilisant une clé publique ECDSA-P256.";
 "Verify AEA" = "Vérifier un fichier AEA";
 
 /*
