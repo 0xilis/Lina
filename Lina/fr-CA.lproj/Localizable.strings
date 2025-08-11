@@ -13,15 +13,15 @@
  */
 "Welcome" = "Bienvenue"; /* This is animated text. It is cursive and drawn in Snell Roundhand font. If you think this font is unfit for this language, let me know and perhaps suggest a font you think would be more inline with the language you would like to localize to. */
 "Hello" = "Bonjour"; /* This is animated text. It is cursive and drawn in Snell Roundhand font. If you think this font is unfit for this language, let me know and perhaps suggest a font you think would be more inline with the language you would like to localize to. */
-"Compression Support" = "Compression Support";
-"Compress files using LZFSE or other methods for efficient storage and transfer." = ""Compresser des fichiers utilisant LZFSE ou d'autres méthodes pour l'utilisation efficace de stockage et de transfert.";
+"Compression Support" = "Support de compression"; /* need to come back to this later */
+"Compress files using LZFSE or other methods for efficient storage and transfer." = "Compresser des fichiers utilisant LZFSE ou d'autres méthodes pour l'utilisation efficace de stockage et de transfert.";
 "Digital Signatures" = "Signatures Digitales";
 "Open Source" = "Source Ouverte";
 "Built on open standards and transparent cryptography." = "Construit sur des standards ouverts et sur la cryptograhpie transparente.";
 /* Below onboarding text is not yet in use by the app, but will be. */
 "Secure Archives" = "Archives Sécurisées";
-"Create encrypted archives with military-grade encryption." = "Créer des archives cryptées avec de l'encryption de qualité militaire.";
-"Create Apple Encrypted Archives (.aea) with military-grade encryption." = "Create Apple Encrypted Archives (.aea) with military-grade encryption."; /* alternative version of top text */
+"Create encrypted archives with military-grade encryption." = "Créer des archives cryptées avec de la chiffrage de qualité militaire.";
+"Create Apple Encrypted Archives (.aea) with military-grade encryption." = "Créer un fichier Apple Encrypted Archive (.aea) avec de la chiffrage de qualité militaire."; /* alternative version of top text */
 
 /*
  * At the bottom, there is a tab bar that presents
